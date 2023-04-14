@@ -2,12 +2,12 @@
   "name": "thesis",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.tsx",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.ts",
-    "build": "webpack",
-    "dev":  "concurrently -c 'bgYellow.bold,bgGreen.bold' 'npm run start' 'npm run build'"
+    "build": "tsc && webpack --watch",
+    "dev": "concurrently -c 'bgYellow.bold,bgGreen.bold' 'npm run start' 'npm run build'"
   },
   "repository": {
     "type": "git",
@@ -49,6 +49,7 @@
     "html-webpack-plugin": "^5.5.0",
     "path": "^0.12.7",
     "style-loader": "^3.3.2",
+    "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "webpack": "^5.79.0",
