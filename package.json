@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.ts",
-    "build": "tsc && webpack",
+    "build": "tsc && webpack --watch",
     "dev": "concurrently -c 'bgYellow.bold,bgGreen.bold' 'npm run start' 'npm run build'"
   },
   "repository": {
