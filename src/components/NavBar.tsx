@@ -37,8 +37,8 @@ function NavBar() {
   const [open, setOpen] = useState(false);
 
   const logout = () =>{
-    // window.open(`${process.env.REACT_APP_CLIENT_URL}auth/logout`, "_self");
-    window.open(`http://localhost:8080/auth/logout`, "_self");
+    window.open(`${process.env.REACT_APP_CLIENT_URL}auth/logout`, "_self");
+
   }
 
 

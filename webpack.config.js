@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: 'development',
@@ -19,11 +20,25 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+        new TerserPlugin(),
+    ],
+},
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use:  [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true,
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
       {
