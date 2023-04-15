@@ -14,10 +14,13 @@ app.use(express.static(clientPath));
 
 
 
-
-
-
 //bottom
+app.get('*', (req: any, res: any) => {
+  res.sendFile(path.join(clientPath, 'index.html'));
+});
+
+
+
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
