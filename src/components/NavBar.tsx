@@ -29,10 +29,18 @@ const data = [
   { name: "Affirmations", icon: <Favorite /> ,link: "/affirmations"},
   { name: "Profile", icon: <AccountCircle/> ,link: "/profile" },
 
+
+
 ];
 
 function NavBar() {
   const [open, setOpen] = useState(false);
+
+  const logout = () =>{
+    // window.open(`${process.env.REACT_APP_CLIENT_URL}auth/logout`, "_self");
+    window.open(`http://localhost:8080/auth/logout`, "_self");
+  }
+
 
   const getList = () => (
     <div style={{ width: 250 }} onClick={() => setOpen(false)}>
@@ -47,6 +55,8 @@ function NavBar() {
         </Link>
       ))}
     </div>
+
+
   );
   return (
     <div>
@@ -54,6 +64,7 @@ function NavBar() {
       <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
         {getList()}
       </Drawer>
+      <Button onClick={logout}>Logout</Button>
     </div>
   );
 }
