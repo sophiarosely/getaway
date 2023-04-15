@@ -33,12 +33,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new Dotenv({
-      path: './.env',
-    }),
+
   ],
 };
