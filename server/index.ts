@@ -1,17 +1,43 @@
+
 const express = require('express');
 const path = require('path');
+const authRoute = require('./routes/auth');
+const passportAuth = require('passport')
+const cookieSession = require('cookie-session')
+const passportSetup = require('./passport')
+const cors = require('cors')
+require('dotenv').config()
+
+
 const app = express();
 const port = 8080;
 
+app.use(express.json());
 
-
+app.use(
+  cookieSession({name: "session", keys:["getaway"], maxAge: 24 * 60 * 60 * 100})
+);
 
 const clientPath = path.resolve(__dirname, '..', 'dist')
-
-
-
 app.use(express.static(clientPath));
 
+
+app.use(passportAuth.initialize())
+app.use(passportAuth.session())
+
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true,
+}))
+
+app.get('/auth/google/callback', passportAuth.authenticate('google', { failureRedirect: '/' }), function(req:any, res:any) {
+  res.redirect('/');
+});
+
+
+
+app.use("/auth", authRoute);
 
 
 //bottom
