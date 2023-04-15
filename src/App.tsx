@@ -1,8 +1,16 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
+import Home from './pages/Home'
+import Habits from './pages/Habits'
 
 const App = () => {
   return (
-    <h1> Howdy yall</h1>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/habits" element={<Habits/>} />
+    </Routes>
+    </BrowserRouter>
   )
 }
 
