@@ -11,9 +11,11 @@ datasource db {
 }
 
 model User {
-  id           Int    @id @default(autoincrement())
+  id           Int     @id @default(autoincrement())
+  googleId     String
   name         String
-  phone        Int
-  therapistId  Int
-  fav_figureId String
+  phone        Int?
+  therapistId  Int?
+  fav_figureId String?
+  avatar       String?
 }
