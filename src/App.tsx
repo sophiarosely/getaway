@@ -11,6 +11,7 @@ import NavBar from './components/NavBar'
 import axios from 'axios';
 import Login from './pages/Login'
 import { useState, useEffect } from 'react';
+import MusicBar from './components/MusicBar';
 
 const App = () => {
 
@@ -61,6 +62,7 @@ console.log(user)
         <Route path="/profile" element={<Profile />} />
         <Route path="/meditation" element={<Meditation />} />
       </Routes>
+      <MusicBar />
       </div>
     </BrowserRouter>
 
