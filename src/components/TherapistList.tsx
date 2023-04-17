@@ -1,10 +1,13 @@
-const TherapistList = ({therapists}) =>{
+import Therapist from '../components/Therapist'
 
+
+const TherapistList = (props:any) =>{
+const { therapists } = props
 return (
   <div>
 <ul>
   {therapists.map((therapist:any)=>{
-return <li>{therapist.name} </li>
+return <Therapist therapist={therapist} />
   })}
 
 </ul>
