@@ -20,7 +20,10 @@ affirmationRoutes.get('/mood/:moodString', (req: any, res: any) => {
             max_tokens: 2048,
             temperature: 1,
         })
-        res.send(response.data.choices[0].text);
+        const affirmationsArray = response.data.choices[0].text.split(/\d+\. /).filter((str: string) => str !== '').map((str: string) => str.trim());
+        affirmationsArray.shift()
+        res.send(affirmationsArray);
+
     }
 
     runPrompt();
