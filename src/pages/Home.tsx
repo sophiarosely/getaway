@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <h1> DashBoard</h1>
       <CheckIn />
-      <MusicBar />
+      {/* <MusicBar /> */}
     </div>
   );
 };
