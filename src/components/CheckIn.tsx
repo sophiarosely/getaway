@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const CheckIn = () => {
   // What do I want to happen on click?
 
+  // state for showing feeling
   const [userFeelings, SetUserFeelings] = useState('');
+  // state for showing success display
+  const [showAlert, setShowAlert] = useState(false);
 
   const FeelingSelector = (e: any) => {
     console.log(e.target.textContent);
@@ -13,7 +18,12 @@ const CheckIn = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        border: '1px solid black',
+        textAlign: 'center',
+      }}
+    >
       <h1>How are you feeling this check in?</h1>
       <ButtonGroup
         variant='contained'
@@ -45,16 +55,38 @@ const CheckIn = () => {
           Low Energy, Unpleasant
         </Button>
       </ButtonGroup>
-      <p>Your feelings are: {userFeelings}</p>
+      <p style={{ fontWeight: 'bold' }}>Your feelings are: {userFeelings}</p>
       <p>If correct, click the submit button.</p>
+      <p>If not, select the correct choice.</p>
       <Button
         variant='outlined'
         onClick={() => {
-          alert(`Thank you for your submission! You feel: ${userFeelings}`);
+          setShowAlert(true);
+          setTimeout(() => {
+            setShowAlert(false);
+          }, 3000); // hide alert after 3 seconds
         }}
       >
         Submit feeling!
       </Button>
+      {showAlert && (
+        <div
+          style={{
+            margin: '0 auto',
+            textAlign: 'center',
+            maxWidth: '25rem',
+          }}
+        >
+          <Alert
+            severity='success'
+            color='success'
+            style={{ fontWeight: 'bold', textAlign: 'center' }}
+          >
+            <AlertTitle>Success</AlertTitle>
+            Successfully submitted user feelings of {userFeelings}!
+          </Alert>
+        </div>
+      )}
     </div>
   );
 };
