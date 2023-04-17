@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const authRoute = require('./routes/auth');
+const therapistRoute = require('./routes/therapist')
 const passportAuth = require('passport')
 const cookieSession = require('cookie-session')
 const passportSetup = require('./passport')
@@ -37,7 +38,7 @@ app.get('/auth/google/callback', passportAuth.authenticate('google', { failureRe
 });
 
 
-
+app.use("/therapist", therapistRoute);
 app.use("/auth", authRoute);
 
 
