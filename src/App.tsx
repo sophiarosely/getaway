@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Habits from './pages/Habits'
@@ -10,15 +10,25 @@ import Meditation from './pages/Meditation'
 import NavBar from './components/NavBar'
 import axios from 'axios';
 import Login from './pages/Login'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import MusicBar from './components/MusicBar';
 
+interface UserContextType {
+  userName: string | null;
+  userId: number | null
+}
+
+const UserContext = createContext<UserContextType | null>(null);
 const App = () => {
 
 
 
 
 const [user, setUser ] = useState(null);
+const [userName, setUserName] = useState(null);
+  const [userId, setUserId] = useState(null);
+
+  
 useEffect(()=>{
   const getUser = ()=>{
   axios.get(`${process.env.REACT_APP_CLIENT_URL}auth/login/success`)
@@ -30,6 +40,8 @@ useEffect(()=>{
     }
   }).then((resObj)=>{
     setUser(resObj.user)
+    setUserId(resObj.user.id)
+    setUserName(resObj.user.name.givenName)
     localStorage.setItem('user', JSON.stringify(resObj.user));
   })
   .catch((err)=>{
@@ -45,6 +57,7 @@ console.log(user)
 
 
   return (
+    <UserContext.Provider value ={{userName, userId}}>
      <BrowserRouter>
       <div>
     <NavBar/>
@@ -65,6 +78,7 @@ console.log(user)
       <MusicBar />
       </div>
     </BrowserRouter>
+    </UserContext.Provider>
 
   )
 }
