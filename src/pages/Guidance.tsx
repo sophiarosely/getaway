@@ -65,8 +65,8 @@ console.log('hi',therapists)
   return (
     <div>
     <h1>Guidance</h1>
-    <TherapistList therapists={therapists}/>
     <button onClick={getNextTwenty}>Next20</button>
+    <TherapistList therapists={therapists}/>
     </div>
   )
   }

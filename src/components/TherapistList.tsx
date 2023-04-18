@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const TherapistList = (props: any) => {
+
+  const [therapistDetails, setTherapistDetails ] = useState<Array<object>>([]);
   const { therapists } = props;
 
 
@@ -21,21 +23,22 @@ const get20calls = () =>{
 
   })
   )
-  .then((response)=>{
-    console.log("detailed response", response)
+  .then((response: Array<object>)=>{
+
+    setTherapistDetails(response)
   })
   .catch((err)=>{
     console.error('not today buster',err)
   })
 }
 
-
+console.log(therapistDetails)
 
   return (
     <div>
       <ul>
-        {therapists.map((therapist: any, index: number) => (
-          <Therapist key={therapist.place_id} therapist={therapist} />
+        {therapistDetails.map((therapist:any, index: number) => (
+          <Therapist key={therapist.data.result.place_id} therapist={therapist.data.result} />
         ))}
       </ul>
     </div>
