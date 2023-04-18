@@ -1,5 +1,6 @@
 const habitsRoutes = require('express').Router();
-
+// const { PrismaClient } = require('@prisma/client')
+// const prisma = new PrismaClient()
 // the route for this is  localhost:8080/habits/
 
 
