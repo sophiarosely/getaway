@@ -13,12 +13,12 @@ import Login from './pages/Login'
 import { useState, useEffect, useContext } from 'react';
 import MusicBar from './components/MusicBar';
 
-interface UserContextType {
+export interface UserContextType {
   userName: string | null;
   userId: number | null
 }
 
-const UserContext = createContext<UserContextType | null>(null);
+export const UserContext = createContext<UserContextType | null>(null);
 
 const App = () => {
 
@@ -85,4 +85,3 @@ console.log(user)
 }
 
 export default App;
-export { UserContext, UserContextType };
