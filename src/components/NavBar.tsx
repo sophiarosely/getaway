@@ -39,16 +39,11 @@ function NavBar() {
   }
 
 
-  const getList = () => (
+   const getList = () => (
     <div style={{ width: 250 }} onClick={() => setOpen(false)}>
-      {data.map((item, index) => (
-        <Link
-          to={{
-            pathname: item.link,
-          }}
-          style={{ textDecoration: 'none' }}
-        >
-          <ListItem button key={index}>
+      {data.map((item) => (
+        <Link to={{ pathname: item.link }} style={{ textDecoration: "none" }} key={item.name}>
+          <ListItem button>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
           </ListItem>
@@ -56,6 +51,7 @@ function NavBar() {
       ))}
     </div>
   );
+
   return (
     <div>
       <Button onClick={() => setOpen(true)}>Click me</Button>
