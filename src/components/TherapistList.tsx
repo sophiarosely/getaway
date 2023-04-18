@@ -4,33 +4,38 @@ import { useEffect, useState } from 'react';
 
 const TherapistList = (props: any) => {
   const { therapists } = props;
-  const [details, setDetails] = useState<any[]>([]);
 
-  const getDetails = async (place_id: string) => {
-    try {
-      const response = await axios.get('/therapist/details', {
-        params: {
-          place_id: place_id
-        }
-      });
-      return response.data.result;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  useEffect(() => {
-    Promise.all(therapists.map(t => getDetails(t.place_id)))
-      .then(results => {
-        setDetails(results);
-      });
-  }, [therapists]);
+
+useEffect(()=>{
+  get20calls();
+},[therapists])
+
+
+
+
+const get20calls = () =>{
+  Promise.all(therapists.map((therapist:any)=>{
+    console.log('all 20 ids', therapist.place_id)
+    return axios.get(`/therapist/details?place_id=${therapist.place_id}`)
+
+  })
+  )
+  .then((response)=>{
+    console.log("detailed response", response)
+  })
+  .catch((err)=>{
+    console.error('not today buster',err)
+  })
+}
+
+
 
   return (
     <div>
       <ul>
         {therapists.map((therapist: any, index: number) => (
-          <Therapist key={therapist.place_id} therapist={therapist} details={details[index]} />
+          <Therapist key={therapist.place_id} therapist={therapist} />
         ))}
       </ul>
     </div>

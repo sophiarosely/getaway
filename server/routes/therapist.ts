@@ -48,7 +48,7 @@ res.send(response.data).status(200)
 router.get('/details', (req:any, res:any)=>{
   axios.get('https://maps.googleapis.com/maps/api/place/details/json', {
     params:{
-      place_id: "ChIJRfhonKyb5IkR2uAfRsPLrgA",
+      place_id: req.query.place_id,
       key: GOOGLE_PLACES_API
     }
   })

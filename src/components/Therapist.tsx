@@ -2,10 +2,10 @@ import axios from "axios";
 import { useEffect, useState} from 'react'
 
 const Therapist = (props:any) =>{
-const { therapist, details } = props;
+const { therapist } = props;
 
 
-console.log(details)
+
 
 
 
