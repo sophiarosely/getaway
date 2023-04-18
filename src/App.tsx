@@ -19,6 +19,7 @@ interface UserContextType {
 }
 
 const UserContext = createContext<UserContextType | null>(null);
+
 const App = () => {
 
 
@@ -84,3 +85,4 @@ console.log(user)
 }
 
 export default App;
+export { UserContext, UserContextType };

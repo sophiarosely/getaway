@@ -9,14 +9,18 @@ import HabitCard from  '../components/Habits/Habitcard'
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
+import { UserContext, UserContextType } from '../App.jsx';
 
-  interface Habit {
+  interface Habits {
   id: number;
   type: string
   name: string;
-}
-const Habits = () =>{
 
+}
+
+const Habits = () =>{
+  //  const { userName, userId }: UserContextType = useContext(UserContext);
+  //  console.log(userName, userId)
 const types = [
   {
     type: "Excersize"
