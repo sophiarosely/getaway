@@ -1,5 +1,7 @@
-const routes = require('express').Router();
-const passportRoute = require('passport');
+import { Router } from 'express';
+const routes = Router();
+// const routes = require('express').Router();
+import passportRoute from 'passport';
 const CLIENT_URL = process.env.CLIENT_URL;
 
 routes.get('/login/success', (req: any, res: any) => {
@@ -42,4 +44,4 @@ routes.get(
   })
 );
 
-module.exports = routes;
+export default routes;

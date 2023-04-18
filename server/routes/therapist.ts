@@ -1,7 +1,7 @@
-const { Router } = require("express")
+import { Router } from "express";
 require('dotenv').config();
 const router = Router()
-const axios = require("axios")
+import axios from "axios";
 const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
 
 //this function gets the first 20 therapists near you
@@ -62,4 +62,5 @@ router.get('/details', (req:any, res:any)=>{
 })
 
 
-module.exports = router
+// module.exports = router
+export default therapistRoute; 

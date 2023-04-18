@@ -1,6 +1,6 @@
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const passport = require('passport');
-const { PrismaClient } = require('@prisma/client')
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import passport from 'passport';
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient()
 require('dotenv').config();
 //const config = require('./config');
