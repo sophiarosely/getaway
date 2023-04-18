@@ -20,12 +20,7 @@ routes.get('/login/failed', (req: any, res: any) => {
   });
 });
 
-// routes.get("/logout", (req:any, res:any)=>{
-//   req.logout();
-//   res.redirect(CLIENT_URL);
-// });
-
-routes.get('/logout', (req: any, res: any) => {
+routes.get('/logout', (req:any, res:any) => {
   req.logout(() => {
     if (req.session) {
       req.session.destroy();
