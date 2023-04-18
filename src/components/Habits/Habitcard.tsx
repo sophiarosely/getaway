@@ -23,9 +23,9 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
     setIsTrackingOpen(!isTrackingOpen);
   }
 
-  const closeTracking = () => {
-    setIsTrackingOpen(false);
-  }
+  // const closeTracking = ():any => {
+  //   setIsTrackingOpen(false);
+  // }
 
   return (
     <div>
@@ -48,9 +48,9 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
         </CardActions>
       </Card>
 
-      {/* {isTrackingOpen && (
-        //<Tracking onClose={closeTracking} />
-      )} */}
+      {isTrackingOpen && (
+        <Tracking />
+      )}
     </div>
   )
 }
