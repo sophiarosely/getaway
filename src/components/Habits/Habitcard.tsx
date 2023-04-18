@@ -30,7 +30,7 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
   return (
     <div>
       <Card sx={{ backgroundColor: '#333' }}>
-        <CardContent>    
+        <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Habit
           </Typography>
