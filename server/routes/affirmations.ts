@@ -1,4 +1,6 @@
-const affirmationRoutes = require('express').Router();
+import { Router } from 'express';
+const affirmationRoutes = Router();
+
 const { Configuration, OpenAIApi } = require('openai');
 require('dotenv').config();
 
@@ -7,6 +9,13 @@ const config = new Configuration({
 });
 
 const openai = new OpenAIApi(config);
+// affirmationRoutes.get('/', (req: any, res: any) => {
+//     console.log("hi")
+//     console.log(config)
+// console.log(process.env.AFFIRMATIONS_OPENAI_API_KEY )
+//         res.send("hi");
+//     }
+// )
 
 affirmationRoutes.get('/mood/:moodString', (req: any, res: any) => {
     const { moodString } = req.params
@@ -26,4 +35,4 @@ affirmationRoutes.get('/mood/:moodString', (req: any, res: any) => {
     runPrompt();
 })
 
-module.exports = affirmationRoutes;
+export default affirmationRoutes

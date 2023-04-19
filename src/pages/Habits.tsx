@@ -9,15 +9,24 @@ import HabitCard from  '../components/Habits/Habitcard'
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
+import { UserContext, UserContextType } from '../App' ;
 
-  interface Habit {
+  interface Habits {
   id: number;
   type: string
   name: string;
+
 }
+type Option = {
+  type: string;
+};
+
 const Habits = () =>{
 
-const types = [
+  // creates user variables based on context 
+   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
+   console.log(userName, userId)
+const types:Option[] = [
   {
     type: "Excersize"
   }, {
@@ -29,13 +38,13 @@ const types = [
   }
 ]
 
-  const [habits, setHabits] = useState<{ id: number, name: string, type: string }[]>([]);
+  const [habits, setHabits] = useState<Habits[]>([]);
   const [newHabit, setNewHabit] = useState<string>("");
-  const [type, setType] = useState<string>("");
+  const [type, setType] = useState<string>(types[0].type);
 
  const onCreate = ():void => {
  setHabits([...habits, { id: habits.length + 1, name: newHabit, type: type }]);
- setType("")
+ setType(types[0].type)
  setNewHabit("");
  console.log("hi")
  }
@@ -56,19 +65,20 @@ const types = [
           select
           label="Select"
          onChange={(event) =>setType(event.target.value) }
+         value={type}
           helperText="Please select activity type"
         >
-          {types.map((option) => (
-            <MenuItem key={option.type} value={option.type}>
-              {option.type}
-            </MenuItem>
-          ))}
+         {types.map((option: Option) => (
+  <MenuItem key={option.type} value={option.type}>
+    {option.type}
+  </MenuItem>
+))}
         </TextField>
     <Button variant="text" onClick={onCreate}>
        Create Habit
        </Button>
        {habits.map((habit) => (
-        <HabitCard id={habit.id} name={habit.name} type={habit.type} />
+        <HabitCard key={habit.id} id={habit.id} name={habit.name} type={habit.type} />
       ))}
        {newHabit}
     </div>
