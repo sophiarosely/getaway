@@ -1,8 +1,11 @@
 import Therapist from '../components/Therapist'
 import axios from 'axios';
+import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 
 const TherapistList = (props: any) => {
+
+  const [therapistDetails, setTherapistDetails ] = useState<Array<object>>([]);
   const { therapists } = props;
 
 
@@ -21,23 +24,26 @@ const get20calls = () =>{
 
   })
   )
-  .then((response)=>{
-    console.log("detailed response", response)
+  .then((response: Array<object>)=>{
+
+    setTherapistDetails(response)
   })
   .catch((err)=>{
     console.error('not today buster',err)
   })
 }
 
-
+console.log(therapistDetails)
 
   return (
-    <div>
-      <ul>
-        {therapists.map((therapist: any, index: number) => (
-          <Therapist key={therapist.place_id} therapist={therapist} />
+    <div style={{ height: '400px', overflow: 'auto' }}>
+  <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        {therapistDetails.map((therapist:any, index: number) => (
+          <Grid item key={therapist.data.result.place_id} xs={12} sm={6} md={4} lg={3}>
+          <Therapist key={therapist.data.result.place_id} therapist={therapist.data.result} />
+          </Grid>
         ))}
-      </ul>
+        </Grid>
     </div>
   );
 };
