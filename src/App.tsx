@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Habits from './pages/Habits'
 import Affirmations from './pages/Affirmations'
+import AffirmationEntries from './pages/AffirmationEntries'
 import Recess from './pages/Recess'
 import Guidance from './pages/Guidance'
 import Profile from './pages/Profile'
@@ -28,7 +29,7 @@ const [user, setUser ] = useState(null);
 const [userName, setUserName] = useState(null);
   const [userId, setUserId] = useState(null);
 
-  
+
 useEffect(()=>{
   const getUser = ()=>{
   axios.get(`${process.env.REACT_APP_CLIENT_URL}auth/login/success`)
@@ -70,6 +71,7 @@ console.log(user)
 
         <Route path="/habits" element={<Habits />} />
         <Route path="/affirmations" element={<Affirmations />} />
+        <Route path="/affirmation-entries" element={<AffirmationEntries />} />
         <Route path="/recess" element={<Recess />} />
         <Route path="/guidance" element={<Guidance />} />
         <Route path="/profile" element={<Profile />} />
