@@ -1,5 +1,6 @@
 import Therapist from '../components/Therapist'
 import axios from 'axios';
+import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 
 const TherapistList = (props: any) => {
@@ -35,12 +36,14 @@ const get20calls = () =>{
 console.log(therapistDetails)
 
   return (
-    <div>
-      <ul>
+    <div style={{ height: '400px', overflow: 'auto' }}>
+  <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {therapistDetails.map((therapist:any, index: number) => (
+          <Grid item key={therapist.data.result.place_id} xs={12} sm={6} md={4} lg={3}>
           <Therapist key={therapist.data.result.place_id} therapist={therapist.data.result} />
+          </Grid>
         ))}
-      </ul>
+        </Grid>
     </div>
   );
 };
