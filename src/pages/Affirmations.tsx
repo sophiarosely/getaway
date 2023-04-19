@@ -11,7 +11,7 @@ const Affirmations = () => {
   const [affirmations, setAffirmations] = useState<string[]>([]);
   const [saveButton, setSaveButton] = useState<React.ReactNode | null>(null);
 
-  const handleSubmit = (): void => {
+  const handleEnterSubmit = (): void => {
     axios
       .get(`/affirmations/mood/${userMood}`)
       .then(({ data }) => setAffirmations(data))
@@ -44,7 +44,7 @@ const Affirmations = () => {
         <h1>Affirmations</h1>
         <h2>What affirmations are you looking for today? </h2>
         <h3>Today, I am feeling...</h3>
-        {/* <h6>You can express as much you want or enter a single word. It's up to you ☺ </h6> */}
+        <h6 style={{color: 'gray'}}>You can express as much you want or enter a single word. It's up to you ☺ </h6>
         <FormGroup>
           <TextField
             id='outlined-multiline-static'
@@ -53,7 +53,7 @@ const Affirmations = () => {
             rows={4}
             onChange={(e) => setUserMood(e.target.value)}
           />
-          <Button variant='text' onClick={() => handleSubmit()}>
+          <Button variant='text' onClick={() => handleEnterSubmit()}>
             Enter
           </Button>
         </FormGroup>
