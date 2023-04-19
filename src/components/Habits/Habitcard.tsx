@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Tracking from  './Tracking'
 import axios from 'axios';
 import Box from '@mui/material/Box';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface HabitCardProps {
   id: number;
@@ -21,6 +22,9 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
 
   const openTracking = () => {
     setIsTrackingOpen(!isTrackingOpen);
+  }
+    const handleComplete = () => {
+    console.log("hi");
   }
 
   // const closeTracking = ():any => {
@@ -41,6 +45,11 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
           </Typography>
           <Typography variant="body2">
             {name}
+          </Typography>
+          <Typography variant="body2">
+            <Button variant="outlined" onClick={handleComplete} startIcon={<DeleteIcon />}>
+        complete
+      </Button>
           </Typography>
         </CardContent>
         <CardActions>
