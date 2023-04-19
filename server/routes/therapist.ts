@@ -4,7 +4,15 @@ const router = Router()
 import axios from "axios";
 const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
 
+// router.get('/', (req: any, res: any) => {
+//     console.log("hi")
+// console.log(GOOGLE_PLACES_API)
+//         res.send("hi");
+//     }
+// )
+
 //this function gets the first 20 therapists near you
+
 router.get('/search',(req:any,res:any)=>{
   axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
   params: {
@@ -63,4 +71,4 @@ router.get('/details', (req:any, res:any)=>{
 
 
 // module.exports = router
-export default therapistRoute; 
+export default router; 
