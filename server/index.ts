@@ -6,6 +6,7 @@ import therapistRoute from './routes/therapist';
 import affirmationRoute from './routes/affirmations';
 import habitsRoute from './routes/habits';
 import checkInRoute from './routes/checkIn';
+import moodEntryRoute from './routes/moodEntry';
 
 // import passportAuth from 'passport';
 // // import cookieSession from 'cookie-session';
@@ -62,6 +63,7 @@ app.use('/auth', authRoute);
 app.use('/affirmations', affirmationRoute);
 app.use('/habits', habitsRoute);
 app.use('/checkIn', checkInRoute);
+app.use('/moodEntry', moodEntryRoute);
 
 //bottom
 app.get('*', (req: any, res: any) => {

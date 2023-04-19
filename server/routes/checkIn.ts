@@ -7,7 +7,7 @@ require('dotenv').config();
 
 checkInRoutes.get('/', async (req: any, res: any) => {
   const allUsers: any = await prisma.user.findMany();
-  console.log('GET SUCCESS');
+  // console.log('GET SUCCESS');
   res.status(200).json(allUsers);
 });
 
@@ -18,7 +18,7 @@ checkInRoutes.post('/', async (req: any, res: any) => {
       name: req.body.name,
     },
   });
-  console.log('POST SUCCESS');
+  // console.log('POST SUCCESS');
   res.status(201).json(newUser);
 });
 
@@ -31,7 +31,7 @@ checkInRoutes.put('/:id', async (req: any, res: any) => {
       name: newName,
     },
   });
-  console.log('PUT SUCCESS');
+  // console.log('PUT SUCCESS');
   res.status(204).json(updatedUser);
 });
 
@@ -40,7 +40,7 @@ checkInRoutes.delete('/:id', async (req: any, res: any) => {
   const deletedUser: any = await prisma.user.delete({
     where: { id: Number(id) },
   });
-  console.log('DELETE SUCCESS');
+  // console.log('DELETE SUCCESS');
   res.status(200).json(deletedUser);
 });
 
