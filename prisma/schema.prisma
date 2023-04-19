@@ -40,3 +40,12 @@ mood Mood @relation(fields: [mood_id], references: [id])
 user User @relation(fields: [user_id], references: [id])
 }
 
+// Zach Habit model
+model Habits {
+id Int @id @default(autoincrement())
+habit_name String
+habit_type String
+habit_createdAt DateTime @default(now())
+user_id Int
+user User @relation(fields: [user_id], references: [id])
+}

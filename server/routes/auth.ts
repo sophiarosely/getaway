@@ -42,4 +42,4 @@ routes.get(
   })
 );
 
-module.exports = routes;
+export default routes
