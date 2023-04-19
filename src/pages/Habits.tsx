@@ -10,6 +10,7 @@ import HabitCard from  '../components/Habits/Habitcard'
 // import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import { UserContext, UserContextType } from '../App' ;
+import axios from 'axios';
 
   interface Habits {
   id: number;
@@ -41,9 +42,23 @@ const types:Option[] = [
   const [habits, setHabits] = useState<Habits[]>([]);
   const [newHabit, setNewHabit] = useState<string>("");
   const [type, setType] = useState<string>(types[0].type);
+  //test data
+
 
  const onCreate = ():void => {
  setHabits([...habits, { id: habits.length + 1, name: newHabit, type: type }]);
+ const data = {
+  habit_name: newHabit,
+  googleId: userId?.toString(),
+  habit_type: type
+};
+ axios.post('habits/newHabit', { data })
+  .then((response) => {
+    console.log(response.data); // should log 'Success'
+  })
+  .catch((error) => {
+    console.log(error);
+  });
  setType(types[0].type)
  setNewHabit("");
  console.log("hi")
