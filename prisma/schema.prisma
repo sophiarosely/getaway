@@ -11,32 +11,41 @@ datasource db {
 }
 
 model User {
-  id           Int     @id @default(autoincrement()) // Uuid's are just auto and are more secure, made this
+  id           Int            @id @default(autoincrement()) // Uuid's are just auto and are more secure, made this
   googleId     String
   name         String
   phone        Int?
   therapistId  Int?
   fav_figureId String?
   avatar       String?
-  moods MoodsOfUsers[]
+  moods        MoodsOfUsers[]
+  Habits       Habits[]
 }
 
 // Theo Mood model
 model Mood {
-  id Int @id @default(autoincrement())
-  mood_color String
-  mood_desc String
-  mood_createdAt DateTime @default(now())
-  users MoodsOfUsers[]
-
+  id             Int            @id @default(autoincrement())
+  mood_color     String
+  mood_desc      String
+  mood_createdAt DateTime       @default(now())
+  users          MoodsOfUsers[]
 }
 
 // Theo User_Moods models
 model MoodsOfUsers {
-id Int @id @default(autoincrement())
-mood_id Int
-user_id Int
-mood Mood @relation(fields: [mood_id], references: [id])
-user User @relation(fields: [user_id], references: [id])
+  id      Int  @id @default(autoincrement())
+  mood_id Int
+  user_id Int
+  mood    Mood @relation(fields: [mood_id], references: [id])
+  user    User @relation(fields: [user_id], references: [id])
 }
 
+// Zach Habit model
+model Habits {
+  id              Int      @id @default(autoincrement())
+  habit_name      String
+  habit_type      String
+  habit_createdAt DateTime @default(now())
+  user_id         Int
+  user            User     @relation(fields: [user_id], references: [id])
+}
