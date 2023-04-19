@@ -1,14 +1,27 @@
 
-const express = require('express');
-const path = require('path');
-const authRoute = require('./routes/auth');
-const therapistRoute = require('./routes/therapist')
-const affirmationRoute = require('./routes/affirmations')
+import express from 'express';
+import path from 'path';
+
+
+import authRoute from './routes/auth';
+import therapistRoute from './routes/therapist';
+import affirmationRoute from './routes/affirmations';
+import habitsRoute from './routes/habits';
+
+
+// import passportAuth from 'passport';
+// // import cookieSession from 'cookie-session';
+// import cookieSession from 'cookie-session';
+// import passportSetup from 'passport';
+// import cors from 'cors';
+
 const passportAuth = require('passport')
 const cookieSession = require('cookie-session')
 const passportSetup = require('./passport')
 const cors = require('cors')
 const connection = require('./db/index')
+// import connection from './db/index';
+// import 'dotenv/config'
 require('dotenv').config()
 
 
@@ -23,7 +36,6 @@ app.use(
 
 const clientPath = path.resolve(__dirname, '..', 'dist')
 app.use(express.static(clientPath));
-
 
 app.use(passportAuth.initialize())
 app.use(passportAuth.session())
@@ -42,6 +54,7 @@ app.get('/auth/google/callback', passportAuth.authenticate('google', { failureRe
 app.use("/therapist", therapistRoute);
 app.use("/auth", authRoute);
 app.use("/affirmations", affirmationRoute);
+app.use("/habits", habitsRoute)
 
 
 //bottom
