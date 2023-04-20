@@ -1,39 +1,52 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext, UserContextType } from '../App';
+import { Link } from 'react-router-dom'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { FormGroup } from '@mui/material';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+
 const Affirmations = () => {
   const [userMood, setUserMood] = useState('');
   const [affirmations, setAffirmations] = useState<string[]>([]);
-  const [saveButton, setSaveButton] = useState<React.ReactNode | null>(null);
+  const [affirmationTitle, setAffirmationTitle] = useState('');
+  const [isSaveVisible, setisSaveVisible] = useState(false);
+
+  const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
 
   const handleEnterSubmit = (): void => {
     axios
       .get(`/affirmations/mood/${userMood}`)
-      .then(({ data }) => setAffirmations(data))
+      .then(({ data }) => {setAffirmations(data);  showSaveButton();})
       .catch((err) => console.error(err));
-
-      setSaveButton(<Button
-        variant='text'
-        onClick={() => {
-          handleSaveSubmit();
-        }}>
-        SAVE
-      </Button>)
   };
 
+  const showSaveButton = () => {
+    setisSaveVisible(true);
+  }
+
   const handleSaveSubmit = (): void => {
+    console.log(affirmations)
     Swal.fire({
       title: 'Success!',
       text: 'Affirmation saved.',
       icon: 'success',
       confirmButtonText: 'OK',
     });
+
+    axios.post('/affirmations/save', {
+      title: affirmationTitle,
+      affirmations: affirmations,
+      googleId: userId
+    })
+    .then(({ data }) => console.log(data))
+    .catch((err) => console.log(err));
   };
+
+
+
 
 
 
@@ -48,26 +61,27 @@ const Affirmations = () => {
         <FormGroup>
           <TextField
             id='outlined-multiline-static'
-            label='Type here...'
+            placeholder='Type here...'
             multiline
             rows={4}
             onChange={(e) => setUserMood(e.target.value)}
           />
-          <Button variant='text' onClick={() => handleEnterSubmit()}>
+          <Button variant='text' onClick={ () => handleEnterSubmit() }>
             Enter
           </Button>
         </FormGroup>
       </center>
       <div id='affirmations'>
-        <center>
+      <center>
+        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' variant="standard" onChange={(e) => setAffirmationTitle(e.target.value)} />)}
           <ul>
             {affirmations.map((affirmation: string, index: number) => {
-              return <li key={index}>{affirmation}</li>;
+              return <li style={{listStyleType: 'none'}}key={index}>{affirmation}</li>;
             })}
           </ul>
         </center>
       </div>
-   <center>{saveButton}</center>
+   <center>{isSaveVisible && (<Button variant='text' onClick={ () => handleSaveSubmit() }>Save</Button>)}</center>
     </div>
   );
 };
