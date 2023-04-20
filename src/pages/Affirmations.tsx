@@ -48,9 +48,6 @@ const Affirmations = () => {
 
 
 
-
-
-
   return (
     <div id='parent'>
       <Link to="/affirmation-entries"><Button variant='text'>View Affirmations</Button></Link>

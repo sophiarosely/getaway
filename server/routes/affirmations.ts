@@ -52,13 +52,29 @@ affirmationRoutes.post('/save/', async (req, res) => {
         });
         res.send('Success: Affirmation saved.')
     } catch (err) {
-        console.log(err);
         res.send('Error: Affirmation was not saved.')
+        console.log(err);
     }
 });
 
 //Retrieving affirmations to DB
-affirmationRoutes.get('/retrieve')
+affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
+    const { googleId } = req.params
+
+    try {
+        const user = await prisma.user.findFirst({ where: { googleId: googleId } })
+
+        const affirmationEntries = await prisma.affirmations.findMany({
+            where: {user_id: user.id}
+        })
+        res.send(affirmationEntries);
+
+    } catch (err) {
+        console.log(err);
+        res.send('Error: Affirmations were not found.')
+    }
+
+})
 
 // Deleting affirmations
 affirmationRoutes.delete('/remove')
