@@ -29,12 +29,12 @@ const MusicBar = () =>{
       title: 'Playlist 2',
       songs: [
         {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+          src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
           artist: 'Artist 1',
           title: 'Playlist2 Song 1',
         },
         {
-          src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
+          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
           artist: 'Artist 2',
           title: 'Playlist2 Song 2',
         },
@@ -49,7 +49,7 @@ const MusicBar = () =>{
       title: 'Playlist 3',
       songs: [
         {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+          src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
           artist: 'Artist 1',
           title: 'Playlist3 Song 1',
         },
@@ -59,7 +59,7 @@ const MusicBar = () =>{
           title: 'Playlist3 Song 2',
         },
         {
-          src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
+          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
           artist: 'Artist 3',
           title: 'Playlist3 Song 3',
         },
