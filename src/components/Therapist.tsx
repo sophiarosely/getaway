@@ -13,12 +13,12 @@ import Favorite from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 
 const Therapist = (props:any) =>{
-const { therapist } = props;
+const { therapist, handleOpen } = props;
 
 
 
 return (
-  <Card sx={{ maxWidth: 345 }}>
+  <Card sx={{ maxWidth: 345 }} onClick={()=>handleOpen(therapist)}>
     <CardActionArea>
       <CardMedia
         component="img"

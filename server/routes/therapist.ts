@@ -17,9 +17,11 @@ router.get('/search',(req:any,res:any)=>{
   axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
   params: {
     key: GOOGLE_PLACES_API,
-    radius: '800000',
+    radius: '4000',
     location: `${req.query.lat},${req.query.long}`,
-    keyword: 'therapist'
+    keyword: 'therapist',
+
+
   }
 })
 .then((response:any)=>{
@@ -36,10 +38,11 @@ router.get('/next20',(req:any,res:any)=>{
   axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
   params: {
     key: GOOGLE_PLACES_API,
-    radius: '800000',
+    radius: '4000',
     location: `${req.query.lat},${req.query.long}`,
     keyword: 'therapist',
-    pagetoken: req.query.pagetoken
+    pagetoken: req.query.pagetoken,
+
   }
 })
 .then((response:any)=>{
@@ -71,4 +74,4 @@ router.get('/details', (req:any, res:any)=>{
 
 
 // module.exports = router
-export default router; 
+export default router;
