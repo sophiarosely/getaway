@@ -39,7 +39,8 @@ const Affirmations = () => {
     axios.post('/affirmations/save', {
       title: affirmationTitle,
       affirmations: affirmations,
-      googleId: userId
+      googleId: userId,
+      favorite: false
     })
     .then(({ data }) => console.log(data))
     .catch((err) => console.log(err));
