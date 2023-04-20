@@ -15,6 +15,15 @@ const CheckIn = () => {
   const FeelingSelector = (e: any) => {
     console.log(e.target.textContent);
     SetUserFeelings(e.target.textContent);
+    if (e.target.textContent === 'High Energy, Pleasant') {
+      console.log('Blue');
+    } else if (e.target.textContent === 'High Energy, Unpleasant') {
+      console.log('Red');
+    } else if (e.target.textContent === 'Low Energy, Pleasant') {
+      console.log('Green');
+    } else if (e.target.textContent === 'Low Energy, Unpleasant') {
+      console.log('Yellow');
+    }
   };
 
   return (

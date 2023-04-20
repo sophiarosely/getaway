@@ -1,80 +1,67 @@
 import axios from "axios";
 import { useEffect, useState} from 'react'
 import * as React from 'react';
-import AspectRatio from '@mui/joy/AspectRatio';
-import Card from '@mui/joy/Card';
-import CardOverflow from '@mui/joy/CardOverflow';
-import Divider from '@mui/joy/Divider';
-import Typography from '@mui/joy/Typography';
-import IconButton from '@mui/joy/IconButton';
-import Link from '@mui/joy/Link';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import  Button from '@mui/material/Button';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+import  IconButton  from "@mui/material/IconButton";
 import Favorite from '@mui/icons-material/Favorite';
-import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 
 const Therapist = (props:any) =>{
-const { therapist } = props;
+const { therapist, handleOpen } = props;
 
 
 
 return (
-  <Card variant="outlined" sx={{ width: 320 }}>
-    <CardOverflow>
-      <AspectRatio ratio="2">
-        <img
-          src="https://png.pngtree.com/png-vector/20190221/ourlarge/pngtree-female-user-vector-avatar-icon-png-image_691506.jpg"
-          srcSet="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x"
-          loading="lazy"
-          alt=""
-        />
-      </AspectRatio>
-      <IconButton
-        aria-label="therapists"
-        size="md"
-        variant="solid"
-        color="danger"
-        sx={{
-          position: 'absolute',
-          zIndex: 2,
-          borderRadius: '50%',
-          right: '1rem',
-          bottom: 0,
-          transform: 'translateY(50%)',
-        }}
-      >
-        <Favorite />
-      </IconButton>
-    </CardOverflow>
-    <Typography level="h2" sx={{ fontSize: 'md', mt: 2 }}>
-      <Link href="#multiple-actions" overlay underline="none">
-        {therapist.name}
-      </Link>
-    </Typography>
-    <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
-      <Link href="#multiple-actions">{therapist.formatted_address}</Link>
-    </Typography>
-    <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
-        {therapist.formatted_phone_number}
-      </Typography>
-    <Divider inset="context" />
-    <CardOverflow
-      variant="soft"
-      sx={{
-        display: 'flex',
-        gap: 1.5,
-        py: 1.5,
-        px: 'var(--Card-padding)',
-        bgcolor: 'background.level1',
-      }}
-    >
-      <Typography level="body3" sx={{ fontWeight: 'md', color: 'text.secondary' }}>
+  <Card sx={{ maxWidth: 345 }} onClick={()=>handleOpen(therapist)}>
+    <CardActionArea>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://png.pngtree.com/png-vector/20190221/ourlarge/pngtree-female-user-vector-avatar-icon-png-image_691506.jpg"
+        alt="therapist icon"
+      />
+    <IconButton
+  aria-label="therapists"
+  size="medium"
+  color="primary"
+  sx={{
+    position: 'absolute',
+    zIndex: 2,
+    borderRadius: '50%',
+    right: '1rem',
+    bottom: 0,
+    transform: 'translateY(50%)',
+  }}
+>
+  <Favorite />
+</IconButton>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {therapist.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {therapist.formatted_address}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {therapist.formatted_phone_number}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+    <CardActions>
+    <Typography variant="body2" color="text.secondary">
         {therapist.rating}
       </Typography>
-      <Divider orientation="vertical" />
       <Rating name="read-only" value={therapist.rating} readOnly />
-    </CardOverflow>
+    </CardActions>
   </Card>
 );
+
 
 
 
