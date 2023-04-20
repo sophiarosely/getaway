@@ -23,8 +23,27 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
   const openTracking = () => {
     setIsTrackingOpen(!isTrackingOpen);
   }
+
     const handleComplete = () => {
-    console.log("hi");
+    axios.put('/habits/completion', {
+  data: {
+    habitId: id
+  }
+})
+.then(response => console.log(response.data))
+.catch(error => console.error(error));
+  }
+  
+
+
+      const handleDelete = () => {
+    axios.delete('/habits/delete', {
+  data: {
+    habitId: id
+  }
+})
+.then(response => console.log(response.data))
+.catch(error => console.error(error));
   }
 
   // const closeTracking = ():any => {
@@ -49,6 +68,9 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
           <Typography variant="body2">
             <Button variant="outlined" onClick={handleComplete} startIcon={<DeleteIcon />}>
         complete
+      </Button>
+          <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
+        delete
       </Button>
           </Typography>
         </CardContent>

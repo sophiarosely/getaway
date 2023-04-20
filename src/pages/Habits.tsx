@@ -44,6 +44,12 @@ const types:Option[] = [
   const [type, setType] = useState<string>(types[0].type);
   //test data
 
+   useEffect(() => {
+    axios.post('habits/list',  { data: { googleId: userId?.toString() }})
+      .then(response => setHabits(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
 
  const onCreate = ():void => {
  setHabits([...habits, { id: habits.length + 1, name: newHabit, type: type }]);
