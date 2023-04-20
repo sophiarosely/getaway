@@ -12,10 +12,14 @@ import  IconButton  from "@mui/material/IconButton";
 import Favorite from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 
-const Therapist = (props:any) =>{
+const Therapist = (props:
+  {therapist:
+    {name:string, vicinity:string, opening_hours:{open_now:boolean}, rating:number, place_id:string},
+    handleOpen:Function}) =>{
+
 const { therapist, handleOpen } = props;
 
-const [details, setDetails] = useState({});
+
 
 
 
@@ -66,26 +70,7 @@ return (
 );
 
 
-
-
-
-//   return(
-//     <li>
-//       <div>
-// {therapist.name}
-// </div>
-// <p>{therapist.formatted_address} </p>
-//   <p>{therapist.formatted_phone_number}</p>
-// <p>{therapist.rating}</p>
-// {therapist.current_opening_hours ? (
-//   <div dangerouslySetInnerHTML={{__html: therapist.current_opening_hours.weekday_text.join('<br>')}}></div>
-// ) : (
-//   <p>No opening hours available.</p>
-// )}
-
-//     </li>
-//   )
-}
+};
 
 
 export default Therapist;
