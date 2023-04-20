@@ -1,4 +1,6 @@
 import { Router } from 'express';
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
 const affirmationRoutes = Router();
 
 const { Configuration, OpenAIApi } = require('openai');
@@ -9,19 +11,13 @@ const config = new Configuration({
 });
 
 const openai = new OpenAIApi(config);
-// affirmationRoutes.get('/', (req: any, res: any) => {
-//     console.log("hi")
-//     console.log(config)
-// console.log(process.env.AFFIRMATIONS_OPENAI_API_KEY )
-//         res.send("hi");
-//     }
-// )
 
-affirmationRoutes.get('/mood/:moodString', (req: any, res: any) => {
+// OpenAPI handler
+affirmationRoutes.get('/mood/:moodString', (req, res) => {
     const { moodString } = req.params
 
     const runPrompt = async () => {
-        const affirmationPrompt = `I'm feeling ${moodString}, can you send me 5 affirmations, based on my mood?`
+        const affirmationPrompt = `Today, I am feeling ${moodString}. Can you send me 5 affirmations, based on my mood?`
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
@@ -32,10 +28,40 @@ affirmationRoutes.get('/mood/:moodString', (req: any, res: any) => {
         const affirmationsArray = response.data.choices[0].text.split(/\d+\. /).filter((str: string) => str !== '').map((str: string) => str.trim());
         affirmationsArray.shift()
         res.send(affirmationsArray);
-
     }
 
     runPrompt();
 })
+
+// Adding affirmations to DB
+affirmationRoutes.post('/save/', async (req, res) => {
+   const { affirmations, title, googleId } = req.body
+
+    try {
+        const user = await prisma.user.findFirst({ where: { googleId: googleId } })
+
+        const affirmation = await prisma.affirmations.create({
+            data: {
+                affirmationList: affirmations.join('/n'),
+                title: title,
+                user: {
+                    connect: { id: user.id }
+                  },
+                  favorite: false
+            }
+        });
+        res.send('Success: Affirmation saved.')
+    } catch (err) {
+        console.log(err);
+        res.send('Error: Affirmation was not saved.')
+    }
+});
+
+//Retrieving affirmations to DB
+affirmationRoutes.get('/retrieve')
+
+// Deleting affirmations
+affirmationRoutes.delete('/remove')
+
 
 export default affirmationRoutes
