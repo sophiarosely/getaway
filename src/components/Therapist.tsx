@@ -15,6 +15,8 @@ import Rating from '@mui/material/Rating';
 const Therapist = (props:any) =>{
 const { therapist, handleOpen } = props;
 
+const [details, setDetails] = useState({});
+
 
 
 return (
@@ -46,11 +48,12 @@ return (
           {therapist.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {therapist.formatted_address}
+          {therapist.vicinity}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {therapist.formatted_phone_number}
-        </Typography>
+        {therapist.opening_hours?  <Typography variant="body2" color="text.secondary">
+          {therapist.opening_hours.open_now ? "Open" : "Closed"}
+        </Typography> : "No Hours Available"}
+
       </CardContent>
     </CardActionArea>
     <CardActions>
