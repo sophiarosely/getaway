@@ -19,7 +19,7 @@ import  Box from '@mui/system/Box';
 
 const TheraPopUp = (props:any) =>{
 const { popup } = props;
-
+//hi
   const handleClick = (e: any) => {
     e.stopPropagation();
   };
