@@ -40,7 +40,7 @@ const [userName, setUserName] = useState(null);
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTheme(event.target.checked);
   };
-  
+
 
 useEffect(()=>{
   const getUser = ()=>{
@@ -99,7 +99,7 @@ console.log(user)
     </BrowserRouter>
     </UserContext.Provider>
  </ThemeProvider>
-  
+
   )
 }
 
