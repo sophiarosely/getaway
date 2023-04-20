@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import TheraPopUp from './TheraPopUp'
 
 const TherapistList = (props: any) => {
 
@@ -13,9 +14,7 @@ const TherapistList = (props: any) => {
   const [open, setOpen] = useState(false);
   const [popup, setPopup ] = useState({})
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+
   const handleOpen = (details:any) => {
     setOpen(true);
     setPopup(details)
@@ -58,12 +57,16 @@ console.log(therapistDetails)
         </Grid>
         {open && (
     <Backdrop
-      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      sx={{ color: 'whitesmoke', backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backdropFilter: 'blur(4px)',
+      zIndex: (theme) => theme.zIndex.drawer + 1}}
       open={open}
       onClick={() => setOpen(false)}
     >
-      <CircularProgress/>
+      <TheraPopUp popup={popup}/>
     </Backdrop>
+
+
   )}
     </div>
   );
