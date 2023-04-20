@@ -35,7 +35,7 @@ affirmationRoutes.get('/mood/:moodString', (req, res) => {
 
 // Adding affirmations to DB
 affirmationRoutes.post('/save/', async (req, res) => {
-   const { affirmations, title, googleId } = req.body
+   const { affirmations, title, googleId, favorite } = req.body
 
     try {
         const user = await prisma.user.findFirst({ where: { googleId: googleId } })
@@ -47,7 +47,7 @@ affirmationRoutes.post('/save/', async (req, res) => {
                 user: {
                     connect: { id: user.id }
                   },
-                  favorite: false
+                  favorite: favorite
             }
         });
         res.send('Success: Affirmation saved.')

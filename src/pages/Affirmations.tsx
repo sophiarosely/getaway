@@ -40,7 +40,7 @@ const Affirmations = () => {
       title: affirmationTitle,
       affirmations: affirmations,
       googleId: userId,
-      favorite: false
+      favorite: 'false'
     })
     .then(({ data }) => console.log(data))
     .catch((err) => console.log(err));
