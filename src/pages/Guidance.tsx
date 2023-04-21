@@ -1,7 +1,11 @@
 import { useState, useEffect} from "react"
 import axios from "axios";
 import TherapistList from "../components/TherapistList"
+import TherapistMap from "../components/TherapistMap"
 import  Pagination  from "@mui/material/Pagination";
+
+
+
 const Guidance = () =>{
 
   const [userLat, setLat] = useState(0);
@@ -67,6 +71,7 @@ console.log('hi',therapists)
     <h1>Guidance</h1>
     <Pagination onClick={getNextTwenty} count={3} variant="outlined" shape="rounded" />
     <TherapistList therapists={therapists}/>
+    <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>
     </div>
   )
   }

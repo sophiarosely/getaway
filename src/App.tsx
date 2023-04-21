@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Habits from './pages/Habits'
 import Affirmations from './pages/Affirmations'
+import AffirmationEntries from './pages/AffirmationEntries'
 import Recess from './pages/Recess'
 import Guidance from './pages/Guidance'
 import Profile from './pages/Profile'
@@ -40,7 +41,7 @@ const [userName, setUserName] = useState(null);
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTheme(event.target.checked);
   };
-  
+
 
 useEffect(()=>{
   const getUser = ()=>{
@@ -68,7 +69,6 @@ useEffect(()=>{
 console.log(user)
 
 
-
   return (
     <ThemeProvider theme={darkTheme}>
                 <CssBaseline />
@@ -85,6 +85,7 @@ console.log(user)
 
         <Route path="/habits" element={<Habits />} />
         <Route path="/affirmations" element={<Affirmations />} />
+        <Route path="/affirmation-entries" element={<AffirmationEntries />} />
         <Route path="/recess" element={<Recess />} />
         <Route path="/guidance" element={<Guidance />} />
         <Route path="/profile" element={<Profile />} />
@@ -99,7 +100,7 @@ console.log(user)
     </BrowserRouter>
     </UserContext.Provider>
  </ThemeProvider>
-  
+
   )
 }
 

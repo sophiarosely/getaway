@@ -1,41 +1,90 @@
-import { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button"
-import { FormGroup } from "@mui/material";
+import { useState, useEffect, useContext } from 'react';
+import { UserContext, UserContextType } from '../App';
+import { Link } from 'react-router-dom'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { FormGroup } from '@mui/material';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 const Affirmations = () => {
   const [userMood, setUserMood] = useState('');
-  const [affirmations, setAffirmations] = useState('');
+  const [affirmations, setAffirmations] = useState<string[]>([]);
+  const [affirmationTitle, setAffirmationTitle] = useState('');
+  const [isSaveVisible, setisSaveVisible] = useState(false);
 
-  const handleSubmit = (): void => {
-    axios.get(`/affirmations/mood/${userMood}`)
-    .then(({ data }) => setAffirmations(data))
-    .catch((err) => console.error(err))
+  const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
+
+  const handleEnterSubmit = (): void => {
+    axios
+      .get(`/affirmations/mood/${userMood}`)
+      .then(({ data }) => {setAffirmations(data);  showSaveButton();})
+      .catch((err) => console.error(err));
+  };
+
+  const showSaveButton = () => {
+    setisSaveVisible(true);
   }
+
+  const handleSaveSubmit = (): void => {
+    console.log(affirmations)
+    Swal.fire({
+      title: 'Success!',
+      text: 'Affirmation saved.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    });
+
+    axios.post('/affirmations/save', {
+      title: affirmationTitle,
+      affirmations: affirmations,
+      googleId: userId,
+      favorite: 'false'
+    })
+    .then(({ data }) => console.log(data))
+    .catch((err) => console.log(err));
+  };
+
+
+
+
+
 
   return (
-    <div>
-    <center><h1>Affirmations</h1>
-    <h2>What affirmations are you looking for today? </h2>
-    <h3>Today, I am feeling...</h3>
-    <TextField
-    id="standard-basic"
-    label=""
-    variant="standard"
-    onChange={(e) => setUserMood(e.target.value)}
-     />
-     <Button
-     variant="text"
-     onClick={() => handleSubmit()}>
-      Enter</Button>
-    </center>
-    <div id="affirmations">
-      {affirmations}
+    <div id='parent'>
+      <Link to="/affirmation-entries"><Button variant='text'>View Affirmations</Button></Link>
+      <center>
+        <h1>Affirmations</h1>
+        <h2>What affirmations are you looking for today? </h2>
+        <h3>Today, I am feeling...</h3>
+        <h6 style={{color: 'gray'}}>You can express as much you want or enter a single word. It's up to you ☺ </h6>
+        <FormGroup>
+          <TextField
+            id='outlined-multiline-static'
+            placeholder='Type here...'
+            multiline
+            rows={4}
+            onChange={(e) => setUserMood(e.target.value)}
+          />
+          <Button variant='text' onClick={ () => handleEnterSubmit() }>
+            Enter
+          </Button>
+        </FormGroup>
+      </center>
+      <div id='affirmations'>
+      <center>
+        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' variant="standard" onChange={(e) => setAffirmationTitle(e.target.value)} />)}
+          <ul>
+            {affirmations.map((affirmation: string, index: number) => {
+              return <li style={{listStyleType: 'none'}}key={index}>{affirmation}</li>;
+            })}
+          </ul>
+        </center>
+      </div>
+   <center>{isSaveVisible && (<Button variant='text' onClick={ () => handleSaveSubmit() }>Save</Button>)}</center>
     </div>
+  );
+};
 
-    </div>
-  )
-  }
-
-  export default Affirmations;
+export default Affirmations;
