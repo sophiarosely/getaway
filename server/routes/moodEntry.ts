@@ -25,13 +25,15 @@ moodEntryRoutes.get('/', (req: any, res: any) => {
 });
 
 // Endpoint for grabbing all the mood entries of a specific user
-moodEntryRoutes.get('/user/:userId', (req, res) => {
-  const userId = parseInt(req.params.userId);
+moodEntryRoutes.get('/user/:googleId', (req, res) => {
+  const googleId = req.params.googleId;
 
   prisma.moodsOfUsers
     .findMany({
       where: {
-        user_id: userId,
+        user: {
+          googleId: googleId,
+        },
       },
       include: {
         mood: true,
@@ -50,13 +52,13 @@ moodEntryRoutes.get('/user/:userId', (req, res) => {
 // Endpoint for adding a mood entry for a user
 /*
 {
-  "userId": 1,
+  "googleId": "some_google_id",
   "moodColor": "Green",
   "moodDescription": "Low Energy, Pleasant"
 }
 */
 moodEntryRoutes.post('/', (req: any, res: any) => {
-  const { userId, moodColor, moodDescription } = req.body;
+  const { googleId, moodColor, moodDescription } = req.body;
 
   // Step 1: Create a new mood entry in the Mood model
   prisma.mood
@@ -70,7 +72,7 @@ moodEntryRoutes.post('/', (req: any, res: any) => {
       // Step 2: Create a new association in the MoodsOfUsers model
       return prisma.moodsOfUsers.create({
         data: {
-          user: { connect: { id: userId } },
+          user: { connect: { googleId: googleId } },
           mood: { connect: { id: mood.id } },
         },
       });
