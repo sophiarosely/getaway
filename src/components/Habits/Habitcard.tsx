@@ -12,37 +12,41 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 interface HabitCardProps {
   id: number;
-  name: string;
-  type: string
+  habit_name: string;
+  habit_type: string;
+  userId: number;
+   onDelete: () => void;
 }
 
-const HabitCard = ({ id, name, type }: HabitCardProps) =>{
+const HabitCard = ({ id, habit_name, habit_type,userId, onDelete }: HabitCardProps) =>{
 
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-
+console.log(userId)
   const openTracking = () => {
     setIsTrackingOpen(!isTrackingOpen);
   }
 
     const handleComplete = () => {
-    axios.put('/habits/completion', {
+    axios.post('/habits/completed', {
   data: {
-    habitId: id
+     habit:  id ,
+  user: userId.toString() ,
+
   }
 })
 .then(response => console.log(response.data))
 .catch(error => console.error(error));
   }
   
-
-
       const handleDelete = () => {
     axios.delete('/habits/delete', {
   data: {
     habitId: id
   }
 })
-.then(response => console.log(response.data))
+.then(response => {
+  console.log(response.data);
+onDelete();})
 .catch(error => console.error(error));
   }
 
@@ -51,8 +55,8 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
   // }
 
   return (
-    <div>
-      <Card sx={{ backgroundColor: '#333' }}>
+    <div style={{ display: 'inline-block', margin: '10px' }} >
+      <Card sx={{  borderRadius: 0  }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Habit
@@ -60,10 +64,10 @@ const HabitCard = ({ id, name, type }: HabitCardProps) =>{
           <Typography variant="h5" component="div">
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Habit Type: {type}
+            Habit Type: {habit_type}
           </Typography>
           <Typography variant="body2">
-            {name}
+            {habit_name}
           </Typography>
           <Typography variant="body2">
             <Button variant="outlined" onClick={handleComplete} startIcon={<DeleteIcon />}>

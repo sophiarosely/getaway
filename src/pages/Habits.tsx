@@ -14,8 +14,8 @@ import axios from 'axios';
 
   interface Habits {
   id: number;
-  type: string
-  name: string;
+  habit_type: string
+  habit_name: string;
 
 }
 type Option = {
@@ -45,14 +45,16 @@ const types:Option[] = [
   //test data
 
    useEffect(() => {
-    axios.post('habits/list',  { data: { googleId: userId?.toString() }})
+     if (userId) {
+    axios.post('habits/list', { data: { googleId: userId.toString() }})
       .then(response => setHabits(response.data))
       .catch(error => console.error(error));
-  }, []);
+  }
+}, [userId]);
 
 
  const onCreate = ():void => {
- setHabits([...habits, { id: habits.length + 1, name: newHabit, type: type }]);
+
  const data = {
   habit_name: newHabit,
   googleId: userId?.toString(),
@@ -60,17 +62,26 @@ const types:Option[] = [
 };
  axios.post('habits/newHabit', { data })
   .then((response) => {
-    console.log(response.data); // should log 'Success'
+    console.log(response.data);
+     axios.post('habits/list', { data: { googleId: userId?.toString() } })
+        .then(response => setHabits(response.data))
+        .catch(error => console.error(error));
   })
   .catch((error) => {
     console.log(error);
   });
  setType(types[0].type)
  setNewHabit("");
- console.log("hi")
+ 
  }
 
+  const handleDelete = (habitId:number) => {
+  
+    setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== habitId));
+  };
+ 
   return (
+  
     <div>
     <h1>Bad Habits</h1>
       <TextField
@@ -99,7 +110,7 @@ const types:Option[] = [
        Create Habit
        </Button>
        {habits.map((habit) => (
-        <HabitCard key={habit.id} id={habit.id} name={habit.name} type={habit.type} />
+        <HabitCard key={habit.id} userId={userId} id={habit.id} habit_name={habit.habit_name} habit_type={habit.habit_type} onDelete={() => handleDelete(habit.id)} />
       ))}
        {newHabit}
     </div>
