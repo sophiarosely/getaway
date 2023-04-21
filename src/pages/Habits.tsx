@@ -30,7 +30,7 @@ const Habits = () =>{
    console.log(userName, userId)
 const types:Option[] = [
   {
-    type: "Excersize"
+    type: "Exercise"
   }, {
     type: "Eating"
   }, {

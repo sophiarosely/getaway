@@ -11,14 +11,16 @@ import Box from '@mui/material/Box';
 interface TrackingProps {
   id: number;
    habit_createdAt: string;
+   
+   
 
 }
 
 // This will have charts and a calaneder to see how the following  is going
 const Tracking = ({id, habit_createdAt}:TrackingProps) =>{
 
-  const [dates, setDates] = useState<[]>([]);
-  console.log(habit_createdAt)
+  const [dates, setDates] = useState<any[]>([]);
+  // console.log(habit_createdAt)
    useEffect(() => {
       {
     axios.get(`habits/updatedon/:${id}`)

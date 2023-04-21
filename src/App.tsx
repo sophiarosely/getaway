@@ -18,7 +18,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { Switch } from '@mui/material';
 export interface UserContextType {
   userName: string | null;
-  userId: number | null
+  userId: string | null
 }
 
 export const UserContext = createContext<UserContextType | null>(null);
