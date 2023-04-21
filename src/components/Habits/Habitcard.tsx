@@ -15,10 +15,11 @@ interface HabitCardProps {
   habit_name: string;
   habit_type: string;
   userId: number;
+   habit_createdAt: string;
    onDelete: () => void;
 }
 
-const HabitCard = ({ id, habit_name, habit_type,userId, onDelete }: HabitCardProps) =>{
+const HabitCard = ({ id, habit_name, habit_type,userId,habit_createdAt, onDelete }: HabitCardProps) =>{
 
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
 console.log(userId)
@@ -84,7 +85,7 @@ onDelete();})
       </Card>
 
       {isTrackingOpen && (
-        <Tracking />
+        <Tracking  id={id} habit_createdAt={habit_createdAt}  />
       )}
     </div>
   )

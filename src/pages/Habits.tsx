@@ -16,6 +16,7 @@ import axios from 'axios';
   id: number;
   habit_type: string
   habit_name: string;
+  habit_createdAt: string;
 
 }
 type Option = {
@@ -110,7 +111,13 @@ const types:Option[] = [
        Create Habit
        </Button>
        {habits.map((habit) => (
-        <HabitCard key={habit.id} userId={userId} id={habit.id} habit_name={habit.habit_name} habit_type={habit.habit_type} onDelete={() => handleDelete(habit.id)} />
+        <HabitCard key={habit.id}
+         userId={userId}
+          id={habit.id} 
+          habit_name={habit.habit_name}
+           habit_type={habit.habit_type} 
+           habit_createdAt={habit.habit_createdAt} 
+           onDelete={() => handleDelete(habit.id)} />
       ))}
        {newHabit}
     </div>
