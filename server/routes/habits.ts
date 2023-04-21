@@ -22,7 +22,8 @@ const prisma = new PrismaClient()
 //  this route will be for getting the users habits
 habitsRoutes.post('/list', async (req: any, res: any) => {
   try {
-    const { googleId } = req.body;
+    const { googleId } = req.body.data;
+    console.log(googleId)
     const habits = await prisma.habits.findMany({ where: { user_id: googleId } });
     res.send(habits);
   } catch (error) {
@@ -52,18 +53,27 @@ habitsRoutes.post('/newHabit', async (req: any, res: any) => {
   }
 });
 // this will before updating habit completion
-habitsRoutes.put('/completed', async (req: any, res: any) => {
+habitsRoutes.post('/completed', async (req: any, res: any) => {
   try {
-  const { habitId } = req.body.data;
-  //   const habit = await prisma.habits.update({
-  //     where: {
-  //       id: habitId
-  //     },
-  //     data: {
-  //       completed: true
-  //     }
-  //   });
-    res.send(habitId.toString());
+    console.log(req.body.data)
+  const { habit, user, date, completed } = req.body.data;
+   const habitLog = await prisma.habitLog.create({
+  data: {
+    habit: {
+      connect: {
+        id: habit,
+      },
+    },
+    user: {
+      connect: {
+        googleId: user,
+      },
+    },
+    
+
+  },
+});
+    res.send("good job");
   } catch (error) {
     console.log('Error: ', error);
     res.send('Error');
@@ -72,14 +82,20 @@ habitsRoutes.put('/completed', async (req: any, res: any) => {
 // this will delete a habit
 habitsRoutes.delete('/delete', async (req: any, res: any) => {
   try {
-    console.log(req.body)
     const { habitId } = req.body;
-    
+
+    await prisma.habitLog.deleteMany({
+      where: {
+        habit_id: habitId
+      }
+    });
+
     await prisma.habits.delete({
       where: {
         id: habitId
       }
     });
+
     res.send('Success');
   } catch (error) {
     console.log('Error: ', error);
