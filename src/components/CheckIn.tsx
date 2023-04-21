@@ -29,11 +29,11 @@ const CheckIn = () => {
   return (
     <div
       style={{
-        border: '1px solid black',
         textAlign: 'center',
+        letterSpacing: '0.5em'
       }}
     >
-      <h1>How are you feeling this check in?</h1>
+      <h2>HOW DO YOU FEEL IN THIS MOMENT</h2>
       <ButtonGroup
         variant='contained'
         aria-label='outlined primary button group'
@@ -41,32 +41,36 @@ const CheckIn = () => {
       >
         <Button
           onClick={FeelingSelector}
-          sx={{ background: 'blue', color: 'white' }}
+          sx={{ background: '#0162BC', color: 'white' }}
         >
           High Energy, Pleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: 'red', color: 'white' }}
+          sx={{ background: '#BF7575', color: 'white' }}
         >
           High Energy, Unpleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: 'green', color: 'black' }}
+          sx={{ background: '#6BB76A', color: 'white' }}
         >
           Low Energy, Pleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: 'yellow', color: 'black' }}
+          sx={{ background: '#EF9073', color: 'white' }}
         >
           Low Energy, Unpleasant
         </Button>
       </ButtonGroup>
-      <p style={{ fontWeight: 'bold' }}>Your feelings are: {userFeelings}</p>
-      <p>If correct, click the submit button.</p>
-      <p>If not, select the correct choice.</p>
+      <p style={{ fontSize:'24px', fontWeight: 'bold' }}>{userFeelings}</p>
+      <p style={{
+        letterSpacing: '0.1em'
+      }}>If correct, click the submit button.</p>
+      <p style={{
+        letterSpacing: '0.1em'
+      }}>If not, select the correct choice.</p>
       <Button
         variant='outlined'
         onClick={() => {

@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline';
 
 const mainTheme = createTheme({
+  spacing: 4,
   palette:{
     primary:{
       main: '#FFFFFF'
@@ -21,7 +22,6 @@ const mainTheme = createTheme({
   },
   typography:{
     fontFamily: 'Carme',
-
   }
 });
 
