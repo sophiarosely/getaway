@@ -27,7 +27,7 @@ import { UserContext, UserContextType } from '../App' ;
 const TheraPopUp = (props:any) =>{
 const { popup } = props;
 
-const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
+const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
 console.log('id test', userId)
 type Details = {
   data: {
@@ -98,6 +98,7 @@ useEffect(()=>{
     axios.post('/therapist/save-therapist', {
         data:{
         googleId: userId,
+        name: result.name,
         hours: result.current_opening_hours.weekday_text.join(' '),
         formatted_address: result.formatted_address,
         formatted_phone_number: result.formatted_phone_number,

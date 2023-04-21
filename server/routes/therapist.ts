@@ -72,12 +72,14 @@ router.get('/details', (req:any, res:any)=>{
 router.post('/save-therapist', (req:any, res: any) => {
   const{ googleId } = req.body.data
   const therapist = req.body.data
+  console.log('name',therapist.name)
    prisma.user.findFirst({ where: { googleId: googleId } })
    .then((user:any)=>{
 
   prisma.therapists
     .create({
       data: {
+        name: therapist.name,
         hours: therapist.hours,
         formatted_address: therapist.formatted_address,
         formatted_phone_number: therapist.formatted_phone_number,

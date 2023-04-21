@@ -81,6 +81,7 @@ useEffect(()=>{
 }, [userId])
 
 console.log(result)
+if(result){
     return (
       <Card sx={{ maxWidth: 500 }}>
         <CardHeader
@@ -150,7 +151,9 @@ console.log(result)
         </Collapse>
       </Card>
     );
-
+}else return (
+  <p> Select a Fav Therapist Below</p>
+)
 }
 
 

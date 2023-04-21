@@ -54,6 +54,7 @@ model Affirmations {
 model Therapists {
   id                     Int     @id @default(autoincrement())
   user_id                Int
+  name                   String?
   photoUrl               String?
   hours                  String?
   formatted_address      String?

@@ -68,7 +68,7 @@ const getNextTwenty = () =>{
 console.log('hi',therapists)
 
   return (
-    <div>
+    <div style={{margin: '40px', display:"center"}}>
     <h1>Guidance</h1>
     <h3>Favorite Therapist</h3>
     <FavTherapist/>
