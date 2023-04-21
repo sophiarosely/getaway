@@ -1,20 +1,22 @@
 import React,{useState, useEffect, useContext} from 'react'
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import HabitCard from  '../components/Habits/Habitcard'
-import axios from 'axios';
-import Box from '@mui/material/Box';
+// import axios from 'axios';
+// import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import { UserContext, UserContextType } from '../App' ;
+import axios from 'axios';
 
   interface Habits {
   id: number;
-  type: string
-  name: string;
+  habit_type: string
+  habit_name: string;
+  habit_createdAt: string;
 
 }
 type Option = {
@@ -41,15 +43,46 @@ const types:Option[] = [
   const [habits, setHabits] = useState<Habits[]>([]);
   const [newHabit, setNewHabit] = useState<string>("");
   const [type, setType] = useState<string>(types[0].type);
+  //test data
+
+   useEffect(() => {
+     if (userId) {
+    axios.post('habits/list', { data: { googleId: userId.toString() }})
+      .then(response => setHabits(response.data))
+      .catch(error => console.error(error));
+  }
+}, [userId]);
+
 
  const onCreate = ():void => {
- setHabits([...habits, { id: habits.length + 1, name: newHabit, type: type }]);
+
+ const data = {
+  habit_name: newHabit,
+  googleId: userId?.toString(),
+  habit_type: type
+};
+ axios.post('habits/newHabit', { data })
+  .then((response) => {
+    console.log(response.data);
+     axios.post('habits/list', { data: { googleId: userId?.toString() } })
+        .then(response => setHabits(response.data))
+        .catch(error => console.error(error));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
  setType(types[0].type)
  setNewHabit("");
- console.log("hi")
+ 
  }
 
+  const handleDelete = (habitId:number) => {
+  
+    setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== habitId));
+  };
+ 
   return (
+  
     <div>
     <h1>Bad Habits</h1>
       <TextField
@@ -78,7 +111,13 @@ const types:Option[] = [
        Create Habit
        </Button>
        {habits.map((habit) => (
-        <HabitCard key={habit.id} id={habit.id} name={habit.name} type={habit.type} />
+        <HabitCard key={habit.id}
+         userId={userId}
+          id={habit.id} 
+          habit_name={habit.habit_name}
+           habit_type={habit.habit_type} 
+           habit_createdAt={habit.habit_createdAt} 
+           onDelete={() => handleDelete(habit.id)} />
       ))}
        {newHabit}
     </div>
