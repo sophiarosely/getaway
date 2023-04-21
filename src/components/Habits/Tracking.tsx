@@ -31,9 +31,9 @@ setDates(response.data)
 }, []);
 
   return (
- 
 
-<Card >
+
+{/* <Card >
   {dates && dates.length > 0 && (
     <>
       <Typography variant="h5" component="h2" color="primary" gutterBottom>
@@ -46,7 +46,7 @@ setDates(response.data)
       ))}
     </>
   )}
-</Card>
+</Card> */}
   )
   }
 

@@ -7,7 +7,7 @@ import CheckIn from '../components/CheckIn';
 const Home = () => {
   return (
     <div>
-      <h1> DashBoard</h1>
+      <h1> DashBoard 1</h1>
       <CheckIn />
     </div>
   );

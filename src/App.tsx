@@ -16,6 +16,7 @@ import MusicBar from './components/MusicBar';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { Switch } from '@mui/material';
+
 export interface UserContextType {
   userName: string | null;
   userId: number | null
@@ -33,14 +34,8 @@ const [userName, setUserName] = useState(null);
   const [userId, setUserId] = useState(null);
      const [theme, setTheme] = useState(false);
 
- const darkTheme = createTheme({
-        palette: {
-            mode: theme ? 'dark' : 'light',
-        },
-    });
-   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(event.target.checked);
-  };
+
+
 
 
 useEffect(()=>{
@@ -69,9 +64,12 @@ useEffect(()=>{
 console.log(user)
 
 
+
+
+
   return (
-    <ThemeProvider theme={darkTheme}>
-                <CssBaseline />
+
+
     <UserContext.Provider value ={{userName, userId}}>
      <BrowserRouter>
       <div>
@@ -91,15 +89,11 @@ console.log(user)
         <Route path="/profile" element={<Profile />} />
         <Route path="/meditation" element={<Meditation />} />
       </Routes>
-      <Switch
-                    checked={theme}
-                    color='success'
-                    onChange={handleChange} />
       <MusicBar />
       </div>
     </BrowserRouter>
     </UserContext.Provider>
- </ThemeProvider>
+
 
   )
 }

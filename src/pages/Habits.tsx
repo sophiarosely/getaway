@@ -25,7 +25,7 @@ type Option = {
 
 const Habits = () =>{
 
-  // creates user variables based on context 
+  // creates user variables based on context
    const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
    console.log(userName, userId)
 const types:Option[] = [
@@ -73,16 +73,16 @@ const types:Option[] = [
   });
  setType(types[0].type)
  setNewHabit("");
- 
+
  }
 
   const handleDelete = (habitId:number) => {
-  
+
     setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== habitId));
   };
- 
+
   return (
-  
+
     <div>
     <h1>Bad Habits</h1>
       <TextField
@@ -110,16 +110,16 @@ const types:Option[] = [
     <Button variant="text" onClick={onCreate}>
        Create Habit
        </Button>
-       {habits.map((habit) => (
+       {/* {habits.map((habit) => (
         <HabitCard key={habit.id}
          userId={userId}
-          id={habit.id} 
+          id={habit.id}
           habit_name={habit.habit_name}
-           habit_type={habit.habit_type} 
-           habit_createdAt={habit.habit_createdAt} 
+           habit_type={habit.habit_type}
+           habit_createdAt={habit.habit_createdAt}
            onDelete={() => handleDelete(habit.id)} />
       ))}
-       {newHabit}
+       {newHabit} */}
     </div>
   )
   }
