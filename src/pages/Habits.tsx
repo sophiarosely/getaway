@@ -109,15 +109,15 @@ const types:Option[] = [
       <Button variant='text' onClick={onCreate}>
         Create Habit
       </Button>
-      {/* {habits.map((habit) => (
+      {habits.map((habit) => (
         <HabitCard key={habit.id}
-        //  userId={userId}
+         userId={userId}
           id={habit.id} 
           habit_name={habit.habit_name}
            habit_type={habit.habit_type} 
            habit_createdAt={habit.habit_createdAt} 
            onDelete={() => handleDelete(habit.id)} />
-      ))} */}
+      ))}
       {newHabit}
     </div>
   );
