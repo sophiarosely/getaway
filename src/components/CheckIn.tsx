@@ -64,7 +64,7 @@ const CheckIn = () => {
           Low Energy, Unpleasant
         </Button>
       </ButtonGroup>
-      <p style={{ fontSize:'24px', fontWeight: 'bold' }}>{userFeelings}</p>
+      <p style={{ fontSize:'24px', color:'#85B8FF' }}>{userFeelings}</p>
       <p style={{
         letterSpacing: '0.1em'
       }}>If correct, click the submit button.</p>
