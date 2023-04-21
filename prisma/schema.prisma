@@ -14,7 +14,6 @@ model User {
   phone        Int?
   therapistId  Int?
   fav_figureId String?
-  googleId     String         @unique
   avatar       String?
   affirmations Affirmations[]
   moods        MoodsOfUsers[]
