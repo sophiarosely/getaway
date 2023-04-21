@@ -74,7 +74,7 @@ router.post('/save-therapist', (req:any, res: any) => {
   const therapist = req.body.data
    prisma.user.findFirst({ where: { googleId: googleId } })
    .then((user:any)=>{
-    console.log(therapist)
+
   prisma.therapists
     .create({
       data: {
@@ -86,6 +86,16 @@ router.post('/save-therapist', (req:any, res: any) => {
           connect: { id: user.id }
         }
       },
+      })
+      .then((createdTherapist:any) => {
+        return prisma.user.update({
+          where: { id: user.id },
+          data: {
+            therapists: {
+              connect: { id: createdTherapist.id }
+            }
+          }
+        })
       })
     .then(() => {
       res.status(201).send("successfully saved therapist");
@@ -106,7 +116,14 @@ router.post('/save-therapist', (req:any, res: any) => {
 
 
 router.get("/get-therapist", (req:any, res:any)=>{
-
+  const { googleId } = req.query
+  prisma.user.findFirst({ where: { googleId: googleId }, include: { therapists: true } })
+  .then((user:any)=>{
+    res.status(200).send(user.therapists)
+  })
+  .catch((err:Error)=>{
+    console.error("couldnt fetch user saved therapists", err)
+  })
 })
 
 
