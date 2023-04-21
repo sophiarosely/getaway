@@ -93,6 +93,11 @@ useEffect(()=>{
     e.stopPropagation();
   };
 
+  const saveTherapist=()=>{
+    console.log("saved!")
+  }
+
+
   interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
   }
@@ -150,7 +155,7 @@ useEffect(()=>{
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="add to favorites" onClick={saveTherapist}>
             <FavoriteIcon />
           </IconButton>
           <Typography variant="body2" color="text.secondary">

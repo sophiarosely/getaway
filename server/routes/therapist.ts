@@ -3,13 +3,8 @@ require('dotenv').config();
 const router = Router()
 import axios from "axios";
 const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
-
-// router.get('/', (req: any, res: any) => {
-//     console.log("hi")
-// console.log(GOOGLE_PLACES_API)
-//         res.send("hi");
-//     }
-// )
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
 
 //this function gets the first 20 therapists near you
 
@@ -71,6 +66,52 @@ router.get('/details', (req:any, res:any)=>{
     res.status(500)
   })
 })
+
+
+
+router.post('/save-therapist', (req:any, res: any) => {
+  const{ googleId } = req.body.data
+  const therapist = req.body.data
+   prisma.user.findFirst({ where: { googleId: googleId } })
+   .then((user:any)=>{
+    console.log(therapist)
+  prisma.therapists
+    .create({
+      data: {
+        hours: therapist.hours,
+        formatted_address: therapist.formatted_address,
+        formatted_phone_number: therapist.formatted_phone_number,
+        rating: therapist.rating,
+        user: {
+          connect: { id: user.id }
+        }
+      },
+      })
+    .then(() => {
+      res.status(201).send("successfully saved therapist");
+    })
+    .catch((err: Error) => {
+      res.status(500);
+      console.error("could not save a therapist", err);
+    })
+   })
+   .catch((err:Error)=>{
+    res.status(500);
+    console.error("could not find user")
+   })
+
+
+});
+
+
+
+router.get("/get-therapist", (req:any, res:any)=>{
+
+})
+
+
+
+
 
 
 // module.exports = router
