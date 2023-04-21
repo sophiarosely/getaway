@@ -58,6 +58,6 @@ model Therapists {
   hours                  String?
   formatted_address      String?
   formatted_phone_number String?
-  rating                 Int?
+  rating                 Float?
   user                   User    @relation("UserTherapists", fields: [user_id], references: [id])
 }

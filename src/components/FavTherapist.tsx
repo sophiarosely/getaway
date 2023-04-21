@@ -21,97 +21,9 @@ import  Box from '@mui/system/Box';
 import { UserContext, UserContextType } from '../App' ;
 
 
-
-
-
-const TheraPopUp = (props:any) =>{
-const { popup } = props;
-
-const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
-console.log('id test', userId)
-type Details = {
-  data: {
-    result:{
-      photos: any;
-      name:string,
-      icon_background_color:string,
-      current_opening_hours:{
-        open_now:boolean,
-        weekday_text:string[]
-      },
-      formatted_address:string,
-      formatted_phone_number:string,
-      rating:number,
-      reviews:{
-        author_name:string,
-        rating:number,
-        relative_time_description:string,
-        text:string
-      }[]
-    }
-  }
-}
-const [ therapistDetails, setTherapistDetails ] = useState({
-  data: {
-    result:{
-      photos:'',
-      name:'',
-      icon_background_color:'',
-      current_opening_hours:{
-        open_now:false,
-        weekday_text:[],
-      },
-      formatted_address:'',
-      formatted_phone_number:'',
-      rating:0,
-      reviews:[{
-        author_name:'',
-        rating:0,
-        relative_time_description:'',
-        text:''
-      }]
-    }
-  }
-});
-const { data: { result } }: Details = therapistDetails;
-
-const getDetails = () =>{
- axios.get(`/therapist/details?place_id=${popup.place_id}`)
-  .then((response:any)=>{
-
-    setTherapistDetails(response)
-  })
-  .catch((err)=>{
-    console.error('not today buster',err)
-  })
-}
-
-useEffect(()=>{
-  getDetails();
-},[])
-
-  const handleClick = (e: any) => {
-    e.stopPropagation();
-  };
-
-  const saveTherapist=()=>{
-    axios.post('/therapist/save-therapist', {
-        data:{
-        googleId: userId,
-        hours: result.current_opening_hours.weekday_text.join(' '),
-        formatted_address: result.formatted_address,
-        formatted_phone_number: result.formatted_phone_number,
-        rating: result.rating
-      }
-    }).then(()=>{
-      console.log("saved!")
-    })
-    .catch((err:Error)=>{
-      console.error("failed to save therapist", err)
-    })
-
-  }
-
+const FavTherapist = () =>{
+  const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
+console.log(userId)
 
   interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -133,19 +45,45 @@ useEffect(()=>{
       setExpanded(!expanded);
     };
 
+
+
+ const [ result, setResult] = useState({
+
+      photos:'',
+      name:'',
+      icon_background_color:'',
+      current_opening_hours:{
+        open_now:false,
+        weekday_text:[],
+      },
+      formatted_address:'',
+      formatted_phone_number:'',
+      rating:0,
+      reviews:[{
+        author_name:'',
+        rating:0,
+        relative_time_description:'',
+        text:''
+      }]
+});
+
+
+const getFav: Function = (()=>{
+  axios.get(`/therapist/get-therapist/?googleId=${userId}`)
+  .then((response:any)=>{
+    console.log(response)
+    setResult(response.data[response.data.length-1])
+  })
+})
+
+useEffect(()=>{
+  getFav()
+}, [userId])
+
+console.log(result)
     return (
-      <Card sx={{ maxWidth: 500 }} onClick={handleClick}>
+      <Card sx={{ maxWidth: 500 }}>
         <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: result.icon_background_color }} aria-label="recipe">
-              {result.name[0]}
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
           title={result.name}
           subheader={
             <Box display="flex" flexDirection="column">
@@ -158,21 +96,18 @@ useEffect(()=>{
             </Box>
           }
         />
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="194"
           image={result.photos ? result.photos[0].html_attributions : "/static/images/cards/paella.jpg"}
           alt="Paella dish"
-        />
+        /> */}
         <CardContent>
           <Typography sx={{ textAlign: 'center' }} variant="body2" color="text.secondary">
             {result.current_opening_hours ? result.current_opening_hours.weekday_text.join(' '): "Hours of Operation, Not Listed"}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites" onClick={saveTherapist}>
-            <FavoriteIcon />
-          </IconButton>
           <Typography variant="body2" color="text.secondary">
         {result.rating}
       </Typography>
@@ -215,6 +150,8 @@ useEffect(()=>{
         </Collapse>
       </Card>
     );
+
 }
 
-export default TheraPopUp;
+
+export default FavTherapist;
