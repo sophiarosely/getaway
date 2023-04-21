@@ -79,6 +79,28 @@ habitsRoutes.post('/completed', async (req: any, res: any) => {
     res.send('Error');
   }
 });
+
+// this will get all the dates a habit was updated
+habitsRoutes.get('/updatedon/:id', async (req: any, res: any) => {
+
+  try {
+ const  {id}  = req.params;
+
+ // this is a goofy work around to the : being in the params
+ // im sure there is a better way
+ console.log(req.params)
+  const habits = await prisma.habitLog.findMany({
+    where: {
+      habit_id: Number(id.slice(1))
+    }
+  });
+    res.send(habits);
+  } catch (error) {
+    console.log('Error: ', error);
+    res.send('Error');
+  }
+});
+
 // this will delete a habit
 habitsRoutes.delete('/delete', async (req: any, res: any) => {
   try {
