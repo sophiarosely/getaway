@@ -2,7 +2,7 @@ import MusicBar from '../components/MusicBar';
 import NavBar from '../components/NavBar';
 import React from 'react';
 import { useEffect } from 'react';
-import CheckIn from '../components/CheckIn';
+import CheckIn from '../components/CheckIn/CheckIn';
 
 const Home = () => {
   return (
