@@ -41,12 +41,7 @@ const Affirmations = () => {
 
   const handleSaveSubmit = (): void => {
       if (!affirmationTitle) {
-        Swal.fire({
-          title: 'Error!',
-          text: 'Please submit a title.',
-          icon: 'error',
-          confirmButtonText: 'OK',
-        });
+    setHelperText('Please enter a title')
       } else {
     Swal.fire({
       title: 'Success!',
@@ -76,22 +71,24 @@ const Affirmations = () => {
         <h2>What affirmations are you looking for today? </h2>
         <h3>Today, I am feeling...</h3>
         <h6 style={{color: 'gray'}}>You can express as much you want or enter a single word. It's up to you ☺ </h6>
-        <FormGroup>
+        <FormGroup style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <TextField
             id='outlined-multiline-static'
             placeholder='Type here...'
             multiline
-            rows={4}
+            rows={7}
+            style={{width: '700px'}}
+            size='medium'
             onChange={(e) => setUserMood(e.target.value)}
           />
-          <Button variant='text' onClick={ () => handleEnterSubmit() }>
+          <Button variant='text'  style={{width: '400px'}} size='medium' onClick={ () => handleEnterSubmit() }>
             Enter
           </Button>
         </FormGroup>
       </center>
       <div id='affirmations'>
       <center>
-        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}   variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}} />)}
+        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}  variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}} />)}
           <ul>
             {affirmations.map((affirmation: string, index: number) => {
               return <li style={{listStyleType: 'none'}}key={index}>{affirmation}</li>;
