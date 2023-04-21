@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useContext} from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -19,8 +19,8 @@ interface TrackingProps {
 // This will have charts and a calaneder to see how the following  is going
 const Tracking = ({id, habit_createdAt}:TrackingProps) =>{
 
-  const [dates, setDates] = useState<any[]>([]);
-  // console.log(habit_createdAt)
+  const [dates, setDates] = useState<[]>([]);
+  console.log(habit_createdAt)
    useEffect(() => {
       {
     axios.get(`habits/updatedon/:${id}`)
@@ -33,23 +33,21 @@ setDates(response.data)
 }, []);
 
   return (
- 
-
-<Card >
-  {dates && dates.length > 0 && (
-    <>
-      <Typography variant="h5" component="h2" color="primary" gutterBottom>
-        Tracking is open
-      </Typography>
-      {dates.map(date => (
+    <Card>
+      {dates && dates.length > 0 && (
+        <>
+          <Typography variant='h5' component='h2' color='primary' gutterBottom>
+            Tracking is open
+          </Typography>
+          {/* {dates.map(date => (
         <Typography key={date.id} variant="body1" component="p" color="textPrimary">
           {date.updatedAt}
         </Typography>
-      ))}
-    </>
-  )}
-</Card>
-  )
-  }
+      ))} */}
+        </>
+      )}
+    </Card>
+  );
+};
 
-  export default Tracking;
+export default Tracking;
