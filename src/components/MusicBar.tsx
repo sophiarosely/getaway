@@ -327,6 +327,7 @@ const MusicBar = () =>{
        <>
           <AudioPlayer
             style={{ width: '50%' }}
+            layout='horizontal'
             autoPlay={false}
             src={playlists[currentPlaylistIndex].songs[currentTrackIndex].src}
             header={playlists[currentPlaylistIndex].songs[currentTrackIndex].title}
@@ -334,6 +335,14 @@ const MusicBar = () =>{
             showSkipControls={true}
             onClickNext={handleNextTrack}
             onClickPrevious={handlePreviousTrack}
+            // customProgressBarSection={
+            //   [
+            //     RHAP_UI.PROGRESS_BAR,
+            //     RHAP_UI.CURRENT_TIME,
+            //     <div>/</div>,
+            //     RHAP_UI.DURATION
+            //   ]
+            // }
             customAdditionalControls={
               [
                 RHAP_UI.LOOP,
