@@ -6,52 +6,41 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import TheraPopUp from './TheraPopUp'
 
-const TherapistList = (props: any) => {
+type Therapist = {
+  name:string,
+  vicinity:string,
+  opening_hours:{open_now:boolean},
+  rating:number,
+  place_id:string
+}
 
-  const [therapistDetails, setTherapistDetails ] = useState<Array<object>>([]);
+const TherapistList = (props: { therapists: Therapist[] }) => {
+
+
   const { therapists } = props;
 
   const [open, setOpen] = useState(false);
   const [popup, setPopup ] = useState({})
 
 
-  const handleOpen = (details:any) => {
+
+
+  const handleOpen = (details:object) => {
     setOpen(true);
     setPopup(details)
   };
 
 
-useEffect(()=>{
-  get20calls();
-},[therapists])
 
 
-console.log('popup', popup)
 
-const get20calls = () =>{
-  Promise.all(therapists.map((therapist:any)=>{
-    console.log('all 20 ids', therapist.place_id)
-    return axios.get(`/therapist/details?place_id=${therapist.place_id}`)
-
-  })
-  )
-  .then((response: Array<object>)=>{
-
-    setTherapistDetails(response)
-  })
-  .catch((err)=>{
-    console.error('not today buster',err)
-  })
-}
-console.log(open)
-console.log(therapistDetails)
 
   return (
     <div style={{ height: '400px', overflow: 'auto' }}>
   <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {therapistDetails.map((therapist:any, index: number) => (
-          <Grid item key={therapist.data.result.place_id} xs={12} sm={6} md={4} lg={3} >
-          <Therapist key={therapist.data.result.place_id} therapist={therapist.data.result} handleOpen={handleOpen} />
+        {therapists.map((therapist:Therapist) => (
+          <Grid item key={therapist.place_id} xs={12} sm={6} md={4} lg={3} >
+          <Therapist key={therapist.place_id} therapist ={therapist} handleOpen={handleOpen} />
           </Grid>
         ))}
         </Grid>
