@@ -77,7 +77,22 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 })
 
 // Deleting affirmations
-affirmationRoutes.delete('/remove')
+affirmationRoutes.delete('/remove/:entryId', async (req, res) => {
+    const { entryId } = req.params;
+
+    try {
+    const deleteAffirmation = await prisma.affirmations.delete({
+        where: {
+          id: Number(entryId)
+        },
+      })
+      res.send('Success: Affirmation entry was deleted.')
+    } catch (err) {
+    console.log(err);
+    res.send('Error: Affirmation entry was not deleted.')
+    }
+
+})
 
 
 export default affirmationRoutes
