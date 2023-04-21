@@ -3,6 +3,7 @@ import axios from "axios";
 import TherapistList from "../components/TherapistList"
 import TherapistMap from "../components/TherapistMap"
 import  Pagination  from "@mui/material/Pagination";
+import FavTherapist from "../components/FavTherapist"
 
 
 
@@ -67,8 +68,10 @@ const getNextTwenty = () =>{
 console.log('hi',therapists)
 
   return (
-    <div>
+    <div style={{margin: '40px', display:"center"}}>
     <h1>Guidance</h1>
+    <h3>Favorite Therapist</h3>
+    <FavTherapist/>
     <Pagination onClick={getNextTwenty} count={3} variant="outlined" shape="rounded" />
     <TherapistList therapists={therapists}/>
     <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>

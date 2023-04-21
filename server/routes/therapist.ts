@@ -3,13 +3,8 @@ require('dotenv').config();
 const router = Router()
 import axios from "axios";
 const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
-
-// router.get('/', (req: any, res: any) => {
-//     console.log("hi")
-// console.log(GOOGLE_PLACES_API)
-//         res.send("hi");
-//     }
-// )
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient();
 
 //this function gets the first 20 therapists near you
 
@@ -71,6 +66,71 @@ router.get('/details', (req:any, res:any)=>{
     res.status(500)
   })
 })
+
+
+
+router.post('/save-therapist', (req:any, res: any) => {
+  const{ googleId } = req.body.data
+  const therapist = req.body.data
+  console.log('name',therapist.name)
+   prisma.user.findFirst({ where: { googleId: googleId } })
+   .then((user:any)=>{
+
+  prisma.therapists
+    .create({
+      data: {
+        name: therapist.name,
+        hours: therapist.hours,
+        formatted_address: therapist.formatted_address,
+        formatted_phone_number: therapist.formatted_phone_number,
+        rating: therapist.rating,
+        user: {
+          connect: { id: user.id }
+        }
+      },
+      })
+      .then((createdTherapist:any) => {
+        return prisma.user.update({
+          where: { id: user.id },
+          data: {
+            therapists: {
+              connect: { id: createdTherapist.id }
+            }
+          }
+        })
+      })
+    .then(() => {
+      res.status(201).send("successfully saved therapist");
+    })
+    .catch((err: Error) => {
+      res.status(500);
+      console.error("could not save a therapist", err);
+    })
+   })
+   .catch((err:Error)=>{
+    res.status(500);
+    console.error("could not find user")
+   })
+
+
+});
+
+
+
+router.get("/get-therapist", (req:any, res:any)=>{
+  const { googleId } = req.query
+  prisma.user.findFirst({ where: { googleId: googleId }, include: { therapists: true } })
+  .then((user:any)=>{
+    res.status(200).send(user.therapists)
+  })
+  .catch((err:Error)=>{
+    console.error("couldnt fetch user saved therapists", err)
+  })
+})
+
+
+
+
 
 
 // module.exports = router
