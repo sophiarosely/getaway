@@ -13,6 +13,8 @@ const Affirmations = () => {
   const [affirmations, setAffirmations] = useState<string[]>([]);
   const [affirmationTitle, setAffirmationTitle] = useState('');
   const [isSaveVisible, setisSaveVisible] = useState(false);
+  const [error, setError] = useState(true)
+  const [helperText, setHelperText] = useState('')
 
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
 
@@ -27,8 +29,25 @@ const Affirmations = () => {
     setisSaveVisible(true);
   }
 
+  const handleTitleChange = (title: string) => {
+   if (title.length === 0) {
+    setError(true)
+    setHelperText('Please enter a title')
+   } else {
+    setError(false)
+    setHelperText('')
+   }
+  }
+
   const handleSaveSubmit = (): void => {
-    console.log(affirmations)
+      if (!affirmationTitle) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Please submit a title.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      } else {
     Swal.fire({
       title: 'Success!',
       text: 'Affirmation saved.',
@@ -44,6 +63,7 @@ const Affirmations = () => {
     })
     .then(({ data }) => console.log(data))
     .catch((err) => console.log(err));
+  }
   };
 
 
@@ -71,7 +91,7 @@ const Affirmations = () => {
       </center>
       <div id='affirmations'>
       <center>
-        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' variant="standard" onChange={(e) => setAffirmationTitle(e.target.value)} />)}
+        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}   variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}} />)}
           <ul>
             {affirmations.map((affirmation: string, index: number) => {
               return <li style={{listStyleType: 'none'}}key={index}>{affirmation}</li>;
