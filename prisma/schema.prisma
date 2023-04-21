@@ -33,9 +33,9 @@ model Mood {
 model MoodsOfUsers {
   id      Int  @id @default(autoincrement())
   mood_id Int
-  user_id Int
+  user_id String
   mood    Mood @relation(fields: [mood_id], references: [id])
-  user    User @relation(fields: [user_id], references: [id])
+  user    User @relation(fields: [user_id], references: [googleId])
 
   @@index([mood_id], map: "MoodsOfUsers_mood_id_fkey")
   @@index([user_id], map: "MoodsOfUsers_user_id_fkey")
