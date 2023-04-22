@@ -114,8 +114,8 @@ const types:Option[] = [
          userId={userId}
           id={habit.id} 
           habit_name={habit.habit_name}
-           habit_type={habit.habit_type} 
-           habit_createdAt={habit.habit_createdAt} 
+           habit_type={habit.habit_type}
+           habit_createdAt={habit.habit_createdAt}
            onDelete={() => handleDelete(habit.id)} />
       ))}
       {newHabit}

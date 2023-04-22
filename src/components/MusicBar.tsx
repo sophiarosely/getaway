@@ -321,12 +321,13 @@ const MusicBar = () =>{
 
   return (
     <div>
-      <h1>MusicBar</h1>
-      <button onClick={toggleMusicBar}>{isOpen ? 'Close' : 'Open'} Music Bar</button>
+      {/* <button onClick={toggleMusicBar}>{isOpen ? 'Close' : 'Open'} Music Bar</button> */}
       {isOpen && (
        <>
+
           <AudioPlayer
-            style={{ width: '50%' }}
+
+            style={{ width: '90%', margin:'40px', borderRadius:'40px', backgroundColor:'#0162BC', letterSpacing:"0.3em"}}
             autoPlay={false}
             src={playlists[currentPlaylistIndex].songs[currentTrackIndex].src}
             header={playlists[currentPlaylistIndex].songs[currentTrackIndex].title}
@@ -337,11 +338,12 @@ const MusicBar = () =>{
             customAdditionalControls={
               [
                 RHAP_UI.LOOP,
-                <><label htmlFor="playlist-select">Playlist:</label><select id="playlist-select" value={currentPlaylistIndex} onChange={handlePlaylistSelect}>
+                <><label htmlFor="playlist-select">PLAYLIST:</label><select id="playlist-select" value={currentPlaylistIndex} onChange={handlePlaylistSelect}>
                   {playlists.map((playlist, index) => (
                     <option key={index} value={index}>{playlist.title}</option>
                   ))}
-                </select></>
+                </select></>,
+
               ]
             }
             className="music-bar"
