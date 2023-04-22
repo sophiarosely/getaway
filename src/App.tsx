@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
-import Habits from './pages/Habits'
+// import Habits from './pages/Habits'
 import Affirmations from './pages/Affirmations'
 import AffirmationEntries from './pages/AffirmationEntries'
 import Recess from './pages/Recess'
@@ -83,7 +83,7 @@ console.log(user)
   <Route path="/" element={<Login />} />
   )}
 
-        <Route path="/habits" element={<Habits />} />
+        {/* <Route path="/habits" element={<Habits />} /> */}
         <Route path="/affirmations" element={<Affirmations />} />
         <Route path="/affirmation-entries" element={<AffirmationEntries />} />
         <Route path="/recess" element={<Recess />} />
