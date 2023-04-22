@@ -139,4 +139,26 @@ affirmationRoutes.put('/favorite', async (req, res) => {
 
 })
 
+affirmationRoutes.put('/updateTitle', async (req, res) => {
+    const { entryId, title, user_id} = req.body;
+
+    try {
+            const affirmationEntry = await prisma.affirmations.updateMany({
+                where: {
+                    id: entryId,
+                    user_id: user_id
+                },
+                data: {
+                    title: title
+                },
+            })
+            res.send('Success: Affirmation title changed')
+        }
+        catch {
+            res.send('Error: Affirmation title not changed')
+        }
+
+})
+
+
 export default affirmationRoutes
