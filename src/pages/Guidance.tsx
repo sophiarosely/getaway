@@ -68,13 +68,15 @@ const getNextTwenty = () =>{
 console.log('hi',therapists)
 
   return (
-    <div style={{margin: '40px', display:"center"}}>
+    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center"}}>
     <h1>Guidance</h1>
     <h3>Favorite Therapist</h3>
     <FavTherapist/>
     <Pagination onClick={getNextTwenty} count={3} variant="outlined" shape="rounded" />
     <TherapistList therapists={therapists}/>
+    <div style={{borderRadius:'60px', margin:'80px'}}>
     <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>
+    </div>
     </div>
   )
   }
