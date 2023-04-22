@@ -68,15 +68,20 @@ interface AffirmationEntryProps {
     };
     console.log(isFavorited)
 
+
     useEffect(() => {
-        // sets correct heart icon, based on data in db
-        setFavorite(JSON.parse(favorite))
-      if (isFavorited === true) {
-        setHeart(<FavoriteIcon />)
-      } else {
-        setHeart(<FavoriteBorderIcon />)
-      }
-    }, [isFavorited])
+        if (isFavorited) {
+          setHeart(<FavoriteIcon onClick={() => handleFavorite(entryId)} />);
+        } else {
+          setHeart(
+            <FavoriteBorderIcon onClick={() => handleFavorite(entryId)} />
+          );
+        }
+      }, [isFavorited]);
+
+      useEffect(() => {
+        setFavorite(JSON.parse(favorite));
+      }, [favorite]);
 
 //   //   // send a PUT request to update the title
 //   // const updateTitle = () => {
@@ -87,7 +92,6 @@ interface AffirmationEntryProps {
 //   //   };
 
     //send a PUT request to update the favorite
-
     //handle when someone favorites an affirmation
     const handleFavorite = (entryId: number) => {
       if (isFavorited === true) {
@@ -119,80 +123,91 @@ interface AffirmationEntryProps {
 
 
 return (
-    <div id='parent'>
-                 <div
-                  id='affirmations'
-                  style={{ display: 'flex', justifyContent: 'center' }}
-                  >
-                  <Card
-                    variant='outlined'
-                    id={`card-${entryId}`}
-                    style={{
-                      width: '600px',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    {
-                      <React.Fragment>
-                      <CardContent>
-                        <Typography
-                          sx={{ fontSize: 14 }}
-                          color='text.secondary'
-                          gutterBottom
-                        >
-                          {/* Word of the Day */}
-                        </Typography>
-                        <Typography variant='h5' component='div'>
-                        <div id={`title-${entryId}`} onClick={() => {editAffirmationsTitle()}}>
-                        { isEditing ? ( <input
-            type="text"
-            defaultValue={title}
-            onChange={(e) => setEditedTitle(e.target.value)}
-            onKeyDown={handleTitleKeyDown}
-            onBlur={() => {handleTitleBlur()}}
-          />) : (<div><span style={{ marginRight: '10px' }}>
-                              {title}
-                            </span>
-                            </div>) }
-                          </div>
-
-
-                        </Typography>
-                        <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                          {/* adjective */}
-                        </Typography>
-                        <Typography variant='body2'>
-                          <div id={`affirmationList-${entryId}`}>
-                            {affirmations
-                              .map((affirmation: string) => (
-                                <div>{affirmation}</div>
-                              ))}
-                          </div>
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                      <span>
-                              <DeleteOutlineOutlinedIcon
-                                style={{ marginTop: '15px', cursor: 'pointer' }}
-                                onClick={() => {deleteAffirmations(entryId); }}
-                              />
-
-                            </span>
-                           <div id= {`favorite-${entryId}`}><IconButton
-                              style={{ marginTop: '15px', cursor: 'pointer' }}
-                                onClick={() => {handleFavorite(entryId)}}>
-                                { Heart }
-                                </IconButton></div>
-
-                      </CardActions>
-                    </React.Fragment>
-                    }
-                  </Card>
+  <div id='parent'>
+    <div
+      id='affirmations'
+      style={{ display: 'flex', justifyContent: 'center' }}
+    >
+      <Card
+        variant='outlined'
+        id={`card-${entryId}`}
+        style={{
+          width: '600px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {
+          <React.Fragment>
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 14 }}
+                color='text.secondary'
+                gutterBottom
+              >
+                {/* Word of the Day */}
+              </Typography>
+              <Typography variant='h5' component='div'>
+                <div
+                  id={`title-${entryId}`}
+                  onClick={() => {
+                    editAffirmationsTitle();
+                  }}
+                >
+                  {isEditing ? (
+                    <input
+                      type='text'
+                      defaultValue={title}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                      onKeyDown={handleTitleKeyDown}
+                      onBlur={() => {
+                        handleTitleBlur();
+                      }}
+                    />
+                  ) : (
+                    <div>
+                      <span style={{ marginRight: '10px' }}>{title}</span>
+                    </div>
+                  )}
                 </div>
-          </div>
-)
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color='text.secondary'>
+                {/* adjective */}
+              </Typography>
+              <Typography variant='body2'>
+                <div id={`affirmationList-${entryId}`}>
+                  {affirmations.map((affirmation: string) => (
+                    <div>{affirmation}</div>
+                  ))}
+                </div>
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <IconButton
+                onClick={() => deleteAffirmations(entryId)}
+                style={{ marginTop: '15px', cursor: 'pointer' }}
+              >
+                <DeleteOutlineOutlinedIcon />
+              </IconButton>
+
+              <div id={`favorite-${entryId}`}>
+                <IconButton
+                  style={{ marginTop: '15px', cursor: 'pointer' }}
+                  onClick={() => {
+                    handleFavorite(entryId);
+                  }}
+                >
+                  {Heart}
+                </IconButton>
+              </div>
+            </CardActions>
+          </React.Fragment>
+        }
+      </Card>
+    </div>
+  </div>
+);
 
   };
 
