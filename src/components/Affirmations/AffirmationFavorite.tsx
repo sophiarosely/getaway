@@ -46,6 +46,7 @@ return (
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          color: 'black'
         }}
       > {card}</Card></Box>
     </div>
