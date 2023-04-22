@@ -28,8 +28,8 @@ return (
     <CardActionArea>
       <CardMedia
         component="img"
-        height="140"
-        image="https://png.pngtree.com/png-vector/20190221/ourlarge/pngtree-female-user-vector-avatar-icon-png-image_691506.jpg"
+        height="200"
+        image="https://i.imgur.com/0mt101i.png"
         alt="therapist icon"
       />
     <IconButton
@@ -45,10 +45,10 @@ return (
     transform: 'translateY(50%)',
   }}
 >
-  <Favorite />
+
 </IconButton>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="body1" component="div">
           {therapist.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
