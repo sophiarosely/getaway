@@ -30,225 +30,225 @@ const MusicBar = () =>{
 
   const playlists = [
     {
-      title: 'Relax',
+      title: 'Ambient',
       songs: [
-        {
-          src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
-          artist: 'Artist 1',
-          title: 'Playlist1 Song 1',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
-          artist: 'Artist 2',
-          title: 'Playlist1 Song 2',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 3',
-          title: 'Playlist1 Song 3',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 4',
-          title: 'Playlist1 Song 4',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 5',
-          title: 'Playlist1 Song 5',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 6',
-          title: 'Playlist1 Song 6',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 7',
-          title: 'Playlist1 Song 7',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 8',
-          title: 'Playlist1 Song 8',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 9',
-          title: 'Playlist1 Song 9',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 10',
-          title: 'Playlist1 Song 10',
-        },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=14jgn0UdehgKAmD00dQVUj3ygbXoGHK4u',
+      artist: 'MFDOOM',
+      title: 'High John',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1GQyIwyGUE8P3GpTnlH_f1mHay3jEyXY2',
+      artist: 'Nujabes',
+      title: 'Counting Stars',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1jBxq5DuwSVkEiP4usHvUT64DQLY_4cbz',
+      artist: 'Javier Santiago ft. Elena Pinderhughes',
+      title: 'Trance - Rebirth',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1jj1Iv8lnNQxN70HDCVblO8Oa6NJlDJHN',
+      artist: 'Orchid Mantis',
+      title: 'I Was Above My Body',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1xeNpwgXV5hyZYhB4Ip5RA8FDOTmXo_Bd',
+      artist: 'Flying Lotus',
+      title: 'Crust',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=11M-ygnbmYfpeOCWAkBYKTAfq3O2xujEV',
+      artist: 'knxwledge',
+      title: 'stilluhme',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1AGyGSbHVcY_7gqYA9LeNiuaAfHRBRDe_',
+      artist: 'Sympho Cat',
+      title: 'Long Whale Song',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1_Z9oTVZ73lHt_6CA8mUfpnUKWVqmYooU',
+      artist: 'Chihei Hatakeyama',
+      title: 'White Light',
+      },
+      {
+        src: 'https://drive.google.com/uc?export=download&id=18cPiyNQYL0f9Gnaz3FP-Wh8wrJgI2yGs',
+         artist: 'Brian Eno - Harold Budd',
+      title: 'An Arc Of Doves',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1cIE8Yg_rzUwsbuyP9T3Nsz-dxI4eoWNN',
+      artist: 'Brian Eno - Harold Budd - Eugene Bowen',
+      title: 'Steal Away',
+      },
       ],
-    },
+      },
     {
       title: 'Sad',
       songs: [
-        {
-          src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
-          artist: 'Artist 1',
-          title: 'Playlist1 Song 1',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
-          artist: 'Artist 2',
-          title: 'Playlist1 Song 2',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 3',
-          title: 'Playlist1 Song 3',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 4',
-          title: 'Playlist1 Song 4',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 5',
-          title: 'Playlist1 Song 5',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 6',
-          title: 'Playlist1 Song 6',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 7',
-          title: 'Playlist1 Song 7',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 8',
-          title: 'Playlist1 Song 8',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 9',
-          title: 'Playlist1 Song 9',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 10',
-          title: 'Playlist1 Song 10',
-        },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1wVQq-1G8ONVmK1elTCLiPe_qtH07bxXK',
+      artist: 'TV Girl',
+      title: 'Blue Hair',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1qNPv9t_mEzPM3fTwn7tOnqAW-fkguNxX',
+      artist: 'Fleetwood Mac',
+      title: 'Say You Love Me',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1o8fSUwbblxIYmN92o27r4vQNnGg4kgce',
+      artist: 'Cafuné',
+      title: 'Tek It',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1jMRp4tmibZfKfQWSSTTxxYoY2UJHj3TX',
+      artist: 'Sagun & Shiloh Dynasty',
+      title: "I'll Keep You Safe",
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1jFgSuMzdPdrC8jOJ42NxPZy4maj7qUkN',
+      artist: 'Adele',
+      title: 'Someone Like You',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1aV48eo2FDu8aRWxY2lp3-ocDiMG4qo-O',
+      artist: 'R.E.M',
+      title: 'Everybody Hurts',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1OKxq82S80iZKp10BPd8ZBR4sZlRjkcqj',
+      artist: 'Simon & Garfunkel',
+      title: 'The Sounds Of Silence',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1MUjXBpm52DDnpaLhqAEWkBumH8NYGQmR',
+      artist: 'Coldplay',
+      title: 'Fix You',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1AWkrULEPn_3S8zt1DjinSbHiRWGTRxIK',
+      artist: 'Mac Demarco',
+      title: 'Heart To Heart',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=17nt5IjnuMgEzphIdyB87-fV1hRwrl-nM',
+      artist: 'Post Malone',
+      title: 'I Fall Apart',
+      },
       ],
-    },
+      },
     {
-      title: 'Happy',
+      title: 'Feel Good',
       songs: [
-        {
-          src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
-          artist: 'Artist 1',
-          title: 'Playlist1 Song 1',
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1b5bp9p6Zoh6nunkgkiLD8BpaHIQg_Hb3',
+      artist: 'Earth, Wind & Fire',
+      title: 'September',
+      },
+      {
+        src: 'https://drive.google.com/uc?export=download&id=13FBlSHMn5WdoxfgmObg_fhBfrt3pxWDK',
+        artist: 'Chris Brown',
+        title: 'Yeah 3x',
+        },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1u_LyZhmNFuXUPv5JTpU9cRHjzRYe615s',
+      artist: 'Whitney Houston',
+      title: 'I Wanna Dance With Somebody',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1Z_NIo3fNLcE7m11eWlZYnIdq4eJPR90I',
+      artist: 'Mark Ronson ft. Bruno Mars',
+      title: 'Uptown Funk',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1beyxn0VWG5EowmGigQ6LKQNc7JssdXVj',
+      artist: 'Katrina and the Waves',
+      title: 'Walking on Sunshine',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1GrAdfUkBR4r_Y85Z4VvpMOKcdc-0_JuP',
+      artist: 'Justin Timberlake',
+      title: "Can't Stop the Feeling!",
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1wvQ7jDtrOeR_1P9fxHkwAL6jjyvdhSVU',
+      artist: 'James Brown',
+      title: 'I Got You (I Feel Good)',
+      },
+      {
+      src: 'https://drive.google.com/uc?export=download&id=1Y2qk8h1NxRXFx5t7cWejLBgPNtI0DHz5',
+      artist: 'ABBA',
+      title: 'Dancing Queen',
+      },
+      {
+        src: 'https://drive.google.com/uc?export=download&id=12H9gev9RdYtLCN9AJGJNXX-d6VUKAUJj',
+        artist: 'Journey',
+        title: "Don't Stop Believin'",
         },
         {
-          src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
-          artist: 'Artist 2',
-          title: 'Playlist1 Song 2',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 3',
-          title: 'Playlist1 Song 3',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 4',
-          title: 'Playlist1 Song 4',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 5',
-          title: 'Playlist1 Song 5',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 6',
-          title: 'Playlist1 Song 6',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 7',
-          title: 'Playlist1 Song 7',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 8',
-          title: 'Playlist1 Song 8',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 9',
-          title: 'Playlist1 Song 9',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 10',
-          title: 'Playlist1 Song 10',
-        },
+          src: 'https://drive.google.com/uc?export=download&id=1Zd2bMvhGxs7ZA_RElnu0QdLdTTS9wmaO',
+          artist: 'Pharrell Williams',
+          title: 'Happy',
+          },
       ],
-    },
-    {
-      title: 'Mad',
-      songs: [
-        {
-          src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
-          artist: 'Artist 1',
-          title: 'Playlist1 Song 1',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
-          artist: 'Artist 2',
-          title: 'Playlist1 Song 2',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 3',
-          title: 'Playlist1 Song 3',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 4',
-          title: 'Playlist1 Song 4',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 5',
-          title: 'Playlist1 Song 5',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 6',
-          title: 'Playlist1 Song 6',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 7',
-          title: 'Playlist1 Song 7',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 8',
-          title: 'Playlist1 Song 8',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 9',
-          title: 'Playlist1 Song 9',
-        },
-        {
-          src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-          artist: 'Artist 10',
-          title: 'Playlist1 Song 10',
-        },
-      ],
-    },
+      },
+    // {
+    //   title: 'Mad',
+    //   songs: [
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
+    //       artist: 'Artist 1',
+    //       title: 'Playlist1 Song 1',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
+    //       artist: 'Artist 2',
+    //       title: 'Playlist1 Song 2',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 3',
+    //       title: 'Playlist1 Song 3',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 4',
+    //       title: 'Playlist1 Song 4',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 5',
+    //       title: 'Playlist1 Song 5',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 6',
+    //       title: 'Playlist1 Song 6',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 7',
+    //       title: 'Playlist1 Song 7',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 8',
+    //       title: 'Playlist1 Song 8',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 9',
+    //       title: 'Playlist1 Song 9',
+    //     },
+    //     {
+    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
+    //       artist: 'Artist 10',
+    //       title: 'Playlist1 Song 10',
+    //     },
+    //   ],
+    // },
     {
       title: 'Focus',
       songs: [
