@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 // import Habits from './pages/Habits'
 import Affirmations from './pages/Affirmations'
-import AffirmationEntries from './pages/AffirmationEntries'
+import AffirmationEntries from './components/Affirmations/AffirmationEntries'
+import AffirmationFavorites from './components/Affirmations/AffirmationFavorites'
 import Recess from './pages/Recess'
 import Guidance from './pages/Guidance'
 import Profile from './pages/Profile'
@@ -86,6 +87,7 @@ console.log(user)
         {/* <Route path="/habits" element={<Habits />} /> */}
         <Route path="/affirmations" element={<Affirmations />} />
         <Route path="/affirmation-entries" element={<AffirmationEntries />} />
+        <Route path="/affirmation-favorites" element={<AffirmationFavorites />} />
         <Route path="/recess" element={<Recess />} />
         <Route path="/guidance" element={<Guidance />} />
         <Route path="/profile" element={<Profile />} />
