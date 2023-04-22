@@ -76,6 +76,28 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 
 })
 
+//Retrieving favorited affirmations to DB
+affirmationRoutes.get('/retrieve-favorites/:googleId', async (req, res) => {
+    const { googleId } = req.params;
+
+
+    try {
+        const user = await prisma.user.findFirst({ where: { googleId: googleId } })
+
+        const favoritedAffirmations = await prisma.affirmations.findMany({
+            where: {
+                user_id: user.id,
+                favorite: 'true'
+            }
+        })
+        res.send(favoritedAffirmations)
+    } catch {
+        res.send('Error: Could not retrieve favorited affirmations')
+    }
+
+
+})
+
 // Deleting affirmations
 affirmationRoutes.delete('/remove/:entryId', async (req, res) => {
     const { entryId } = req.params;
