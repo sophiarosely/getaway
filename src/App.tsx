@@ -80,7 +80,7 @@ const App = () => {
   <Route path="/" element={<Login />} />
   )}
 
-        {/* <Route path="/habits" element={<Habits />} /> */}
+        <Route path="/habits" element={<Habits />} />
         <Route path="/affirmations" element={<Affirmations />} />
         <Route path="/affirmation-entries" element={<AffirmationEntries />} />
         <Route path="/affirmation-favorites" element={<AffirmationFavorites />} />
