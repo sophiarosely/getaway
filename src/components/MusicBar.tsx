@@ -1,5 +1,23 @@
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
+import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
+import SkipPreviousOutlinedIcon from '@mui/icons-material/SkipPreviousOutlined';
+import SkipNextOutlinedIcon from '@mui/icons-material/SkipNextOutlined';
+import FastRewindIcon from '@mui/icons-material/FastRewind';
+import FastForwardIcon from '@mui/icons-material/FastForward';
+import LoopIcon from '@mui/icons-material/Loop';
+import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+
+
+import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+import MusicOffOutlinedIcon from '@mui/icons-material/MusicOffOutlined';
+
+
 import React, { useState } from 'react';
 
 const MusicBar = () =>{
@@ -292,6 +310,25 @@ const MusicBar = () =>{
   // *****************
 
 
+// *****************
+// *  AUDIO ICONS  *
+// *****************
+const customIcons = {
+  play: <PlayArrowOutlinedIcon style={{ color: '#B19CD9' }} />,
+  pause: <PauseOutlinedIcon style={{ color: '#B19CD9' }} />,
+  rewind: <FastRewindIcon style={{ color: '#B19CD9' }} />,
+  forward: <FastForwardIcon style={{ color: '#B19CD9' }} />,
+  previous: <SkipPreviousOutlinedIcon style={{ color: '#B19CD9' }} />,
+  next: <SkipNextOutlinedIcon style={{ color: '#B19CD9' }} />,
+  loop: <LoopIcon style={{ color: '#B19CD9' }} />,
+  loopOff: <ReplayOutlinedIcon style={{ color: '#B19CD9' }} />,
+  volume: <VolumeUpIcon style={{ color: '#B19CD9' }} />,
+  volumeMute: <VolumeOffIcon style={{ color: '#B19CD9' }} />,
+};
+// *****************
+// *  AUDIO ICONS  *
+// *****************
+
 
   const [currentPlaylistIndex, setCurrentPlaylistIndex] = useState(0);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
@@ -321,32 +358,47 @@ const MusicBar = () =>{
 
   return (
     <div>
-      {/* <button onClick={toggleMusicBar}>{isOpen ? 'Close' : 'Open'} Music Bar</button> */}
+       <div
+       style={{
+        position: 'fixed',
+        bottom: '0',
+        left: '0',
+        right: '0'
+        }}>
+      <span onClick={toggleMusicBar}> {isOpen ? <MusicOffOutlinedIcon style={{ fontSize: 40 }} /> : <MusicNoteOutlinedIcon style={{ fontSize: 40 }} />} </span>
+       </div>
       {isOpen && (
        <>
-
           <AudioPlayer
-            style={{ width: '90%', margin:'40px', borderRadius:'40px', backgroundColor:'#0162BC', letterSpacing:"0.3em"}}
-            layout="horizontal"
+           className="music-bar"
+          style={{
+            width: '95%',
+            margin:'40px',
+            borderRadius:'30px',
+            backgroundColor:'#FFFFFF',
+            letterSpacing:"0.3em",
+            boxShadow: '0 0 10px 5px rgba(255, 255, 255, 0.3)',
+            color: '#B19CD9'
+          }}
+            layout='horizontal'
             autoPlay={false}
             src={playlists[currentPlaylistIndex].songs[currentTrackIndex].src}
             header={playlists[currentPlaylistIndex].songs[currentTrackIndex].title}
             footer={playlists[currentPlaylistIndex].songs[currentTrackIndex].artist}
             showSkipControls={true}
+            onEnded={handleNextTrack}
             onClickNext={handleNextTrack}
             onClickPrevious={handlePreviousTrack}
             customAdditionalControls={
               [
                 RHAP_UI.LOOP,
-                <><label htmlFor="playlist-select">PLAYLIST:</label><select id="playlist-select" value={currentPlaylistIndex} onChange={handlePlaylistSelect}>
-                  {playlists.map((playlist, index) => (
+                <><label htmlFor="playlist-select">Playlist:</label><select id="playlist-select" value={currentPlaylistIndex} onChange={handlePlaylistSelect}>
+                  {playlists.map((playlist, index,) => (
                     <option key={index} value={index}>{playlist.title}</option>
                   ))}
-                </select></>,
-
-              ]
-            }
-            className="music-bar"
+                </select></>
+              ]}
+            customIcons={customIcons}
           />
         </>
       )}
