@@ -38,7 +38,7 @@ console.log(userId)
 .then(response => console.log(response.data))
 .catch(error => console.error(error));
   }
-  
+
       const handleDelete = () => {
     axios.delete('/habits/delete', {
   data: {
@@ -84,9 +84,9 @@ onDelete();})
         </CardActions>
       </Card>
 
-      {isTrackingOpen && (
+      {/* {isTrackingOpen && (
         <Tracking  id={id} habit_createdAt={habit_createdAt}  />
-      )}
+      )} */}
     </div>
   )
 }
