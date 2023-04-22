@@ -3,6 +3,7 @@ import * as React from 'react';
 import axios from 'axios';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box'
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -71,7 +72,7 @@ interface AffirmationEntryProps {
 
     useEffect(() => {
         if (isFavorited) {
-          setHeart(<FavoriteIcon onClick={() => handleFavorite(entryId)} />);
+          setHeart(<FavoriteIcon style={{ color: 'red' }} onClick={() => handleFavorite(entryId)} />);
         } else {
           setHeart(
             <FavoriteBorderIcon onClick={() => handleFavorite(entryId)} />
@@ -128,7 +129,7 @@ return (
       id='affirmations'
       style={{ display: 'flex', justifyContent: 'center' }}
     >
-      <Card
+      <Box boxShadow={7}><Card
         variant='outlined'
         id={`card-${entryId}`}
         style={{
@@ -205,7 +206,9 @@ return (
           </React.Fragment>
         }
       </Card>
+      </Box>
     </div>
+    <br></br>
   </div>
 );
 
