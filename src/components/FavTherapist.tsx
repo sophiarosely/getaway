@@ -83,7 +83,7 @@ useEffect(()=>{
 console.log(result)
 if(result){
     return (
-      <Card sx={{ maxWidth: 500, backgroundColor:"#6BB76A" }}>
+      <Card sx={{ maxWidth: 500, backgroundColor:"#D1A1C0" }}>
         <CardHeader
           title={result.name}
           subheader={
