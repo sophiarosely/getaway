@@ -109,7 +109,8 @@ const therapistFakeData =[
     rating: 5,
   },
 ]},
-  {name:'Diane Leavens',
+  {
+  name:'Diane Leavens',
   skills:["Stress", "Anxiety", "LGBT", "Self Esteem", "Depression", "Coping With Life Changes"],
   licenseType:'LPC',
   photoURL:'https://i.imgur.com/mrlLKg6.png',
@@ -128,3 +129,5 @@ const therapistFakeData =[
   },
 ]}
 ]
+
+export default therapistFakeData;
