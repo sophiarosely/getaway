@@ -94,5 +94,27 @@ affirmationRoutes.delete('/remove/:entryId', async (req, res) => {
 
 })
 
+// Updating favorites
+affirmationRoutes.put('/favorite', async (req, res) => {
+    const { entryId, favorite, user_id} = req.body;
+
+    console.log(req.body)
+    try {
+            const affirmationEntry = await prisma.affirmations.updateMany({
+                where: {
+                    id: entryId,
+                    user_id: user_id
+                },
+                data: {
+                    favorite: favorite
+                },
+            })
+            res.send('Success: Affirmations favorited')
+        }
+        catch {
+            res.send('Error: Affirmations not favorited')
+        }
+
+})
 
 export default affirmationRoutes
