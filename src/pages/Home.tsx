@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import React from 'react';
 import { useEffect } from 'react';
 import CheckIn from '../components/CheckIn/CheckIn';
+import HabitHome from  '../components/Habits/HabitHome'
 
 const Home = () => {
   return (
@@ -75,6 +76,8 @@ const Home = () => {
       padding:'30px'
     }}>
       <h3>HABIT CHARTS</h3>
+      {/* <HabitHome></HabitHome> */}
+      {/* <HabitCreate></HabitCreate> */}
       </div>
       </div>
     </div>

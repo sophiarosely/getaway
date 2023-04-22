@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Button from '@mui/material/Button';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
-// import Typography from '@mui/material/Typography';
 import HabitCard from '../components/Habits/Habitcard';
-// import axios from 'axios';
-// import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import { UserContext, UserContextType } from '../App';
 import axios from 'axios';
