@@ -24,7 +24,7 @@ const { therapist, handleOpen } = props;
 
 
 return (
-  <Card sx={{ maxWidth: 345 }} onClick={()=>handleOpen(therapist)}>
+  <Card sx={{ maxWidth: 345, backgroundColor:'#D1A1C0' }} onClick={()=>handleOpen(therapist)}>
     <CardActionArea>
       <CardMedia
         component="img"

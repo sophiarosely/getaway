@@ -91,7 +91,7 @@ console.log('hi',therapists)
     <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>THERAPISTS NEAR YOU</p>
     <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>
     </div>
-    <div style={{width:'75%', backgroundColor:'#CCD7FF', padding:'20px', textAlign:'center', display: 'flex', flexDirection:'column', justifyContent:"center", alignItems: "center"}}>
+    <div style={{width:'75%', backgroundColor:'#CCD7FF', padding:'20px', textAlign:'center', display: 'flex', flexDirection:'column', justifyContent:"center", alignItems: "center", borderRadius:'40px'}}>
     <Pagination onClick={getNextTwenty} count={3} variant="outlined" shape="rounded" style={{marginBottom:'30px', color:'#788ACA'}}/>
     <TherapistList therapists={therapists}/>
     </div>
