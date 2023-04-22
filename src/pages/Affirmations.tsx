@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { UserContext, UserContextType } from '../App';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormGroup from '@mui/material/FormGroup';
