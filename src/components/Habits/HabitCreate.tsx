@@ -8,19 +8,17 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import MenuItem from '@mui/material/MenuItem';
 import { UserContext, UserContextType } from '../../App';
-interface Habits {
-  id: number;
-  habit_type: string;
-  habit_name: string;
-  habit_createdAt: string;
+import Habits from '../../pages/Habits';
+interface HabitsCreate {
+
+  handleCreate: ( ) => void;
 }
 type Option = {
   type: string;
 };
 
-
 // This will have charts and a calaneder to see how the following  is going
-const HabitCreate = () =>{
+const HabitCreate = ({handleCreate}: HabitsCreate ) =>{
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
 
 const types:Option[] = [
@@ -34,7 +32,7 @@ const types:Option[] = [
     type: "Choices"
   }
 ]
-  const [habits, setHabits] = useState<Habits[]>([]);
+
   const [newHabit, setNewHabit] = useState<string>('');
   const [type, setType] = useState<string>(types[0].type);
 
@@ -47,11 +45,13 @@ const onCreate = (): void => {
     axios
       .post('habits/newHabit', { data })
       .then((response) => {
-        console.log(response.data);
-        axios
-          .post('habits/list', { data: { googleId: userId?.toString() } })
-          .then((response) => setHabits(response.data))
-          .catch((error) => console.error(error));
+        handleCreate()
+
+      //   console.log(response.data);
+      //   axios
+      //     .post('habits/list', { data: { googleId: userId?.toString() } })
+      //     .then((response) => console.log("fix me"))
+      //     .catch((error) => console.error(error));
       })
       .catch((error) => {
         console.log(error);
@@ -60,42 +60,43 @@ const onCreate = (): void => {
     setNewHabit('');
   };
 
-  const handleDelete = (habitId: number) => {
-    setHabits((prevHabits) =>
-      prevHabits.filter((habit) => habit.id !== habitId)
-    );
-  };
+
 
   return (
-    <div>Hi
-      <Card>
-     <TextField
-        required
-        id='outlined-required'
-        label='Required'
-        helperText='Enter Tracking'
-        value={newHabit}
-        onChange={(event) => setNewHabit(event.target.value)}
-      />
-      <TextField
-        id='outlined-select-currency'
-        select
-        label='Select'
-        onChange={(event) => setType(event.target.value)}
-        value={type}
-        helperText='Please select activity type'
-      >
-        {types.map((option: Option) => (
-          <MenuItem key={option.type} value={option.type}>
-            {option.type}
-          </MenuItem>
-        ))}
-      </TextField>
-      <Button variant='text' onClick={onCreate}>
-        Create Habit
-      </Button>
-</Card>
-    </div>
+<div style={{ display: 'inline-block', margin: '10px', height: '400px', width: '200px' }}>
+  <Card sx={{ borderRadius: 0, backgroundColor: '#CCD7FF', padding: '20px' }}>
+    <TextField
+      required
+      id='outlined-required'
+      label='Required'
+      helperText='Enter Tracking'
+      value={newHabit}
+      onChange={(event) => setNewHabit(event.target.value)}
+      style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
+     
+    />
+    <TextField
+      id='outlined-select-currency'
+      select
+      label='Select'
+      onChange={(event) => setType(event.target.value)}
+      value={type}
+      helperText='Please select activity type'
+      style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
+ 
+    >
+      {types.map((option: Option) => (
+        <MenuItem key={option.type} value={option.type}>
+          {option.type}
+        </MenuItem>
+      ))}
+    </TextField>
+    <Button variant='contained' color='primary' style={{ marginTop: '10px', width: '100%' }} onClick={onCreate}>
+      Create Habit
+    </Button>
+  </Card>
+</div>
+
   );
 };
 

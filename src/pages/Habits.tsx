@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import HabitCard from '../components/Habits/Habitcard';
-import MenuItem from '@mui/material/MenuItem';
+import HabitCreate from  '../components/Habits/HabitCreate'
 import { UserContext, UserContextType } from '../App';
 import axios from 'axios';
+import { Button } from '@mui/material';
+import Popover from '@mui/material/Popover';
 
 interface Habits {
   id: number;
@@ -18,7 +18,7 @@ type Option = {
 
 const Habits = () =>{
 
-  // creates user variables based on context 
+  // creates user variables based on context
    const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
    console.log(userName, userId)
 const types:Option[] = [
@@ -36,7 +36,7 @@ const types:Option[] = [
   const [habits, setHabits] = useState<Habits[]>([]);
   const [newHabit, setNewHabit] = useState<string>('');
   const [type, setType] = useState<string>(types[0].type);
-  //test data
+ const [showHabitCreate, setShowHabitCreate] = useState(false);
 
   useEffect(() => {
     if (userId) {
@@ -47,62 +47,28 @@ const types:Option[] = [
     }
   }, [userId]);
 
-  const onCreate = (): void => {
-    const data = {
-      habit_name: newHabit,
-      googleId: userId?.toString(),
-      habit_type: type,
-    };
-    axios
-      .post('habits/newHabit', { data })
-      .then((response) => {
-        console.log(response.data);
-        axios
-          .post('habits/list', { data: { googleId: userId?.toString() } })
-          .then((response) => setHabits(response.data))
-          .catch((error) => console.error(error));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    setType(types[0].type);
-    setNewHabit('');
+ const handleCreate = () => {
+ axios
+        .post('habits/list', { data: { googleId: userId.toString() } })
+        .then((response) => setHabits(response.data))
+        .catch((error) => console.error(error));
   };
+
 
   const handleDelete = (habitId: number) => {
     setHabits((prevHabits) =>
       prevHabits.filter((habit) => habit.id !== habitId)
     );
   };
+   const handleNewHabit = () => {
+    setShowHabitCreate(true); // set state variable to true to show HabitCreate
+  }
 
   return (
     <div>
       <h1>Bad Habits</h1>
-      <TextField
-        required
-        id='outlined-required'
-        label='Required'
-        helperText='Enter Tracking'
-        value={newHabit}
-        onChange={(event) => setNewHabit(event.target.value)}
-      />
-      <TextField
-        id='outlined-select-currency'
-        select
-        label='Select'
-        onChange={(event) => setType(event.target.value)}
-        value={type}
-        helperText='Please select activity type'
-      >
-        {types.map((option: Option) => (
-          <MenuItem key={option.type} value={option.type}>
-            {option.type}
-          </MenuItem>
-        ))}
-      </TextField>
-      <Button variant='text' onClick={onCreate}>
-        Create Habit
-      </Button>
+   <Button onClick={handleNewHabit}>New Habit</Button> 
+      {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />} 
       {habits.map((habit) => (
         <HabitCard key={habit.id}
          userId={userId}
