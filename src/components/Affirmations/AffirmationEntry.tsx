@@ -57,7 +57,7 @@ interface AffirmationEntryProps {
     // when user finishes editing and presses enter, update the title
   const handleTitleKeyDown = (e : any) => {
       if (e.key === "Enter") {
-      //   updateTitle();
+         updateTitle();
         setIsEditing(false);
       }
     };
@@ -67,7 +67,7 @@ interface AffirmationEntryProps {
         console.log('hello')
       setIsEditing(false);
     };
-    console.log(isFavorited)
+
 
 
     useEffect(() => {
@@ -84,16 +84,20 @@ interface AffirmationEntryProps {
         setFavorite(JSON.parse(favorite));
       }, [favorite]);
 
-//   //   // send a PUT request to update the title
-//   // const updateTitle = () => {
-//   //     axios
-//   //       .put(`/affirmations/${entry.id}`, { title: editedTitle })
-//   //       .then((response) => console.log(response))
-//   //       .catch((error) => console.log(error));
-//   //   };
+//  send a PUT request to update the title
+  const updateTitle = () => {
+      axios
+        .put('/affirmations/updateTitle', {
+          entryId: entryId,
+          user_id: user,
+          title: editedTitle
+         })
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+    };
 
-    //send a PUT request to update the favorite
-    //handle when someone favorites an affirmation
+    // send a PUT request to update the favorite
+    // handle when someone favorites an affirmation
     const handleFavorite = (entryId: number) => {
       if (isFavorited === true) {
         setFavorite(false)
@@ -121,6 +125,7 @@ interface AffirmationEntryProps {
       }
 
     }
+
 
 
 return (
@@ -161,7 +166,7 @@ return (
                     <input
                       type='text'
                       defaultValue={title}
-                      onChange={(e) => setEditedTitle(e.target.value)}
+                      onChange={(e) => {setEditedTitle(e.target.value);}}
                       onKeyDown={handleTitleKeyDown}
                       onBlur={() => {
                         handleTitleBlur();
@@ -169,7 +174,7 @@ return (
                     />
                   ) : (
                     <div>
-                      <span style={{ marginRight: '10px' }}>{title}</span>
+                      <span style={{ marginRight: '10px' }}>{editedTitle === '' ? title : editedTitle }</span>
                     </div>
                   )}
                 </div>
