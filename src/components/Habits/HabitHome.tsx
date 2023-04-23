@@ -64,13 +64,13 @@ console.log(dates)
         justifyContent: 'center',
         flexBasis: '30%',
         height: '100px',
-        backgroundColor: 'grey',
+        backgroundColor: 'rgba(255,0, 0, .5)',
         color: 'white',
         borderRadius: '10px',
         margin: '10px',
       }}
-       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#555'}
-  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'grey'}
+       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(200,0, 0, .5)'}
+  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,0, 0, .5)'}
     >
       {habit_name}
       <div title={`You have completed this ${dates.length > 1 ? dates.length + ' times' : 'once'}`}>

@@ -34,7 +34,13 @@ setDates(response.data)
 }, []);
 
   return (
-    <Card sx={{ borderRadius: 0, backgroundColor: '#CCD7FF', padding: '20px' }}>
+    <Card sx={{ borderRadius: '10px', 
+    backgroundColor: 'rgba(255, 0, 0, 0.5)', 
+    padding: '20px', 
+    width: '220px' }}
+     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(200,0, 0, .5)'}
+  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.5)'}
+    >
       {dates && dates.length > 0 && (
         <>
           <Typography variant='h5' component='h2' color='primary' gutterBottom>
