@@ -32,23 +32,7 @@ setDates(response.data)
       .catch(error => console.error(error));
   }
 }, []);
-function renderImage(value: number) {
-  if (value === 1) {
-    return <img src="https://i.ibb.co/zbPYkrV/1.png" alt="Image 1" width="50" />;
-  } else if (value === 2) {
-    return <img src="https://i.ibb.co/9yJBt9L/2.png" alt="2" width="50" />;
-  } else if (value === 3) {
-    return <img src="https://i.ibb.co/8Dftqnw/3.png" alt="3" width="50" />;
-  } else if (value === 4) {
-    return <img src="https://i.ibb.co/R6Ss7mH/4.png" alt="4" width="50" />;
-  } else if (value === 5) {
-    return <img src="https://i.ibb.co/rxc7Nnz/5.png" alt="5" width="50" />;
-  } else if (value > 5) {
-    return <img src="https://i.ibb.co/bgVBqhQ/6.png" alt="6" width="50" />;
-  } else {
-    return null;
-  }
-}
+
   return (
     <Card sx={{ borderRadius: 0, backgroundColor: '#CCD7FF', padding: '20px' }}>
       {dates && dates.length > 0 && (

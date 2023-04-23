@@ -48,10 +48,12 @@ const types:Option[] = [
   }, [userId]);
 
  const handleCreate = () => {
+  if (userId) {
  axios
         .post('habits/list', { data: { googleId: userId.toString() } })
         .then((response) => setHabits(response.data))
         .catch((error) => console.error(error));
+  }
   };
 
 

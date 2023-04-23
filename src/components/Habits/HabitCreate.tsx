@@ -47,11 +47,6 @@ const onCreate = (): void => {
       .then((response) => {
         handleCreate()
 
-      //   console.log(response.data);
-      //   axios
-      //     .post('habits/list', { data: { googleId: userId?.toString() } })
-      //     .then((response) => console.log("fix me"))
-      //     .catch((error) => console.error(error));
       })
       .catch((error) => {
         console.log(error);
