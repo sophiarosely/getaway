@@ -165,7 +165,7 @@ return (
                   {isEditing ? (
                     <input
                       type='text'
-                      defaultValue={title}
+                      defaultValue={editedTitle === '' ? title : editedTitle }
                       onChange={(e) => {setEditedTitle(e.target.value);}}
                       onKeyDown={handleTitleKeyDown}
                       onBlur={() => {
