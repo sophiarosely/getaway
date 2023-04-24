@@ -44,16 +44,16 @@ export default function SignInSide() {
       <Box
       sx={{
         my: 8,
-        mx: 'auto', // Center horizontally
+        mx: 'auto', 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '90%', // Set max width for the box
-        maxWidth: '400px', // Set max width for the content
-        border: '1px solid #ccc', // Add a border
-        borderRadius: '4px', // Add border radius
-        p: 4, // Add padding
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Add a box shadow
+        width: '90%', 
+        maxWidth: '400px',
+        border: '1px solid #ccc', 
+        borderRadius: '4px', 
+        p: 4, 
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
       }}
     >
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
