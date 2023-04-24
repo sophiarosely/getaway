@@ -2,13 +2,33 @@ import React, {useRef, useEffect, useState} from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
-
+import '@tensorflow/tfjs-backend-webgl';
 
 const Painting = () =>{
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
+
+  const runHandPose = async () =>{
+
+    const net = await handpose.load()
+    console.log("hand pose loaded")
+    //loop to constantly search for a hand in frame
+
+  }
+
+  const detect = async (net:any)=>{
+    //check data is available
+    //get video properties
+    //Set height and width
+    //set Canvas height and width
+    //Make detections
+    //draw mesh
+  }
+
+
+runHandPose();
 
 return(
   <div>
