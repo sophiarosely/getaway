@@ -57,7 +57,7 @@ affirmationRoutes.post('/save/', async (req, res) => {
     }
 });
 
-//Retrieving affirmations to DB
+// Retrieving affirmations from DB
 affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
     const { googleId } = req.params
 
@@ -76,7 +76,7 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 
 })
 
-//Retrieving favorited affirmations to DB
+//Retrieving favorited affirmations from DB
 affirmationRoutes.get('/retrieve-favorites/:googleId', async (req, res) => {
     const { googleId } = req.params;
 
@@ -139,6 +139,7 @@ affirmationRoutes.put('/favorite', async (req, res) => {
 
 })
 
+// Updating title of affirmation
 affirmationRoutes.put('/updateTitle', async (req, res) => {
     const { entryId, title, user_id} = req.body;
 
