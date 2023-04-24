@@ -85,23 +85,24 @@ model HabitLog {
   habit     Habits   @relation(fields: [habit_id], references: [id])
 }
 
+//brandons staff therapist hell maze
 model StaffTherapist {
   id               Int                   @id @default(autoincrement())
   name             String
   licenseType      String
   photoURL         String
-  aboutMe          String
-  profExp          String
+  aboutMe          String                @db.VarChar(5000)
+  profExp          String                @db.VarChar(5000)
   yearsExp         Int
   licInfo          String
   TherapistReviews TherapistReviews[]
-  skills           StaffTherapistSkill[] @relation("TherapistSkills")
+  skill            StaffTherapistSkill[] @relation("TherapistSkills")
 }
 
 model TherapistReviews {
   id                 Int            @id @default(autoincrement())
   date               DateTime       @default(now())
-  text               String
+  text               String         @db.VarChar(5000)
   rating             Float
   staff_therapist_id Int
   staff_therapist    StaffTherapist @relation(fields: [staff_therapist_id], references: [id])

@@ -7,7 +7,7 @@ import affirmationRoute from './routes/affirmations';
 import habitsRoute from './routes/habits';
 import checkInRoute from './routes/checkIn';
 import moodEntryRoute from './routes/moodEntry';
-
+import staffRoute from './routes/staff-therapists';
 // import passportAuth from 'passport';
 // // import cookieSession from 'cookie-session';
 // import cookieSession from 'cookie-session';
@@ -64,6 +64,7 @@ app.use('/affirmations', affirmationRoute);
 app.use('/habits', habitsRoute);
 app.use('/checkIn', checkInRoute);
 app.use('/moodEntry', moodEntryRoute);
+app.use('/staff/', staffRoute);
 
 //bottom
 app.get('*', (req: any, res: any) => {
