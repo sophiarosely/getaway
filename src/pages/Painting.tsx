@@ -6,8 +6,25 @@ import '@tensorflow/tfjs-backend-webgl';
 
 const Painting = () =>{
 
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
+  const webcamRef = useRef(
+    {
+      video:
+    {
+      readyState:0,
+      videoWidth:0,
+      videoHeight:0,
+      width:0,
+      height:0,
+    },
+
+  }
+  );
+  const canvasRef = useRef(
+    {
+      width:0,
+      height:0,
+    }
+  );
 
 
   const runHandPose = async () =>{
@@ -15,16 +32,36 @@ const Painting = () =>{
     const net = await handpose.load()
     console.log("hand pose loaded")
     //loop to constantly search for a hand in frame
-
+    setInterval(()=>{
+      detect(net)
+    }, 100)
   }
 
   const detect = async (net:any)=>{
     //check data is available
-    //get video properties
+    if(
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null &&
+      webcamRef.current.video.readyState === 4
+    ){
+        //get video properties
+        const video:any = webcamRef.current.video;
+        const videoWidth = webcamRef.current.video.videoWidth;
+        const videoHeight = webcamRef.current.video.videoHeight;
     //Set height and width
+    webcamRef.current.video.width = videoWidth;
+    webcamRef.current.video.height = videoHeight;
     //set Canvas height and width
+    canvasRef.current.width = videoWidth;
+    canvasRef.current.height = videoHeight;
     //Make detections
+    const hand = await net.estimateHands(video);
+    console.log(hand)
     //draw mesh
+
+
+    }
+
   }
 
 
