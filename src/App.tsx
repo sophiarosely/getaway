@@ -14,6 +14,7 @@ import axios from 'axios';
 import Login from './pages/Login';
 import { useState, useEffect, useContext } from 'react';
 import MusicBar from './components/MusicBar';
+import Painting from './pages/Painting'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Switch } from '@mui/material';
@@ -88,6 +89,7 @@ const App = () => {
         <Route path="/guidance" element={<Guidance />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/meditation" element={<Meditation />} />
+        <Route path="/painting" element={<Painting />} />
       </Routes>
       <MusicBar />
       </div>
