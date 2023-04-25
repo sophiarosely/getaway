@@ -17,44 +17,48 @@ const Meditation = () =>{
     setExercise3Open(true);
   }
 
-  const closeAllExercises = () => {
+  const handleExercise1Close = () => {
     setExercise1Open(false);
+  }
+  const handleExercise2Close = () => {
     setExercise2Open(false);
+  }
+  const handleExercise3Close = () => {
     setExercise3Open(false);
   }
 
   return (
-    <div>
+    <div className="meditation-container">
     <h1>Meditation</h1>
-    <div onClick={handleExercise1Click}>Exercise 1</div>
-    <div onClick={handleExercise2Click}>Exercise 2</div>
-    <div onClick={handleExercise3Click}>Exercise 3</div>
+    <div className="exercise-box" onClick={handleExercise1Click}>Exercise 1</div>
+    <div className="exercise-box" onClick={handleExercise2Click}>Exercise 2</div>
+    <div className="exercise-box" onClick={handleExercise3Click}>Exercise 3</div>
 
     {exercise1Open &&
-        <div>
-          <h2>Exercise 1</h2>
-          <p>This is exercise 1</p>
-          <button onClick={closeAllExercises}>Close</button>
-        </div>
-      }
+      <div className="exercise-popup">
+        <h2>Exercise 1</h2>
+        <p>This is exercise 1</p>
+        <button className="button" onClick={handleExercise1Close}>Close</button>
+      </div>
+    }
 
-      {exercise2Open &&
-        <div>
-          <h2>Exercise 2</h2>
-          <p>This is exercise 2</p>
-          <button onClick={closeAllExercises}>Close</button>
-        </div>
-      }
+    {exercise2Open &&
+      <div className="exercise-popup">
+        <h2>Exercise 2</h2>
+        <p>This is exercise 2</p>
+        <button className="button" onClick={handleExercise2Close}>Close</button>
+      </div>
+    }
 
-      {exercise3Open &&
-        <div>
-          <h2>Exercise 3</h2>
-          <p>This is exercise 3</p>
-          <button onClick={closeAllExercises}>Close</button>
-        </div>
-      }
-    </div>
-  )
+    {exercise3Open &&
+      <div className="exercise-popup">
+        <h2>Exercise 3</h2>
+        <p>This is exercise 3</p>
+        <button className="button" onClick={handleExercise3Close}>Close</button>
+      </div>
+    }
+  </div>
+);
   }
 
   export default Meditation;
