@@ -3,28 +3,12 @@ import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import '@tensorflow/tfjs-backend-webgl';
+import drawHand from "../../utilities"
 
 const Painting = () =>{
 
-  const webcamRef = useRef(
-    {
-      video:
-    {
-      readyState:0,
-      videoWidth:0,
-      videoHeight:0,
-      width:0,
-      height:0,
-    },
-
-  }
-  );
-  const canvasRef = useRef(
-    {
-      width:0,
-      height:0,
-    }
-  );
+  const webcamRef: React.RefObject<Webcam> = useRef<Webcam>(null);
+  const canvasRef: any = useRef(null);
 
 
   const runHandPose = async () =>{
@@ -39,13 +23,16 @@ const Painting = () =>{
 
   const detect = async (net:any)=>{
     //check data is available
+    if(webcamRef.current && webcamRef.current.video){
     if(
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
+
     ){
         //get video properties
-        const video:any = webcamRef.current.video;
+
+        const video = webcamRef.current.video
         const videoWidth = webcamRef.current.video.videoWidth;
         const videoHeight = webcamRef.current.video.videoHeight;
     //Set height and width
@@ -58,10 +45,11 @@ const Painting = () =>{
     const hand = await net.estimateHands(video);
     console.log(hand)
     //draw mesh
-
+const ctx = canvasRef.current.getContext("2d")
+drawHand(hand, ctx)
 
     }
-
+  }
   }
 
 
