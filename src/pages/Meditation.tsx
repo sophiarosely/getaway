@@ -8,13 +8,13 @@ const Meditation = () =>{
 
   //handlers for opening and closing
   const handleExercise1Click = () => {
-    setExercise1Open(true);
+    setExercise1Open(!exercise1Open);
   }
   const handleExercise2Click = () => {
-    setExercise2Open(true);
+    setExercise2Open(!exercise2Open);
   }
   const handleExercise3Click = () => {
-    setExercise3Open(true);
+    setExercise3Open(!exercise3Open);
   }
 
   const handleExercise1Close = () => {
@@ -38,7 +38,7 @@ const Meditation = () =>{
       <div className="exercise-popup">
         <h2>Exercise 1</h2>
         <p>This is exercise 1</p>
-        <button className="button" onClick={handleExercise1Close}>Close</button>
+        <button className="exercise-button" onClick={handleExercise1Close}>Close</button>
       </div>
     }
 
@@ -46,7 +46,7 @@ const Meditation = () =>{
       <div className="exercise-popup">
         <h2>Exercise 2</h2>
         <p>This is exercise 2</p>
-        <button className="button" onClick={handleExercise2Close}>Close</button>
+        <button className="exercise-button" onClick={handleExercise2Close}>Close</button>
       </div>
     }
 
@@ -54,7 +54,7 @@ const Meditation = () =>{
       <div className="exercise-popup">
         <h2>Exercise 3</h2>
         <p>This is exercise 3</p>
-        <button className="button" onClick={handleExercise3Close}>Close</button>
+        <button className="exercise-button" onClick={handleExercise3Close}>Close</button>
       </div>
     }
   </div>

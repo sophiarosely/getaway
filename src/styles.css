@@ -40,13 +40,13 @@ body{
   background-color: rgb(170, 219, 234);
   border: 1px solid black;
   padding: 40px;
-  width: 800px;
-  height: 600px;
+  width: 1000px;
+  height: 700px;
   border-radius: 30px;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
-.button {
+.exercise-button {
   position: absolute;
   bottom: 10px;
   right: 10px;
