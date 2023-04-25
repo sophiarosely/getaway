@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import * as React from 'react';
 import axios from 'axios';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -10,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 
 interface AffirmationEntryProps {
@@ -191,12 +193,15 @@ return (
               </Typography>
             </CardContent>
             <CardActions>
+            <div>
+            <Link to="/affirmation-practice">
               <IconButton
-                onClick={() => deleteAffirmations(entryId)}
-                style={{ marginTop: '15px', cursor: 'pointer' }}
+              style={{ marginTop: '15px', cursor: 'pointer' }}
               >
-                <DeleteOutlineOutlinedIcon />
+              <AutoAwesomeIcon />
               </IconButton>
+              </Link>
+
 
               <div id={`favorite-${entryId}`}>
                 <IconButton
@@ -207,6 +212,15 @@ return (
                 >
                   {Heart}
                 </IconButton>
+              </div>
+
+              <IconButton
+                onClick={() => deleteAffirmations(entryId)}
+                style={{ marginTop: '15px', cursor: 'pointer' }}
+              >
+                <DeleteOutlineOutlinedIcon />
+              </IconButton>
+
               </div>
             </CardActions>
           </React.Fragment>
