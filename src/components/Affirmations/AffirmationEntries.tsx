@@ -17,20 +17,21 @@ const AffirmationEntries = () => {
         .then(({ data }) => {
           setRetrievedAffirmations(data);
           // localStorage.setItem('retrievedAffirmations', JSON.stringify(data));
-
         })
         .catch((err) => console.log(err));
     };
 
-        useEffect(() => {
-      viewAffirmations();
+    useEffect(() => {
+      if (userId) {
+        viewAffirmations();
+      }
     }, []);
 
 
     return (
       <div id='parent' style={{ paddingBottom: '500px' }}>
           <Link to="/affirmation-favorites"><Button variant='text'>View Favorites</Button></Link>
-             {retrievedAffirmations.map((entry: any) => (
+             {Array.isArray(retrievedAffirmations) && retrievedAffirmations.map((entry: any) => (
              <AffirmationEntry key={entry.user_id} user={entry.user_id} entryId={entry.id} title={entry.title} favorite={entry.favorite} affirmations={entry.affirmationList.split('/n')}  />))}
 
         </div>
