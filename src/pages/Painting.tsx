@@ -53,12 +53,10 @@ const Painting = () =>{
     setIndexFing(hand[0].landmarks[8])
     }
     //draw mesh
-
     const canvas:any = canvasRef.current
     const ctx = canvas.getContext("2d");
 
 drawHand(hand, ctx)
-
     }
   }
   }
@@ -81,8 +79,9 @@ useEffect(() => {
   ctx.fillStyle = 'red';
   ctx.beginPath();
   if(indexFing){
-  ctx.arc(indexFing[0]/2, indexFing[1]/2, 5, 0, Math.PI * 2);
+  ctx.arc(indexFing[0]/1.8, indexFing[1]/2, 5, 0, Math.PI * 2);
   ctx.fill();
+  //delete this line to make it cool double mirrored
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 }, [indexFing]);
@@ -93,6 +92,7 @@ return(
   <h1>Painting Page</h1>
 <Webcam ref={ webcamRef }
 style={{
+  transform: "scaleX(-1)",
   position:"absolute",
   marginLeft:"auto",
   marginRight:"auto",
@@ -109,6 +109,7 @@ style={{
     ref={canvasRef}
     id={"canvas1"}
     style={{
+      transform: "scaleX(-1)",
       position:"absolute",
       marginLeft:"auto",
       marginRight:"auto",
