@@ -50,7 +50,7 @@ const Painting = () =>{
     const hand = await net.estimateHands(video);
     console.log(hand)
     if(hand[0].landmarks){
-    setIndexFing(hand[0].landmarks[5])
+    setIndexFing(hand[0].landmarks[8])
     }
     //draw mesh
 
@@ -76,11 +76,14 @@ console.log('i',indexFing)
 useEffect(() => {
   const canvasTwo = canvasTwoRef.current;
   const ctx = canvasTwo.getContext('2d');
+  ctx.scale(-1, 1);
+  ctx.translate(-canvasTwo.width, 0);
   ctx.fillStyle = 'red';
   ctx.beginPath();
   if(indexFing){
   ctx.arc(indexFing[0]/2, indexFing[1]/2, 5, 0, Math.PI * 2);
   ctx.fill();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 }, [indexFing]);
 
