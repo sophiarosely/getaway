@@ -9,6 +9,9 @@ const Painting = () =>{
 
   const webcamRef: React.RefObject<Webcam> = useRef<Webcam>(null);
   const canvasRef: any = useRef(null);
+  const canvasTwoRef:any = useRef(null);
+
+  const [ indexFing, setIndexFing ]:any = useState(null);
 
 
   const runHandPose = async () =>{
@@ -18,7 +21,7 @@ const Painting = () =>{
     //loop to constantly search for a hand in frame
     setInterval(()=>{
       detect(net)
-    }, 100)
+    }, 50)
   }
 
   const detect = async (net:any)=>{
@@ -33,7 +36,9 @@ const Painting = () =>{
         //get video properties
 
         const video = webcamRef.current.video
+
         const videoWidth = webcamRef.current.video.videoWidth;
+
         const videoHeight = webcamRef.current.video.videoHeight;
     //Set height and width
     webcamRef.current.video.width = videoWidth;
@@ -44,18 +49,41 @@ const Painting = () =>{
     //Make detections
     const hand = await net.estimateHands(video);
     console.log(hand)
+    if(hand[0].landmarks){
+    setIndexFing(hand[0].landmarks[5])
+    }
     //draw mesh
-const ctx = canvasRef.current.getContext("2d")
+
+    const canvas:any = canvasRef.current
+    const ctx = canvas.getContext("2d");
+
 drawHand(hand, ctx)
 
     }
   }
   }
 
+useEffect(()=>{
+  runHandPose();
+},[])
 
-runHandPose();
+
+const newDraw = (hand:any, ctx:any)=>{
+
+}
+
+console.log('i',indexFing)
+useEffect(() => {
+  const canvasTwo = canvasTwoRef.current;
+  const ctx = canvasTwo.getContext('2d');
+  ctx.fillStyle = 'red';
+  ctx.beginPath();
+  ctx.arc(100, 100, 50, 0, Math.PI * 2);
+  ctx.fill();
+}, []);
 
 return(
+  <div>
   <div>
   <h1>Painting Page</h1>
 <Webcam ref={ webcamRef }
@@ -70,20 +98,43 @@ style={{
   width:640,
   height:480
 }} />
-<canvas
-ref={canvasRef}
-style={{
-  position:"absolute",
-  marginLeft:"auto",
-  marginRight:"auto",
-  left:0,
-  right:0,
-  textAlign:"center",
-  zIndex:9,
-  width:640,
-  height:480
-}} />
-  </div>
+
+
+  <canvas
+    ref={canvasRef}
+    id={"canvas1"}
+    style={{
+      position:"absolute",
+      marginLeft:"auto",
+      marginRight:"auto",
+      left:0,
+      right:0,
+      textAlign:"center",
+      zIndex:9,
+      width:640,
+      height:480
+    }}
+  />
+    </div>
+    <div>
+    <canvas
+  ref={canvasTwoRef}
+  id={"canvas2"}
+  style={{
+    backgroundColor: "black",
+    marginLeft:"auto",
+    marginRight:"auto",
+    width: 640,
+    height: 480,
+    left:0,
+      right:0,
+    marginTop: "20px", // adjust as needed
+    position: "absolute",
+    top: "600px", // adjust as needed
+  }}
+/>
+</div>
+</div>
 )
 
 };
