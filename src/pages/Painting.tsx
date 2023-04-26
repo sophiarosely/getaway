@@ -78,9 +78,11 @@ useEffect(() => {
   const ctx = canvasTwo.getContext('2d');
   ctx.fillStyle = 'red';
   ctx.beginPath();
-  ctx.arc(100, 100, 50, 0, Math.PI * 2);
+  if(indexFing){
+  ctx.arc(indexFing[0]/2, indexFing[1]/2, 5, 0, Math.PI * 2);
   ctx.fill();
-}, []);
+  }
+}, [indexFing]);
 
 return(
   <div>
