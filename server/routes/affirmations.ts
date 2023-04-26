@@ -76,6 +76,28 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 
 })
 
+// Retrieving specific affirmations from DB in use for interactive read-along
+affirmationRoutes.get('/retrieve/:userId/:entryId', async (req, res) => {
+    const { userId, entryId } = req.params
+
+    console.log(userId, entryId)
+    try {
+
+        const affirmationEntries = await prisma.affirmations.findFirst({
+            where: {
+                user_id: Number(userId),
+                id: Number(entryId)
+            }
+        })
+        res.send(affirmationEntries);
+
+    } catch (err) {
+        console.log(err);
+        res.send('Error: Affirmations were not found.')
+    }
+
+})
+
 //Retrieving favorited affirmations from DB
 affirmationRoutes.get('/retrieve-favorites/:googleId', async (req, res) => {
     const { googleId } = req.params;
