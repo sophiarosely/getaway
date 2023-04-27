@@ -15,7 +15,11 @@ const AffirmationEntries = () => {
       axios
         .get(`/affirmations/retrieve/${userId}`)
         .then(({ data }) => {
-          setRetrievedAffirmations(data);
+          setRetrievedAffirmations(data.sort((a: any, b: any) => {
+            const dateA = new Date(a.createdAt);
+            const dateB = new Date(b.createdAt);
+            return dateB - dateA; // returning entries by most recent date
+          }));
         })
         .catch((err) => console.log(err));
     };
