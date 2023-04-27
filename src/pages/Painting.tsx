@@ -88,20 +88,15 @@ useEffect(()=>{
 },[])
 
 
-const newDraw = (hand:any, ctx:any)=>{
-
-}
-
-console.log('state', gesture)
-useEffect(() => {
+const ArtistCanvas = ()=>{
   const canvasTwo = canvasTwoRef.current;
   const ctx = canvasTwo.getContext('2d');
   ctx.scale(-1, 1);
   ctx.translate(-canvasTwo.width, 0);
   ctx.fillStyle = 'red';
   ctx.beginPath();
-  if(gesture.gestures[0]){
-  if(indexFing && gesture.gestures[0].name === 'victory'){
+
+  if(indexFing && gesture.gestures[0] && gesture.gestures[0].name === 'victory'){
     console.log(gesture.gestures[0].name)
   ctx.arc(indexFing[0]/1.8, indexFing[1]/2, 5, 0, Math.PI * 2);
   ctx.fill();
@@ -109,6 +104,22 @@ useEffect(() => {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 }
+
+
+const ClearCanvas = () =>{
+  const canvas = canvasTwoRef.current;
+  const ctx = canvas.getContext("2d")
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+console.log('state', gesture)
+useEffect(() => {
+ ArtistCanvas();
+
+ if(gesture.gestures[0] && gesture.gestures[0].name === 'thumbs_up'){
+  ClearCanvas();
+ }
+
 }, [indexFing]);
 
 return(
