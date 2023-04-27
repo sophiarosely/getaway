@@ -10,13 +10,21 @@ import * as fp from "fingerpose";
 import GestureEstimator from "../../node_modules/fingerpose/src/GestureEstimator"
 
 const Painting = () =>{
-
+//refs of webcam and canvases
   const webcamRef: React.RefObject<Webcam> = useRef<Webcam>(null);
   const canvasRef: any = useRef(null);
   const canvasTwoRef:any = useRef(null);
 
+  //states
   const [ indexFing, setIndexFing ]:any = useState(null);
-
+  const [ gesture, setGesture ] = useState(
+    {
+      gestures:[
+        {
+        name:'',
+        score:0
+        }
+  ]})
 
   const runHandPose = async () =>{
 
@@ -59,6 +67,7 @@ const Painting = () =>{
         ]);
         const gesture = await GE.estimate(hand[0].landmarks, 8)
         console.log('gesture', gesture)
+        setGesture(gesture);
       }
 
 //set state of index finger tip
@@ -83,7 +92,7 @@ const newDraw = (hand:any, ctx:any)=>{
 
 }
 
-console.log('i',indexFing)
+console.log('state', gesture)
 useEffect(() => {
   const canvasTwo = canvasTwoRef.current;
   const ctx = canvasTwo.getContext('2d');
@@ -91,12 +100,15 @@ useEffect(() => {
   ctx.translate(-canvasTwo.width, 0);
   ctx.fillStyle = 'red';
   ctx.beginPath();
-  if(indexFing){
+  if(gesture.gestures[0]){
+  if(indexFing && gesture.gestures[0].name === 'victory'){
+    console.log(gesture.gestures[0].name)
   ctx.arc(indexFing[0]/1.8, indexFing[1]/2, 5, 0, Math.PI * 2);
   ctx.fill();
   //delete this line to make it cool double mirrored
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
+}
 }, [indexFing]);
 
 return(
