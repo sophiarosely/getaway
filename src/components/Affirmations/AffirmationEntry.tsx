@@ -149,7 +149,6 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
             style={{
               width: '600px',
               display: 'flex',
-              justifyContent: 'center',
               alignItems: 'center',
               color: 'black',
             }}
@@ -205,7 +204,7 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                     </div>
                   </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions  style={{display: 'fiex', justifyContent: 'flex-end' }}>
                   <div>
                   <div id={`practice-${entryId}`}>
                     {/* interactive affirmation button */}
