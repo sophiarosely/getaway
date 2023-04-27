@@ -16,7 +16,6 @@ const AffirmationEntries = () => {
         .get(`/affirmations/retrieve/${userId}`)
         .then(({ data }) => {
           setRetrievedAffirmations(data);
-          // localStorage.setItem('retrievedAffirmations', JSON.stringify(data));
         })
         .catch((err) => console.log(err));
     };
