@@ -8,6 +8,7 @@ import drawHand from "../../utilities"
 import * as fp from "fingerpose";
 // @ts-ignore
 import GestureEstimator from "../../node_modules/fingerpose/src/GestureEstimator"
+import  Button  from "@mui/material/Button";
 
 const Painting = () =>{
 //refs of webcam and canvases
@@ -112,20 +113,23 @@ const ClearCanvas = () =>{
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-console.log('state', gesture)
+const SaveCanvas = () =>{
+  const canvas:any = document.getElementById("canvas2")
+  const dataURL = canvas.toDataURL();
+  console.log(dataURL)
+}
+
+
 useEffect(() => {
  ArtistCanvas();
-
- if(gesture.gestures[0] && gesture.gestures[0].name === 'thumbs_up'){
-  ClearCanvas();
- }
-
 }, [indexFing]);
 
 return(
   <div>
   <div>
   <h1>Painting Page</h1>
+  <Button onClick={SaveCanvas}>Save Painting</Button>
+  <Button onClick={ClearCanvas}>Clear Canvas</Button>
 <Webcam ref={ webcamRef }
 style={{
   transform: "scaleX(-1)",
@@ -175,7 +179,9 @@ style={{
     top: "600px", // adjust as needed
   }}
 />
+
 </div>
+
 </div>
 )
 
