@@ -14,11 +14,13 @@ const AffirmationSpeech = () => {
     const [recognizedText, setRecognizedText] = useState('');
     const [affirmations, setAffirmations] = useState<string[]>([]);
     const [currentAffirmationIndex, setCurrentAffirmationIndex] = useState(0);
-
     const [showText, setShowText] = useState(true);
+    const [audio] = useState(new Audio('https://drive.google.com/uc?export=download&id=1K0vLksQxYQ58YGX8cbRhm2kc0DdlAzcX'));
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [volume, setVolume] = useState(50);
 
-
-
+    // retrieving affirmations
     useEffect(() => {
         axios
         .get(`/affirmations/retrieve/${user}/${entryId}`)
@@ -27,7 +29,36 @@ const AffirmationSpeech = () => {
 
     }, [])
 
+    // affirmation binaural music
+    useEffect(() => {
+      if (isPlaying) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }, [isPlaying]);
 
+    const handlePlayClick = () => {
+      setIsPlaying(true);
+    };
+
+    const handlePauseClick = () => {
+      setIsPlaying(false);
+    };
+
+    const handleVolumeChange = (e) => {
+        const newVolume = e.target.value
+        setVolume(newVolume)
+        audio.volume = newVolume / 100; 
+    }
+
+
+    // music settings pop-up menu
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+      };
+
+      // interactive text-to-speech affirmation
     const SpeechRecognition =
     (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
@@ -63,7 +94,7 @@ const AffirmationSpeech = () => {
         setShowText(false);
       }, 3000);
        () => clearTimeout(timer);
-       
+
     for (let i = 0; i < affirmations.length; i++) {
       const affirmation = affirmations[i].toLowerCase();
       if (transcript.toLowerCase().includes(affirmation)) {
@@ -75,6 +106,7 @@ const AffirmationSpeech = () => {
     }
   };
 
+  // text-to-speech record handlers
   const handleStartRecording = () => {
     setIsRecording(true);
     recognition.start();
@@ -100,9 +132,20 @@ const AffirmationSpeech = () => {
             </IconButton>
             </div>
          {(showText) && <p>{recognizedText}</p>}
+         {currentAffirmation}
 
 
-      {currentAffirmation}
+         <button onClick={toggleMenu}>Open Menu</button>
+      {isOpen && (
+        <div className="popup-menu">
+          {/* Play/Pause Controls */}
+          <button onClick={handlePlayClick}>Play</button>
+          <button onClick={handlePauseClick}>Pause</button>
+
+          {/* Volume Slider */}
+          <input type="range" min="0" max="100" defaultValue="50" onChange={handleVolumeChange} />
+        </div>
+      )}
 
         </div>
         </div>
