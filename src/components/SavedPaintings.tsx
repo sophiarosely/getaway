@@ -1,3 +1,5 @@
+import  IconButton  from "@mui/material/IconButton";
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import axios from "axios"
 import React, {useRef, useEffect, useState, useContext} from "react";
 import { UserContext, UserContextType } from '../App';
@@ -7,6 +9,7 @@ const SavedPaintings = () =>{
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
 
 const [paintings, setpaintings ]:any = useState(null);
+console.log(paintings)
 
 
   const getPaintings = ()=>{
@@ -14,6 +17,17 @@ const [paintings, setpaintings ]:any = useState(null);
     .then((response)=>{
       console.log(response)
       setpaintings(response.data)
+    })
+  }
+
+  const deletePaintings=()=>{
+    axios.delete('/paintings/delete',{
+      data: {
+        id: paintings[0].id
+      }
+    })
+    .then(()=>{
+      console.log("painting Deleted")
     })
   }
 
@@ -37,7 +51,18 @@ const [paintings, setpaintings ]:any = useState(null);
       padding:'30px'
     }}>
 <p>Saved Paintings</p>
-<img src={paintings?paintings[0].url:''} width="640" height="400"/>
+<div>
+  {paintings && paintings.length > 0 ? (
+          <><img src={paintings ? paintings[0].url : ''} width="640" height="350" /><IconButton
+            onClick={deletePaintings}
+            style={{ marginTop: '15px', cursor: 'pointer' }}
+          >
+            <DeleteOutlineOutlinedIcon />
+          </IconButton></>
+  ) : (<p>No Saved Images</p>
+  )}
+              </div>
+
     </div>
   )
 }

@@ -61,5 +61,18 @@ router.get("/all-paintings", (req, res)=>{
   })
 })
 
-
+router.delete('/delete', (req:any, res)=>{
+  console.log(req.body)
+  prisma.paintings.delete({
+    where:{
+      id: req.body.id
+    }
+  })
+  .then(()=>{
+    console.log('deleted')
+  })
+  .catch((err:Error)=>{
+    console.error('could not delete', err)
+  })
+})
 export default router;
