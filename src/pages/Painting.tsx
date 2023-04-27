@@ -4,6 +4,10 @@ import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import '@tensorflow/tfjs-backend-webgl';
 import drawHand from "../../utilities"
+// @ts-ignore
+import * as fp from "fingerpose";
+// @ts-ignore
+import GestureEstimator from "../../node_modules/fingerpose/src/GestureEstimator"
 
 const Painting = () =>{
 
@@ -34,11 +38,8 @@ const Painting = () =>{
 
     ){
         //get video properties
-
         const video = webcamRef.current.video
-
         const videoWidth = webcamRef.current.video.videoWidth;
-
         const videoHeight = webcamRef.current.video.videoHeight;
     //Set height and width
     webcamRef.current.video.width = videoWidth;
@@ -48,14 +49,26 @@ const Painting = () =>{
     canvasRef.current.height = videoHeight;
     //Make detections
     const hand = await net.estimateHands(video);
-    console.log(hand)
+    //console.log(hand)
+
+      //getting gestures
+      if(hand.length > 0){
+        const GE = new GestureEstimator([
+          fp.Gestures.VictoryGesture,
+          fp.Gestures.ThumbsUpGesture,
+        ]);
+        const gesture = await GE.estimate(hand[0].landmarks, 8)
+        console.log('gesture', gesture)
+      }
+
+//set state of index finger tip
     if(hand[0].landmarks){
     setIndexFing(hand[0].landmarks[8])
     }
     //draw mesh
     const canvas:any = canvasRef.current
     const ctx = canvas.getContext("2d");
-
+//draws circles oer hand
 drawHand(hand, ctx)
     }
   }
