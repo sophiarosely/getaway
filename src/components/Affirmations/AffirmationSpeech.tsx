@@ -49,7 +49,7 @@ const AffirmationSpeech = () => {
     const handleVolumeChange = (e) => {
         const newVolume = e.target.value
         setVolume(newVolume)
-        audio.volume = newVolume / 100; 
+        audio.volume = newVolume / 100;
     }
 
 
@@ -131,22 +131,25 @@ const AffirmationSpeech = () => {
             <StopCircleIcon/>
             </IconButton>
             </div>
-         {(showText) && <p>{recognizedText}</p>}
+            <div className={showText ? 'fade-in' : 'fade-out'}>
+       <p>{recognizedText}</p>
+       </div>
+
          {currentAffirmation}
 
 
-         <button onClick={toggleMenu}>Open Menu</button>
+       {/*  <button onClick={toggleMenu}>Open Menu</button>
       {isOpen && (
         <div className="popup-menu">
-          {/* Play/Pause Controls */}
+
           <button onClick={handlePlayClick}>Play</button>
           <button onClick={handlePauseClick}>Pause</button>
 
-          {/* Volume Slider */}
+
           <input type="range" min="0" max="100" defaultValue="50" onChange={handleVolumeChange} />
         </div>
       )}
-
+*/}
         </div>
         </div>
       );
