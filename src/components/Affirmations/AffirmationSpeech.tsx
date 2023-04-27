@@ -4,9 +4,7 @@ import axios from 'axios';
 import MicIcon from '@mui/icons-material/Mic';
 import IconButton from '@mui/material/IconButton';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography'
+
 
 
 const AffirmationSpeech = () => {
@@ -16,8 +14,10 @@ const AffirmationSpeech = () => {
     const [recognizedText, setRecognizedText] = useState('');
     const [affirmations, setAffirmations] = useState<string[]>([]);
     const [currentAffirmationIndex, setCurrentAffirmationIndex] = useState(0);
-    console.log(entryId, user)
-    console.log(affirmations, 'here')
+
+    const [showText, setShowText] = useState(true);
+
+
 
     useEffect(() => {
         axios
@@ -26,6 +26,7 @@ const AffirmationSpeech = () => {
         .catch((err) => console.error(err))
 
     }, [])
+
 
     const SpeechRecognition =
     (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -55,12 +56,21 @@ const AffirmationSpeech = () => {
 
   const checkAffirmation = (transcript: string) => {
     transcript += '.'
+
+    setShowText(true);
+
+    const timer = setTimeout(() => { // user alert of recognized speech, then dissolves
+        setShowText(false);
+      }, 3000);
+       () => clearTimeout(timer);
+       
     for (let i = 0; i < affirmations.length; i++) {
       const affirmation = affirmations[i].toLowerCase();
       if (transcript.toLowerCase().includes(affirmation)) {
-        console.log('Affirmation recognized:', affirmations[i]);
-        setRecognizedText(`Affirmation recognized: ${affirmations[i]}`);
+
         setCurrentAffirmationIndex((currentIndex) => currentIndex + 1);
+        setRecognizedText(`Affirmation recognized: ${affirmations[i]}`);
+
       }
     }
   };
@@ -79,33 +89,22 @@ const AffirmationSpeech = () => {
 
 
     return (
-        <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
             <MicIcon/>
             </IconButton>
             <IconButton component="button" onClick={handleStopRecording} disabled={!isRecording}>
             <StopCircleIcon/>
             </IconButton>
-          <p>{recognizedText}</p>
+            </div>
+         {(showText) && <p>{recognizedText}</p>}
 
 
-          <Box
-      sx={{
-        display: 'flex',
-        '& > :not(style)': {
-          m: 1,
-          width: 128,
-          height: 128,
-        },
-      }}
-    >
-      <Paper variant="outlined" elevation={24} style={{ width: '800px', height: '600px' }}>
-
-      <Typography variant="body1" component="p" color="black">
       {currentAffirmation}
-      </Typography>
-      </Paper>
-    </Box>
+
+        </div>
         </div>
       );
 }
