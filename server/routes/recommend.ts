@@ -34,7 +34,7 @@ recommendRoutes.post('/newRecommend', async (req: any, res: any) => {
   try {
     const { data } = req.body;
   const { recommend_name, googleId, recommend_type } = data;
-
+console.log(data)
   const newObj = {
     recommend_name: recommend_name,
     recommend_type: recommend_type,
