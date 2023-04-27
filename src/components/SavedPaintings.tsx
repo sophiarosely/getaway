@@ -45,7 +45,7 @@ console.log(paintings)
       color: '#788ACA',
       backgroundColor:'#CCD7FF',
       width: '70%',
-      minHeight: '250px',
+      minHeight: '350px',
       textAlign:'center',
       marginBottom:'250px',
       padding:'30px'
@@ -53,7 +53,7 @@ console.log(paintings)
 <p>Saved Paintings</p>
 <div>
   {paintings && paintings.length > 0 ? (
-          <><img src={paintings ? paintings[0].url : ''} width="640" height="350" /><IconButton
+          <><img src={paintings ? paintings[0].url : ''} width="640" height="400" /><IconButton
             onClick={deletePaintings}
             style={{ marginTop: '15px', cursor: 'pointer' }}
           >

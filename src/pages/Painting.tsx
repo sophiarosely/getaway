@@ -11,6 +11,8 @@ import * as fp from "fingerpose";
 import GestureEstimator from "../../node_modules/fingerpose/src/GestureEstimator"
 import  Button  from "@mui/material/Button";
 import axios from "axios";
+// @ts-ignore
+import { HexColorPicker } from "react-colorful";
 
 const Painting = () =>{
 
@@ -22,6 +24,7 @@ const Painting = () =>{
   const canvasTwoRef:any = useRef(null);
 
   //states
+  const [color, setColor ] = useState("#aabbcc")
   const [ indexFing, setIndexFing ]:any = useState(null);
   const [ gesture, setGesture ] = useState(
     {
@@ -99,12 +102,12 @@ const ArtistCanvas = ()=>{
   const ctx = canvasTwo.getContext('2d');
   ctx.scale(-1, 1);
   ctx.translate(-canvasTwo.width, 0);
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = color;
   ctx.beginPath();
 
   if(indexFing && gesture.gestures[0] && gesture.gestures[0].name === 'victory'){
     //console.log(gesture.gestures[0].name)
-  ctx.arc(indexFing[0]/1.8, indexFing[1]/2, 5, 0, Math.PI * 2);
+  ctx.arc(indexFing[0]/1.9, indexFing[1]/2.4, 5, 0, Math.PI * 2);
   ctx.fill();
   //delete this line to make it cool double mirrored
   ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -143,14 +146,14 @@ useEffect(() => {
 
 return(
   <div>
-  <div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
   <h1>Painting Page</h1>
   <Button onClick={SaveCanvas}>Save Painting</Button>
   <Button onClick={ClearCanvas}>Clear Canvas</Button>
 <Webcam ref={ webcamRef }
 style={{
   transform: "scaleX(-1)",
-  position:"absolute",
+
   marginLeft:"auto",
   marginRight:"auto",
   left:0,
@@ -167,7 +170,6 @@ style={{
     id={"canvas1"}
     style={{
       transform: "scaleX(-1)",
-      position:"absolute",
       marginLeft:"auto",
       marginRight:"auto",
       left:0,
@@ -191,7 +193,7 @@ style={{
     height: 480,
     left:0,
       right:0,
-    marginTop: "20px", // adjust as needed
+    marginTop: "50px", // adjust as needed
     position: "absolute",
     top: "600px", // adjust as needed
   }}
@@ -199,7 +201,12 @@ style={{
 
 </div>
 
+<div style={{ padding: "80px", display: 'flex', flexDirection: 'column', alignItems: 'center' , marginBottom:"200px"}}>
+<HexColorPicker color={color} onChange={setColor}/>
 </div>
+
+</div>
+
 )
 
 };
