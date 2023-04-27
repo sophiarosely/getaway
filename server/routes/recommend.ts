@@ -2,7 +2,8 @@ import { Router } from 'express';
 const recommendRoutes = Router();
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
-
+import axios from 'axios';
+const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
 
 
 recommendRoutes.get('/', async (req: any, res: any) => {
@@ -121,5 +122,25 @@ recommendRoutes.delete('/delete', async (req: any, res: any) => {
     res.send('Error');
   }
 });
+
+recommendRoutes.get('/search',(req:any,res:any)=>{
+  axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+  params: {
+    key: GOOGLE_PLACES_API,
+    radius: '4000',
+    location: ` 30.275195, -89.781175`,
+    keyword: 'focus',
+
+
+  }
+})
+.then((response:any)=>{
+res.send(response.data).status(200)
+})
+.catch((err:any)=>{
+  res.status(500)
+  console.error("failed to get therapists", err)
+})
+})
 
 export default recommendRoutes
