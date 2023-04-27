@@ -1,4 +1,5 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect, useState, useContext} from "react";
+import { UserContext, UserContextType } from '../App';
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
@@ -9,8 +10,12 @@ import * as fp from "fingerpose";
 // @ts-ignore
 import GestureEstimator from "../../node_modules/fingerpose/src/GestureEstimator"
 import  Button  from "@mui/material/Button";
+import axios from "axios";
 
 const Painting = () =>{
+
+  const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
+
 //refs of webcam and canvases
   const webcamRef: React.RefObject<Webcam> = useRef<Webcam>(null);
   const canvasRef: any = useRef(null);
@@ -67,7 +72,7 @@ const Painting = () =>{
           fp.Gestures.ThumbsUpGesture,
         ]);
         const gesture = await GE.estimate(hand[0].landmarks, 8)
-        console.log('gesture', gesture)
+        //console.log('gesture', gesture)
         setGesture(gesture);
       }
 
@@ -98,7 +103,7 @@ const ArtistCanvas = ()=>{
   ctx.beginPath();
 
   if(indexFing && gesture.gestures[0] && gesture.gestures[0].name === 'victory'){
-    console.log(gesture.gestures[0].name)
+    //console.log(gesture.gestures[0].name)
   ctx.arc(indexFing[0]/1.8, indexFing[1]/2, 5, 0, Math.PI * 2);
   ctx.fill();
   //delete this line to make it cool double mirrored
@@ -117,6 +122,18 @@ const SaveCanvas = () =>{
   const canvas:any = document.getElementById("canvas2")
   const dataURL = canvas.toDataURL();
   console.log(dataURL)
+  axios.post('/paintings/save',{
+    data:{
+    googleId:userId,
+    url: dataURL
+    }
+  })
+  .then(()=>{
+    console.log("painting saved")
+  })
+  .catch((err)=>{
+    console.error('couldnt save painting', err)
+  })
 }
 
 

@@ -5,6 +5,7 @@ import { useEffect, useContext, useState } from 'react';
 import CheckIn from '../components/CheckIn/CheckIn';
 import HabitHome from  '../components/Habits/HabitHome'
 import { UserContext, UserContextType } from '../App';
+import SavedPaintings from '../components/SavedPaintings'
 import axios from 'axios';
 
 
@@ -90,7 +91,7 @@ const Home = () => {
       {/* replace all this with the actual functionality when the time comes */}
       <h2 >HABITS</h2>
       <div style={{
-        
+
       borderRadius:'40px',
       margin:'60px auto',
       color: '#788ACA',
@@ -114,6 +115,31 @@ const Home = () => {
       </div>
       {/* <HabitCreate></HabitCreate> */}
       </div>
+      <div
+    style={{
+      borderRadius:'40px',
+      margin:'60px auto',
+      color: '#5C6B9E',
+      backgroundColor:'#5C6B9E',
+      width: '70%',
+      height: '7px',
+      textAlign:'center',
+      marginBottom: '100px'
+    }}
+  />
+      <SavedPaintings/>
+      <div
+    style={{
+      borderRadius:'40px',
+      margin:'60px auto',
+      color: '#5C6B9E',
+      backgroundColor:'#5C6B9E',
+      width: '70%',
+      height: '7px',
+      textAlign:'center',
+      marginBottom: '100px'
+    }}
+  />
       </div>
     </div>
   );
