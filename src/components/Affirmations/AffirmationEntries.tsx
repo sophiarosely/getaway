@@ -18,7 +18,7 @@ const AffirmationEntries = () => {
           setRetrievedAffirmations(data.sort((a: any, b: any) => {
             const dateA = new Date(a.createdAt);
             const dateB = new Date(b.createdAt);
-            return dateB - dateA; // returning entries by most recent date
+            return dateB.getTime() - dateA.getTime(); // returning entries by most recent date
           }));
         })
         .catch((err) => console.log(err));
