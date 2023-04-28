@@ -123,24 +123,30 @@ recommendRoutes.delete('/delete', async (req: any, res: any) => {
   }
 });
 
-recommendRoutes.get('/search',(req:any,res:any)=>{
-  axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
-  params: {
-    key: GOOGLE_PLACES_API,
-    radius: '4000',
-    location: ` 30.275195, -89.781175`,
-    keyword: 'focus',
-
-
+recommendRoutes.post('/search', async(req: any, res: any) => {
+  try {
+    const keyword = req.body.data.keyword;
+    console.log(keyword);
+    axios
+      .get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+        params: {
+          key: GOOGLE_PLACES_API,
+          radius: '4000',
+          location: ` 30.275195, -89.781175`,
+          keyword: keyword,
+        },
+      })
+      .then((response: any) => {
+        res.send(response.data.results).status(200);
+      })
+      .catch((err: any) => {
+        res.status(500);
+        console.error('failed to get places', err);
+      });
+  } catch (error) {
+    console.log('Error: ', error);
+    res.send('Error');
   }
-})
-.then((response:any)=>{
-res.send(response.data).status(200)
-})
-.catch((err:any)=>{
-  res.status(500)
-  console.error("failed to get therapists", err)
-})
-})
+});
 
 export default recommendRoutes

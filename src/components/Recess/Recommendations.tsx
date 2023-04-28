@@ -11,35 +11,26 @@ import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface RecommendProps {
-  id: number;
-  habit_name: string;
-  habit_type: string;
-  userId: string | null;
-  habit_createdAt: string;
+ 
+ recommend_name: string;
+
+ 
+
   onDelete: () => void;
 }
 
 const Recommend = ({
-  id,
-  habit_name,
-  habit_type,
-  userId,
-  habit_createdAt,
+
+ recommend_name,
+ 
+ 
+
   onDelete,
 }: RecommendProps) => {
 
-   const [dates, setDates] = useState<[]>([]);
+  
  let [completed, setCompleted] = useState(1);
 
- useEffect(() => {
-    axios
-      .get(`recommend/updatedon/:${id}`)
-      .then((response) => {
-        console.log(response.data);
-        setDates(response.data);
-      })
-      .catch((error) => console.error(error));
-  }, [completed]);
 
 
 
@@ -47,7 +38,7 @@ const Recommend = ({
     axios
       .post('/recommend/completed', {
         data: {
-          habit: id,
+         recommend: id,
           user: userId,
         },
       })
@@ -62,7 +53,7 @@ const Recommend = ({
     axios
       .delete('/recommend/delete', {
         data: {
-          habitId: id,
+         recommendId: id,
         },
       })
       .then((response) => {
@@ -82,19 +73,19 @@ const Recommend = ({
   >
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {habit_name}
+            {recommend_name}
           </Typography>
           <Typography variant="h5" component="div">
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-         boop
+        
           </Typography>
           <Typography variant="body2">
             
           </Typography>
           <Typography variant="body2">
             <Button variant="outlined" onClick={handleComplete} startIcon={<DeleteIcon />}>
-        complete
+        Create Goal
       </Button>
           <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
         delete
