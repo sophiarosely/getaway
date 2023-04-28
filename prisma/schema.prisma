@@ -102,7 +102,7 @@ model StaffTherapist {
 
 model TherapistReviews {
   id                 Int            @id @default(autoincrement())
-  date               DateTime       @default(now())
+  date               String
   text               String         @db.VarChar(5000)
   rating             Float
   staff_therapist_id Int

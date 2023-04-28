@@ -9,6 +9,7 @@ import checkInRoute from './routes/checkIn';
 import moodEntryRoute from './routes/moodEntry';
 import staffRoute from './routes/staff-therapists';
 import paintingRoute from './routes/paintings';
+
 // import passportAuth from 'passport';
 // // import cookieSession from 'cookie-session';
 // import cookieSession from 'cookie-session';
