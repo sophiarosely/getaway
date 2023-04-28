@@ -46,7 +46,7 @@ const AffirmationSpeech = () => {
       setIsPlaying(false);
     };
 
-    const handleVolumeChange = (e) => {
+    const handleVolumeChange = (e: any) => {
         const newVolume = e.target.value
         setVolume(newVolume)
         audio.volume = newVolume / 100;
@@ -69,7 +69,6 @@ const AffirmationSpeech = () => {
 
   recognition.onresult = (event: any) => {
     const transcript = event.results[0][0].transcript;
-    console.log('Speech recognition result:', transcript);
     setRecognizedText(transcript);
     checkAffirmation(transcript);
   };
@@ -92,6 +91,7 @@ const AffirmationSpeech = () => {
 
     const timer = setTimeout(() => { // user alert of recognized speech, then dissolves
         setShowText(false);
+        setRecognizedText('')
       }, 3000);
        () => clearTimeout(timer);
 
@@ -114,10 +114,13 @@ const AffirmationSpeech = () => {
 
   const handleStopRecording = () => {
     setIsRecording(false);
+    recognition.continuous = false;
     recognition.stop();
+
   };
 
   const currentAffirmation = affirmations[currentAffirmationIndex];
+
 
 
     return (
@@ -136,9 +139,11 @@ const AffirmationSpeech = () => {
        </div>
 
          {currentAffirmation}
+         {currentAffirmationIndex === affirmations.length &&
+        <button onClick={() => setCurrentAffirmationIndex(0)}>Start Over</button>}
 
 
-       {/*  <button onClick={toggleMenu}>Open Menu</button>
+        {/*  <button onClick={toggleMenu}>Open Menu</button>
       {isOpen && (
         <div className="popup-menu">
 
@@ -149,7 +154,7 @@ const AffirmationSpeech = () => {
           <input type="range" min="0" max="100" defaultValue="50" onChange={handleVolumeChange} />
         </div>
       )}
-*/}
+      */}
         </div>
         </div>
       );
