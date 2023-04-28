@@ -61,11 +61,20 @@ const AffirmationSpeech = () => {
       };
 
 // openAI call for reward response
-    const rewardResponse = useCallback((affirmation: string) => {
-    axios
-      .get(`/affirmations/${affirmation}`)
-      .then(({ data }) => setRecognizedText(data))
-  }, [affirmations])
+const rewardResponse = useCallback(async (affirmation: string) => {
+  try {
+    const { data } = await axios.get(`/affirmations/${affirmation}`)
+    setRecognizedText(data)
+
+    // only allows you to only move onto next affirmation, if axios response is received
+    if (affirmation === affirmations[currentAffirmationIndex]) {
+      setCurrentAffirmationIndex((currentIndex) => currentIndex + 1);
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}, [affirmations, currentAffirmationIndex])
+
       // interactive text-to-speech affirmation
     const SpeechRecognition =
     (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -106,9 +115,8 @@ const AffirmationSpeech = () => {
     for (let i = 0; i < affirmations.length; i++) {
       const affirmation = affirmations[i].toLowerCase();
       if (transcript.toLowerCase().includes(affirmation)) {
-        setCurrentAffirmationIndex((currentIndex) => currentIndex + 1);
        rewardResponse(affirmations[i]);
-      }
+       }
     }
   };
 
@@ -151,7 +159,7 @@ const AffirmationSpeech = () => {
         <Button variant="text" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
 
 
-        {/*  <button onClick={toggleMenu}>Open Menu</button>
+       {/*  <button onClick={toggleMenu}>Open Menu</button>
       {isOpen && (
         <div className="popup-menu">
 
@@ -162,7 +170,7 @@ const AffirmationSpeech = () => {
           <input type="range" min="0" max="100" defaultValue="50" onChange={handleVolumeChange} />
         </div>
       )}
-      */}
+        */}
         </div>
         </div>
       );
