@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Reflections from './Reflections';
+import Torus from './Torus';
+import Torus1 from './Three';
+import Torus2 from './Three2';
 
 const Meditation = () =>{
   //creating state for each exercise to open/close
@@ -33,18 +36,26 @@ const Meditation = () =>{
     setReflectionOpen(!reflectionOpen);
   }
 
+  // *****************
+  // *   THREE.JS    *
+  // *****************
+
+
+  // *****************
+  // *   THREE.JS    *
+  // *****************
+
   return (
     <div className="meditation-container">
     <h1>Meditation</h1>
     <div className="exercise-box" onClick={handleExercise1Click}>Exercise 1</div>
     <div className="exercise-box" onClick={handleExercise2Click}>Exercise 2</div>
     <div className="exercise-box" onClick={handleExercise3Click}>Exercise 3</div>
-    <button onClick={handleReflectionClick}>Reflections</button>
-      {reflectionOpen && <Reflections />}
+    {/* <button onClick={handleReflectionClick}>Reflections</button>
+      {reflectionOpen && <Reflections />} */}
       {exercise1Open &&
       <div className="exercise-popup">
-        <h2>Exercise 1</h2>
-        <p>This is exercise 1</p>
+       <div> <Torus /> </div>
         <button className="exercise-button" onClick={handleExercise1Close}>Complete</button>
       </div>
     }
@@ -52,7 +63,7 @@ const Meditation = () =>{
     {exercise2Open &&
       <div className="exercise-popup">
         <h2>Exercise 2</h2>
-        <p>This is exercise 2</p>
+        <p> <Torus1 /></p>
         <button className="exercise-button" onClick={handleExercise2Close}>Complete</button>
       </div>
     }
@@ -60,7 +71,7 @@ const Meditation = () =>{
     {exercise3Open &&
       <div className="exercise-popup">
         <h2>Exercise 3</h2>
-        <p>This is exercise 3</p>
+        <p> <Torus2 /> </p>
         <button className="exercise-button" onClick={handleExercise3Close}>Complete</button>
       </div>
     }
