@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 const AffirmationEntries = () => {
     const [retrievedAffirmations, setRetrievedAffirmations] = useState<string[]>([]);
     const { userName, userId }: UserContextType = useContext(UserContext) ?? {userName: null, userId: null};
-console.log(userId)
 
         const viewAffirmations = () => {
       axios
