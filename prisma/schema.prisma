@@ -20,6 +20,7 @@ model User {
   therapists   Therapists[]   @relation("UserTherapists")
   Habits       Habits[]
   HabitLog     HabitLog[]
+  Paintings    Paintings[]
   Recommend    Recommend[]
 }
 
@@ -85,48 +86,43 @@ model HabitLog {
   user      User     @relation(fields: [user_id], references: [googleId])
   habit     Habits   @relation(fields: [habit_id], references: [id])
 }
+
 model Recommend {
-  id              Int        @id @default(autoincrement())
+  id                  Int      @id @default(autoincrement())
   recommend_name      String
   recommend_type      String
-  recommend_createdAt DateTime   @default(now())
-  user_id         String
-  user            User       @relation(fields: [user_id], references: [googleId])
-
+  recommend_createdAt DateTime @default(now())
+  user_id             String
+  user                User     @relation(fields: [user_id], references: [googleId])
 }
+
 //brandons staff therapist hell maze
 model StaffTherapist {
-  id               Int                   @id @default(autoincrement())
+  id               Int                @id @default(autoincrement())
   name             String
   licenseType      String
   photoURL         String
-  aboutMe          String                @db.VarChar(5000)
-  profExp          String                @db.VarChar(5000)
+  aboutMe          String             @db.VarChar(5000)
+  profExp          String             @db.VarChar(5000)
   yearsExp         Int
   licInfo          String
+  skills           String?
   TherapistReviews TherapistReviews[]
-  skill            StaffTherapistSkill[] @relation("TherapistSkills")
 }
 
 model TherapistReviews {
   id                 Int            @id @default(autoincrement())
-  date               DateTime       @default(now())
+  date               String
   text               String         @db.VarChar(5000)
   rating             Float
   staff_therapist_id Int
   staff_therapist    StaffTherapist @relation(fields: [staff_therapist_id], references: [id])
 }
 
-model Skill {
-  id         Int                   @id @default(autoincrement())
-  name       String
-  therapists StaffTherapistSkill[] @relation("TherapistSkills")
-}
-
-model StaffTherapistSkill {
-  id          Int            @id @default(autoincrement())
-  therapist   StaffTherapist @relation("TherapistSkills", fields: [therapistId], references: [id])
-  therapistId Int
-  skill       Skill          @relation("TherapistSkills", fields: [skillId], references: [id])
-  skillId     Int
+model Paintings {
+  id      Int      @id @default(autoincrement())
+  url     Bytes
+  date    DateTime @default(now())
+  user_id String
+  user    User     @relation(fields: [user_id], references: [googleId])
 }
