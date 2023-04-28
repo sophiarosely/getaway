@@ -31,7 +31,7 @@ const HabitHome = ({habit_name, habit_createdAt,habit_type, id}:Habits) =>{
       {
     axios.get(`habits/updatedon/:${id}`)
       .then(response => {
-        console.log(response.data)
+        // console.log(response.data)
 setDates(response.data)
       })
       .catch(error => console.error(error));

@@ -35,7 +35,7 @@ const HabitCard = ({
     axios
       .get(`habits/updatedon/:${id}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setDates(response.data);
       })
       .catch((error) => console.error(error));
@@ -55,7 +55,7 @@ const HabitCard = ({
         },
       })
         .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setCompleted(completed+1);
       })
       .catch((error) => console.error(error));
@@ -69,7 +69,7 @@ const HabitCard = ({
         },
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         onDelete();
       })
       .catch((error) => console.error(error));
