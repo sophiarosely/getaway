@@ -6,6 +6,7 @@ import Affirmations from './pages/Affirmations'
 import AffirmationEntries from './components/Affirmations/AffirmationEntries'
 import AffirmationFavorites from './components/Affirmations/AffirmationFavorites'
 import AffirmationSpeech from './components/Affirmations/AffirmationSpeech'
+import TherapistProfile from './pages/TherapistProfile'
 import Recess from './pages/Recess'
 import Guidance from './pages/Guidance'
 import Profile from './pages/Profile'
@@ -90,6 +91,7 @@ const App = () => {
         <Route path="/guidance" element={<Guidance />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/meditation" element={<Meditation />} />
+        <Route path="/therapist-profile" element={<TherapistProfile />} />
       </Routes>
       <MusicBar />
       </div>
