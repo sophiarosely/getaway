@@ -7,7 +7,7 @@ interface ResponseDataProps {
 
 const ResponseData: React.FC<ResponseDataProps> = ({ responseData }) => {
   const [selectedName, setSelectedName] = React.useState<string>("");
-
+console.log(responseData)
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSelectedName(event.target.value as string);
   };

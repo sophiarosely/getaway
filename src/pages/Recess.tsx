@@ -6,9 +6,9 @@ import { Button } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import Card from '@mui/material/Card';
 import RecommendCreate from '../components/Recess/RecoCreate'
-import Menu from '../components/Recess/test'
-import ResponseData from '../components/Recess/testInfo'
-
+import Menu from '../components/Recess/RecessMenu'
+import ResponseData from '../components/Recess/RecessInformation'
+import activities from '../components/Recess/fakedb'
 
 const Recess = () =>{
 const [newSearch, setnewSearch] = useState<[]>([]);
@@ -19,29 +19,8 @@ setnewSearch(namesObj)
 // setShowRecommend(true);
 
   }
+console.log(activities)
 
-const healthyOutdoorActivities = [
-  'Hiking',
-  'Cycling',
-  'Running',
-  'Swimming',
-  'Kayaking',
-  'Rock Climbing',
-  'Yoga in the Park',
-  'Stand-up Paddleboarding',
-  'Beach Volleyball',
-  'Frisbee',
-  'Gardening',
-  'Nature Walks',
-  'Outdoor Tai Chi',
-  'Paddle Tennis',
-  'Geocaching',
-  'Birdwatching',
-  'Outdoor Photography',
-  'Picnics',
-  'Stargazing',
-  'Trail Running',
-];
   return (
     <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
     <h3>Recess</h3>
@@ -61,7 +40,7 @@ const healthyOutdoorActivities = [
     }}
   />
     
-    <Menu handleCreate={handleCreate} activities={healthyOutdoorActivities.slice(0, 3)}/>
+    <Menu handleCreate={handleCreate} activities={activities}/>
  
       <ResponseData responseData={newSearch}/>
     </div>
