@@ -9,13 +9,17 @@ const SavedPaintings = () =>{
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
 
 const [paintings, setpaintings ]:any = useState(null);
-console.log(paintings)
+
 
 
   const getPaintings = ()=>{
      axios.get(`/paintings/all-paintings?googleId=${userId}`)
     .then((response)=>{
-      console.log(response)
+      response.data.map((painting:any)=>{
+const binaryString = String.fromCharCode.apply(null, Array.from(painting.url.data))
+const base64String = btoa(binaryString)
+painting.url = `data:image/png;base64,${base64String}`;
+      })
       setpaintings(response.data)
     })
   }

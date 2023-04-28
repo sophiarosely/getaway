@@ -17,13 +17,14 @@ console.log(user)
   prisma.paintings
     .create({
       data: {
-        url: painting.url,
+        url: (Buffer.from(painting.url.split(',')[1], 'base64')),
         user: {
           connect: { id: user.id }
         }
       }
       })
       .then((savedPainting:any) => {
+        console.log(savedPainting)
         return prisma.user.update({
           where: { id: user.id },
           data: {
