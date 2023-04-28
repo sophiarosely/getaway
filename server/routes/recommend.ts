@@ -137,7 +137,8 @@ recommendRoutes.post('/search', async(req: any, res: any) => {
         },
       })
       .then((response: any) => {
-        res.send(response.data.results).status(200);
+        const filteredResults = response.data.results.filter((result: any) => result.hasOwnProperty("name"));
+  res.status(200).send(filteredResults);
       })
       .catch((err: any) => {
         res.status(500);
