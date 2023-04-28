@@ -9,7 +9,7 @@ const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
 recommendRoutes.get('/', async (req: any, res: any) => {
   try {
     const user = await prisma.user.findFirst({ where: { googleId: '117568678137566768509' } });
-    console.log(user);
+    // console.log(user);
     res.send('Success');
   } catch (error) {
     console.log('Error: ', error);
@@ -21,7 +21,7 @@ recommendRoutes.get('/', async (req: any, res: any) => {
 recommendRoutes.post('/list', async (req: any, res: any) => {
   try {
     const { googleId } = req.body.data;
-    console.log(googleId)
+    // console.log(googleId)
     const recommend = await prisma.recommend.findMany({ where: { user_id: googleId } });
     res.send(recommend);
   } catch (error) {
@@ -35,7 +35,7 @@ recommendRoutes.post('/newRecommend', async (req: any, res: any) => {
   try {
     const { data } = req.body;
   const { recommend_name, googleId, recommend_type } = data;
-console.log(data)
+// console.log(data)
   const newObj = {
     recommend_name: recommend_name,
     recommend_type: recommend_type,
@@ -53,7 +53,7 @@ console.log(data)
 // this will before updating recommend completion
 recommendRoutes.post('/completed', async (req: any, res: any) => {
   try {
-    console.log(req.body.data)
+    // console.log(req.body.data)
   const { recommend, user, date, completed } = req.body.data;
    const recommendLog = await prisma.recommendLog.create({
   data: {
@@ -86,7 +86,7 @@ recommendRoutes.get('/updatedon/:id', async (req: any, res: any) => {
 
  // this is a goofy work around to the : being in the params
  // im sure there is a better way
- console.log(req.params)
+//  console.log(req.params)
   const recommend = await prisma.recommendLog.findMany({
     where: {
       recommend_id: Number(id.slice(1))
@@ -126,7 +126,7 @@ recommendRoutes.delete('/delete', async (req: any, res: any) => {
 recommendRoutes.post('/search', async(req: any, res: any) => {
   try {
     const keyword = req.body.data.keyword;
-    console.log(keyword);
+    // console.log(keyword);
     axios
       .get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
         params: {

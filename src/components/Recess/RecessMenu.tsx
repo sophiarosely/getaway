@@ -31,16 +31,11 @@ const [responseData, setResponseData] = useState<any[]>([]);
        }
       })
       .then((response) => {
-        
        const namesObj = response.data
-    console.log(namesObj)
+    // console.log(namesObj)
     handleCreate(namesObj)
     setShowResponseData(true); 
       setResponseData(namesObj);
-       
-    //   //   response.data.results.forEach((result: { name: any; }) => {
-    //   // console.log(result.name);
-    // });
 
       })
       .catch((error) => {
