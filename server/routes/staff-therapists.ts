@@ -40,7 +40,20 @@ const {name, licenseType, photoURL, aboutMe, profExp, yearsExp, licInfo, skills,
     });
 
 
-
+    router.get('/get', (req: any, res: any) => {
+      prisma.staffTherapist.findMany({
+        include: {
+          TherapistReviews: true,
+        },
+      })
+        .then((response: any) => {
+          res.status(200).json({ message: 'retrieved all staff therapists', data: response });
+        })
+        .catch((err: any) => {
+          console.error('failed to retrieve staff therapists', err);
+          res.status(500).json({ error: 'Failed to retrieve staff therapists' });
+        });
+    });
 
 
 

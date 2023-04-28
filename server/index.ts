@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-
+import recommendRoutes from './routes/recommend';
 import authRoute from './routes/auth';
 import therapistRoute from './routes/therapist';
 import affirmationRoute from './routes/affirmations';
@@ -68,6 +68,7 @@ app.use('/checkIn', checkInRoute);
 app.use('/moodEntry', moodEntryRoute);
 app.use('/staff', staffRoute);
 app.use('/paintings', paintingRoute);
+app.use('/recommend/', recommendRoutes);
 
 //bottom
 app.get('*', (req: any, res: any) => {
