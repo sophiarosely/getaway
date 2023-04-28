@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import MicIcon from '@mui/icons-material/Mic';
 import IconButton from '@mui/material/IconButton';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
+import Button from '@mui/material/Button'
+
 
 
 
@@ -58,6 +60,12 @@ const AffirmationSpeech = () => {
         setIsOpen(!isOpen);
       };
 
+// openAI call for reward response
+    const rewardResponse = useCallback((affirmation: string) => {
+    axios
+      .get(`/affirmations/${affirmation}`)
+      .then(({ data }) => setRecognizedText(data))
+  }, [affirmations])
       // interactive text-to-speech affirmation
     const SpeechRecognition =
     (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -69,7 +77,7 @@ const AffirmationSpeech = () => {
 
   recognition.onresult = (event: any) => {
     const transcript = event.results[0][0].transcript;
-    setRecognizedText(transcript);
+    // setRecognizedText(transcript);
     checkAffirmation(transcript);
   };
 
@@ -92,16 +100,14 @@ const AffirmationSpeech = () => {
     const timer = setTimeout(() => { // user alert of recognized speech, then dissolves
         setShowText(false);
         setRecognizedText('')
-      }, 3000);
+      }, 4000);
        () => clearTimeout(timer);
 
     for (let i = 0; i < affirmations.length; i++) {
       const affirmation = affirmations[i].toLowerCase();
       if (transcript.toLowerCase().includes(affirmation)) {
-
         setCurrentAffirmationIndex((currentIndex) => currentIndex + 1);
-        setRecognizedText(`Affirmation recognized: ${affirmations[i]}`);
-
+       rewardResponse(affirmations[i]);
       }
     }
   };
@@ -114,7 +120,6 @@ const AffirmationSpeech = () => {
 
   const handleStopRecording = () => {
     setIsRecording(false);
-    recognition.continuous = false;
     recognition.stop();
 
   };
@@ -124,8 +129,9 @@ const AffirmationSpeech = () => {
 
 
     return (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <p>{recognizedText}</p>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
             <MicIcon/>
@@ -135,12 +141,14 @@ const AffirmationSpeech = () => {
             </IconButton>
             </div>
             <div className={showText ? 'fade-in' : 'fade-out'}>
-       <p>{recognizedText}</p>
+       </div>
+       <div style={{ fontSize: 40 }}>
+       {(recognizedText !== '' ? '' : currentAffirmation)}
+
        </div>
 
-         {currentAffirmation}
-         {currentAffirmationIndex === affirmations.length &&
-        <button onClick={() => setCurrentAffirmationIndex(0)}>Start Over</button>}
+         {currentAffirmationIndex === affirmations.length && <p>Great job! You have successfully finished your affirmations</p> &&
+        <Button variant="text" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
 
 
         {/*  <button onClick={toggleMenu}>Open Menu</button>

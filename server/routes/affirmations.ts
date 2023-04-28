@@ -12,7 +12,7 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
-// OpenAPI handler
+// OpenAPI handler for main page
 affirmationRoutes.get('/mood/:moodString', (req, res) => {
     const { moodString } = req.params
 
@@ -32,6 +32,35 @@ affirmationRoutes.get('/mood/:moodString', (req, res) => {
 
     runPrompt();
 })
+
+//OpenAPI handler for interactive page
+affirmationRoutes.get('/:correctAffirmation', (req, res) => {
+    const { correctAffirmation } = req.params
+
+
+    console.log(correctAffirmation, 'correct')
+
+    const runPrompt = async () => {
+        const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly: ${correctAffirmation}`
+
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: affirmationPrompt,
+            max_tokens: 2048,
+            temperature: 1,
+        })
+
+
+        const openaiText = response.data.choices[0].text
+        const finalString = openaiText.replace(/\n/g, '');
+        res.send(finalString);
+    }
+
+    runPrompt();
+})
+
+
+
 
 // Adding affirmations to DB
 affirmationRoutes.post('/save/', async (req, res) => {
