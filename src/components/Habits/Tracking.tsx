@@ -21,7 +21,7 @@ interface TrackingProps {
 const Tracking = ({id, habit_createdAt}:TrackingProps) =>{
 
   const [dates, setDates] = useState<[]>([]);
-  console.log(habit_createdAt)
+  // console.log(habit_createdAt)
    useEffect(() => {
       {
     axios.get(`habits/updatedon/:${id}`)

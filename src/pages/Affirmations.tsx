@@ -77,26 +77,26 @@ const Affirmations = () => {
             placeholder='Type here...'
             multiline
             rows={7}
-            style={{width: '700px'}}
+            style={{ width: '100%', maxWidth: '700px', fontSize: '1.2rem' }}
             size='medium'
             onChange={(e) => setUserMood(e.target.value)}
           />
-          <Button variant='text'  style={{width: '400px'}} size='medium' onClick={ () => handleEnterSubmit() }>
+          <Button variant='text'  style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem', marginTop: '1rem' }} size='medium' onClick={ () => handleEnterSubmit() }>
             Enter
           </Button>
         </FormGroup>
       </center>
 <FormGroup>
-      <div id='affirmations'>
-      <center>
-        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}  variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}} />)}
+      <div id='affirmations' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}  variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}}  style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }} />)}
           <ul>
             {affirmations.map((affirmation: string, index: number) => {
-              return <li style={{listStyleType: 'none'}}key={index}>{affirmation}</li>;
+              return <li style={{listStyleType: 'none', padding: 0}}key={index}>{affirmation}</li>;
             })}
           </ul>
-        </center>
-   <center>{isSaveVisible && (<Button variant='text' onClick={ () => handleSaveSubmit() }>Save</Button>)}</center>
+
+   {isSaveVisible && (<Button variant='text' onClick={ () => handleSaveSubmit() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Save</Button>)}
    </div>
    </FormGroup>
     </div>
