@@ -22,12 +22,9 @@ setnewSearch(namesObj)
   }
 console.log(activities)
 
-  return (
-    <div >
-
-<ScrollWall></ScrollWall>
-
-    {/* <h3>Recess</h3>
+return (
+ <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+    <h3>Growth</h3>
     <p style={{width:'50%'}}>
      "By exploring new activities and hobbies, you can take small steps towards better mental health and discover a whole world of possibilities you never knew existed."
     </p>
@@ -43,13 +40,20 @@ console.log(activities)
       marginBottom: '60px'
     }}
   />
-    
-    <Menu handleCreate={handleCreate} activities={activities}/>
  
-      <ResponseData responseData={newSearch}/> */}
+    <div
+      style={{
+        width: '80%',
+        margin: '0 auto',
+        border: '1px solid #ddd',
+        padding: '20px',
+        borderRadius: '10px',
+      }}
+    >
+      <ScrollWall />
     </div>
-
-  )
+  </div>
+);
   }
 
   export default Recess;
