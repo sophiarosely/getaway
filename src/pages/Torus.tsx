@@ -112,18 +112,18 @@ function toRadians(angle: number) {
     const animate = function () {
       requestAnimationFrame(animate);
 
-      const elapsedSeconds = clock.getElapsedTime() % 12; // 12 seconds total for one full cycle
+      const elapsedSeconds = clock.getElapsedTime() % 15; // 15 seconds total for one full cycle
       let scaleFactor = 1; // default scale factor
 
-      if (elapsedSeconds < 4) {
+      if (elapsedSeconds < 5) {
         // expanding phase (0-4 seconds)
-        scaleFactor = (elapsedSeconds / 4) * 0.25 + 1;
-      } else if (elapsedSeconds < 8) {
+        scaleFactor = (elapsedSeconds / 5) * 0.25 + 1;
+      } else if (elapsedSeconds < 10) {
         // pause phase (4-8 seconds)
         scaleFactor = 1.25;
       } else {
         // decreasing phase (8-12 seconds)
-        scaleFactor = ((12 - elapsedSeconds) / 4) * 0.25 + 1;
+        scaleFactor = ((15 - elapsedSeconds) / 5) * 0.25 + 1;
       }
 
       // Scale the torus mesh based on the scale factor

@@ -11,7 +11,7 @@ const Torus1 = () => {
     const clock = new THREE.Clock();
 
     // Create a geometry
-    const geometry = new THREE.BoxGeometry(1, 1, 1,);
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
     // Create a material
     const material = new THREE.MeshNormalMaterial();
 
@@ -111,20 +111,21 @@ function toRadians(angle: number) {
     const animate = function () {
       requestAnimationFrame(animate);
 
-      const elapsedSeconds = clock.getElapsedTime() % 12; // 12 seconds total for one full cycle
+      const cycleDuration = 19; // 4 + 7 + 8 = 19 seconds total for one full cycle
+      const elapsedSeconds = clock.getElapsedTime() % cycleDuration;
+
       let scaleFactor = 1; // default scale factor
 
       if (elapsedSeconds < 4) {
         // expanding phase (0-4 seconds)
         scaleFactor = (elapsedSeconds / 4) * 0.25 + 1;
-      } else if (elapsedSeconds < 8) {
-        // pause phase (4-8 seconds)
+      } else if (elapsedSeconds < 11) {
+        // hold phase (4-11 seconds)
         scaleFactor = 1.25;
-      } else {
-        // decreasing phase (8-12 seconds)
-        scaleFactor = ((12 - elapsedSeconds) / 4) * 0.25 + 1;
+      } else if (elapsedSeconds < 19) {
+        // decreasing phase (11-19 seconds)
+        scaleFactor = ((19 - elapsedSeconds) / 8) * 0.25 + 1;
       }
-
       // Scale the torus mesh based on the scale factor
       torusRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
 

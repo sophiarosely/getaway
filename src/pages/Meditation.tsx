@@ -48,9 +48,9 @@ const Meditation = () =>{
   return (
     <div className="meditation-container">
     <h1>Meditation</h1>
-    <div className="exercise-box" onClick={handleExercise1Click}>Exercise 1</div>
-    <div className="exercise-box" onClick={handleExercise2Click}>Exercise 2</div>
-    <div className="exercise-box" onClick={handleExercise3Click}>Exercise 3</div>
+    <div className="exercise-box" onClick={handleExercise1Click}>5-5-5</div>
+    <div className="exercise-box" onClick={handleExercise2Click}>4-7-8</div>
+    <div className="exercise-box" onClick={handleExercise3Click}>Zen Breathing</div>
     {/* <button onClick={handleReflectionClick}>Reflections</button>
       {reflectionOpen && <Reflections />} */}
       {exercise1Open &&

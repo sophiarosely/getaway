@@ -48,7 +48,7 @@
     "react-router-dom": "^6.10.0",
     "sweetalert2": "^11.7.3",
     "thread-loader": "^3.0.4",
-    "three": "^0.152.0"
+    "three": "^0.152.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
