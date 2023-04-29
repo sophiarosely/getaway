@@ -13,7 +13,7 @@ const AffirmationSpeech = () => {
     const {state} = useLocation();
     const {entryId, user} = state;
     const [isRecording, setIsRecording] = useState(false);
-    const [recognizedText, setRecognizedText] = useState('');
+    const [rewardText, setRewardText] = useState('');
     const [affirmations, setAffirmations] = useState<string[]>([]);
     const [currentAffirmationIndex, setCurrentAffirmationIndex] = useState(0);
     const [showText, setShowText] = useState(true);
@@ -64,7 +64,7 @@ const AffirmationSpeech = () => {
 const rewardResponse = useCallback(async (affirmation: string) => {
   try {
     const { data } = await axios.get(`/affirmations/${affirmation}`)
-    setRecognizedText(data)
+    setRewardText(data)
 
     // only allows you to only move onto next affirmation, if axios response is received
     if (affirmation === affirmations[currentAffirmationIndex]) {
@@ -84,10 +84,23 @@ const rewardResponse = useCallback(async (affirmation: string) => {
     console.log('Speech recognition started');
   };
 
-  recognition.onresult = (event: any) => {
-    const transcript = event.results[0][0].transcript;
-    // setRecognizedText(transcript);
-    checkAffirmation(transcript);
+
+
+  recognition.onresult = function(event: any) {
+    const result = event.results[event.resultIndex];
+    if (result.isFinal) {
+      checkAffirmation(event.results[0][0].transcript);
+    } else {
+      const splitWordArray = currentAffirmation.split(' ')
+      const transcript = result[0].transcript;
+      const transcriptWords = transcript.split(' ');
+      const highlightedText = splitWordArray.map((word, index) => {
+        const matched = transcriptWords[index] && word.toLowerCase() === transcriptWords[index].toLowerCase();
+        return matched ? `<span class="highlight">${word}</span>` : word;
+      }).join(' ');
+      setRewardText(highlightedText);
+      console.log(result[0].transcript + ' (interim)');
+    }
   };
 
   recognition.onend = () => {
@@ -97,7 +110,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
   recognition.onerror = (event: any) => {
     console.error('Speech recognition error:', event.error);
-    setRecognizedText(`Error: ${event.error}`);
+    setRewardText(`Error: ${event.error}`);
     setIsRecording(false);
   };
 
@@ -108,7 +121,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
     const timer = setTimeout(() => { // user alert of recognized speech, then dissolves
         setShowText(false);
-        setRecognizedText('')
+        setRewardText('')
       }, 4000);
        () => clearTimeout(timer);
 
@@ -123,12 +136,15 @@ const rewardResponse = useCallback(async (affirmation: string) => {
   // text-to-speech record handlers
   const handleStartRecording = () => {
     setIsRecording(true);
+    recognition.interimResults = true;
     recognition.start();
   };
 
   const handleStopRecording = () => {
     setIsRecording(false);
+    recognition.interimResults = false;
     recognition.stop();
+
 
   };
 
@@ -139,7 +155,6 @@ const rewardResponse = useCallback(async (affirmation: string) => {
     return (
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <p>{recognizedText}</p>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
             <MicIcon/>
@@ -148,12 +163,14 @@ const rewardResponse = useCallback(async (affirmation: string) => {
             <StopCircleIcon/>
             </IconButton>
             </div>
-            <div className={showText ? 'fade-in' : 'fade-out'}>
-       </div>
-       <div style={{ fontSize: 40 }}>
-       {(recognizedText !== '' ? '' : currentAffirmation)}
 
-       </div>
+       <div style={{ fontSize: 30 }}>
+  {rewardText !== '' ? (
+    <div dangerouslySetInnerHTML={{ __html: rewardText }} />
+  ) : (
+    <div>{currentAffirmation}</div>
+  )}
+</div>
 
          {currentAffirmationIndex === affirmations.length && <p>Great job! You have successfully finished your affirmations</p> &&
         <Button variant="text" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
