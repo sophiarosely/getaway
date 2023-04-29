@@ -10,10 +10,12 @@ interface ImageListProps {
   image: string| undefined,
   key: number
 }
-
+const handleClick = () => {
+  console.log("dog")
+}
 const ImageList = ({ image, key }: ImageListProps) => (
   <div className="image-item" key={key} >
-    <img src={image} />
+    <img onClick={() =>handleClick()} src={image} />
   </div>
 );
 

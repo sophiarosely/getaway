@@ -24,7 +24,7 @@ console.log(activities)
 
 return (
  <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
-    <h3>Growth</h3>
+    <h3>Recess</h3>
     <p style={{width:'50%'}}>
      "By exploring new activities and hobbies, you can take small steps towards better mental health and discover a whole world of possibilities you never knew existed."
     </p>

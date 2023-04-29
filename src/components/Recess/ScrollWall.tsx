@@ -13,7 +13,7 @@ const [loaded, setIsLoaded] = useState(false);
   }, []);
 
   const fetchImages = (num = 10) => {
-    axios.get('recommend/search')
+    axios.get('recommend/scroll')
       
       .then((response) => {
         console.log(response.data)
@@ -21,7 +21,21 @@ const [loaded, setIsLoaded] = useState(false);
         setIsLoaded(true);
       });
   };
-
+//  const fetchImages = (num = 10) => {
+//     axios
+//       .get("https://api.unsplash.com/photos/random?", {
+//         params: {
+//           client_id: "pTVgzJHLA3ZGloIAbA2eXMLOm0X-y-QZhkCcwA8MVg0",
+//            count: num,
+//           // query: 'flower'
+//         },
+//       })
+//       .then((response) => {
+//         console.log(response.data)
+//         setImages([...images, ...response.data]);
+//         setIsLoaded(true);
+//       });
+//   };
  
 
   return (

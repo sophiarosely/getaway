@@ -24,10 +24,11 @@ recommendRoutes.get('/scroll', async (req: any, res: any) => {
    const response = await axios.get("https://api.unsplash.com/photos/random?", {
       params: {
         client_id: UNSPLASH_API_KEY,
-        count: 5,
-        // query: 'flower'
+        count: 20,
+        query: 'flower'
       },
       })
+      console.log(response)
     res.send(response.data);
   } catch (error) {
     console.log('Error: ', error);
