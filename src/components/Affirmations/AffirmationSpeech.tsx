@@ -69,7 +69,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
     const timer = setTimeout(() => { // user alert of reward text, then dissolves
       setRewardText('')
-    }, 4000);
+    }, 3000);
      () => clearTimeout(timer);
 
 
@@ -173,7 +173,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 </div>
 
          {currentAffirmationIndex === affirmations.length && <p>Great job! You have successfully finished your affirmations</p> &&
-        <Button variant="text" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
+        <Button variant="text" size="large" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
 
 
        {/*  <button onClick={toggleMenu}>Open Menu</button>
