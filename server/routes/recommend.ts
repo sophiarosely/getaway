@@ -1,9 +1,10 @@
-import { Router } from 'express';
+import { Router, response } from 'express';
 const recommendRoutes = Router();
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 import axios from 'axios';
 const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
+const UNSPLASH_API_KEY = process.env.UNSPLASH_API_KEY
 
 
 recommendRoutes.get('/', async (req: any, res: any) => {
@@ -16,6 +17,24 @@ recommendRoutes.get('/', async (req: any, res: any) => {
     res.send('Error');
   }
 });
+
+
+recommendRoutes.get('/scroll', async (req: any, res: any) => {
+  try {
+   const response = await axios.get("https://api.unsplash.com/photos/random?", {
+      params: {
+        client_id: UNSPLASH_API_KEY,
+        count: 5,
+        // query: 'flower'
+      },
+      })
+    res.send(response.data);
+  } catch (error) {
+    console.log('Error: ', error);
+    res.send('Error');
+  }
+})
+
 
 //  this route will be for getting the users recommend
 recommendRoutes.post('/list', async (req: any, res: any) => {
