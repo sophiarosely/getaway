@@ -19,22 +19,69 @@ recommendRoutes.get('/', async (req: any, res: any) => {
 });
 
 
-recommendRoutes.get('/scroll', async (req: any, res: any) => {
-  try {
-   const response = await axios.get("https://api.unsplash.com/photos/random?", {
-      params: {
-        client_id: UNSPLASH_API_KEY,
-        count: 20,
-        query: 'flower'
-      },
-      })
-      console.log(response)
-    res.send(response.data);
-  } catch (error) {
-    console.log('Error: ', error);
-    res.send('Error');
+// route for scroll wall
+recommendRoutes.post('/scroll', async (req: any, res: any) => {
+  const searchTopics = [
+    'Nature',
+    'Desert',
+    'Mountains',
+    'Forests',
+    'Beaches',
+    'Waterfalls',
+    'Cat',
+    'Meditation',
+    'Dog',
+    'Self Care',
+    'Aesthetics',
+    'Mediterranean',
+    'Flowers',
+    'Textures',
+    
+  ];
+
+ 
+  const fetchImages = async (topic: string) => {
+    try {
+      const response = await axios.get("https://api.unsplash.com/photos/random?", {
+        params: {
+          client_id: UNSPLASH_API_KEY,
+          count: 10,
+          query: topic
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log('Error fetching images: ', error);
+      return [];
+    }
+  };
+
+
+  const topic1 = getRandomSearchTopic(searchTopics);
+  const topic2 = getRandomSearchTopic(searchTopics.filter(t => t !== topic1));
+
+  
+  const [images1, images2] = await Promise.all([fetchImages(topic1), fetchImages(topic2)]);
+
+ 
+  const shuffled = shuffle([...images1, ...images2]);
+
+  res.send(shuffled);
+});
+
+function getRandomSearchTopic(searchTopics: string[]) {
+  const randomIndex = Math.floor(Math.random() * searchTopics.length);
+  return searchTopics[randomIndex];
+}
+
+function shuffle(array: any[]) {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
-})
+  return shuffledArray;
+}
 
 
 //  this route will be for getting the users recommend
