@@ -157,10 +157,10 @@ const rewardResponse = useCallback(async (affirmation: string) => {
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
-            <MicIcon fontSize="large"/>
+            <MicIcon style={{ fontSize: 40 }}/>
             </IconButton>
             <IconButton component="button" onClick={handleStopRecording} disabled={!isRecording}>
-            <StopCircleIcon fontSize="large"/>
+            <StopCircleIcon style={{ fontSize: 40 }}/>
             </IconButton>
             </div>
 
