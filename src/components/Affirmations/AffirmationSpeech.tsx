@@ -65,6 +65,13 @@ const rewardResponse = useCallback(async (affirmation: string) => {
   try {
     const { data } = await axios.get(`/affirmations/${affirmation}`)
     setRewardText(data)
+    setShowText(true);
+
+    const timer = setTimeout(() => { // user alert of reward text, then dissolves
+      setRewardText('')
+    }, 4000);
+     () => clearTimeout(timer);
+
 
     // only allows you to only move onto next affirmation, if axios response is received
     if (affirmation === affirmations[currentAffirmationIndex]) {
@@ -117,18 +124,11 @@ const rewardResponse = useCallback(async (affirmation: string) => {
   const checkAffirmation = (transcript: string) => {
     transcript += '.'
 
-    setShowText(true);
-
-    const timer = setTimeout(() => { // user alert of recognized speech, then dissolves
-        setShowText(false);
-        setRewardText('')
-      }, 4000);
-       () => clearTimeout(timer);
-
     for (let i = 0; i < affirmations.length; i++) {
       const affirmation = affirmations[i].toLowerCase();
       if (transcript.toLowerCase().includes(affirmation)) {
        rewardResponse(affirmations[i]);
+       setShowText(false);
        }
     }
   };
@@ -164,7 +164,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
             </IconButton>
             </div>
 
-       <div style={{ fontSize: 30 }}>
+       <div style={{ fontSize: 30 }}  className={showText ? 'fade-in' : 'fade-out'}>
   {rewardText !== '' ? (
     <div dangerouslySetInnerHTML={{ __html: rewardText }} />
   ) : (
