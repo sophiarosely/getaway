@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 // import Recommend from '../components/Recess/Recommendations'
 import { UserContext, UserContextType } from '../App';
-import axios from 'axios';
-import { Button } from '@mui/material';
-import Popover from '@mui/material/Popover';
-import Card from '@mui/material/Card';
-import RecommendCreate from '../components/Recess/RecoCreate'
-import Menu from '../components/Recess/RecessMenu'
-import ResponseData from '../components/Recess/RecessInformation'
+
 import activities from '../components/Recess/fakedb'
 import ScrollWall from  '../components/Recess/ScrollWall'
 
