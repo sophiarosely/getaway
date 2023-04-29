@@ -1,7 +1,12 @@
+
+const { PrismaClient } = require('@prisma/client');
+
+const prisma = new PrismaClient();
+
 const therapistFakeData =[
   {
     name:"Richard O'Neil",
-    skills:['Stress', 'Anxiety', 'Addictions', 'Parenting Issues', 'Self Esteem', 'Depression'],
+    skills:"Stress, Anxiety, Addictions, Parenting Issues, Self Esteem, Depression",
     licenseType:'LCSW',
     photoURL:'https://i.imgur.com/SlvJ7wO.png',
     aboutMe:'I am licensed in Rhode Island with 3 years of professional work experience. I have experience in helping clients with stress and anxiety, coping with addictions, parenting issues, & motivation, self esteem, and confidence. I believe in treating everyone with respect, sensitivity, and compassion. I will tailor our dialog and treatment plan to meet your unique and specific needs. Taking the first step to seeking a more fulfilling and happier life takes courage. I am here to support you in that process.',
@@ -20,7 +25,7 @@ const therapistFakeData =[
   ]
   },
   {name:'Jennifer Miller',
-  skills:['Stress', 'Anxiety', "Addictions", "Self Esteem", "Depression"],
+  skills:"Stress, Anxiety, Addictions, Self Esteem, Depression",
   licenseType:'LCSW',
   photoURL:'https://i.imgur.com/2Suea2t.png',
   aboutMe:'I am Licensed Clinical Social Worker in Illinois. I have experience in helping clients with stress and anxiety, coping with addictions, motivation, self esteem, and confidence. I work with my clients to create an open and safe environment where thoughts and feelings can be shared without fear of judgment. It takes courage to seek out a more fulfilling and happier life and to take the first steps towards a change. I am here to support & empower you in that journey.',
@@ -38,7 +43,7 @@ const therapistFakeData =[
   },
 ]},
   {name:'Jessie Knight',
-  skills:["Stress", "Anxiety", "Trauma and Abuse", "Depression"],
+  skills:"Stress, Anxiety, Trauma and Abuse, Depression",
   licenseType:'LICSW',
   photoURL:'https://i.imgur.com/u1n5xRB.png',
   aboutMe:'I am licensed in Minnesota with over 12 years of professional work experience in the mental health field. I have experience in helping clients with depression, anxiety, trauma and abuse, difficult life changes, grief and loss. I work with my clients to create an open and safe environment where thoughts and feelings can be shared without fear of judgment. I have experience in using therapy modalities including Cognitive Behavioral Therapy (CBT), Acceptance and Commitment Therapy (ACT), and Eye Movement Desensitization & Reprocessing Therapy (EMDR) techniques and resources. Taking the first step to seeking a more fulfilling and happier life takes courage. I am here to support you in that process. In my free time I enjoy hiking, vegetable gardening, concerts, and cheering on the Vikings, Twins, and Wild.',
@@ -56,7 +61,7 @@ const therapistFakeData =[
   },
 ]},
   {name:'Anthony Smith',
-  skills:['Relationship Issues', 'Trauma and Abuse', 'Eating Disorders', 'Parenting Issues', 'Depression'],
+  skills:"Relationship Issues, Trauma and Abuse, Eating Disorders, Parenting Issues, Depression",
   licenseType:'BACP',
   photoURL:'https://i.imgur.com/v7ddMJA.png',
   aboutMe:'I am licensed in the UK with 21 years of professional work experience. I have experience in helping clients with relationship issues, trauma and abuse, eating disorders, & parenting issues. I believe in treating everyone with respect, sensitivity, and compassion. I will tailor our dialog and treatment plan to meet your unique and specific needs. It takes courage to seek out a more fulfilling and happier life and to take the first steps towards a change. I am here to support & empower you in that journey.',
@@ -74,7 +79,7 @@ const therapistFakeData =[
   },
 ]},
   {name:'Lloyd Aurthor Wright',
-  skills:['Stress', 'Anxiety', 'Family Conflicts', 'Paretning Issues', 'Self Esteem', 'Coping With Life Changes'],
+  skills:"Stress, Anxiety, Family Conflicts, Paretning Issues, Self Esteem, Coping With Life Changes",
   licenseType:'BACP',
   photoURL:'https://i.imgur.com/MrlxWFF.png',
   aboutMe:"I am an integrative therapist licensed in the uk and Ireland with 3 years experience working as a counsellor and children's therapist. I have worked with clients with a wide range of concerns including depression, anxiety, maternal mental health, self confidence, relationship issues, parenting problems, career challenges, eating disorders, new mums and women’s issues . I also helped many people who have experienced physical trauma or emotional abuse.My therapy style is warm and interactive. I believe in treating anyone with respect, sensitivity and compassion and I don't believe in making judgments on anyone . My approach combines cognitive-behavioral, humanistic, psychodynamic and solution focused therapy. I will tailor our dialog and treatment plan to meet your unique and specific needs.It takes courage to seek a more fulfilling and happier life and to take the first steps towards change. If you are ready to take that step, I am here to support and empower you.I look forward to working with you!",
@@ -92,7 +97,7 @@ const therapistFakeData =[
   },
 ]},
   {name:'Kara Davis',
-  skills:["Stress", "Anxiety", "Addictions", "Grief", "Self Esteem", "Depression"],
+  skills:"Stress, Anxiety, Addictions, Grief, Self Esteem, Depression",
   licenseType:'LCSW',
   photoURL:'https://i.imgur.com/RIAN2qS.png',
   aboutMe:"Marsha received her Master's Degree in Social Work from Stony Brook University, School of Social Welfare and has been working in the field since 2004. Marsha is currently licensed by the state of Florida as a Licensed Clinical Social Worker and has practiced in a variety of inpatient and outpatient settings. She has a broad range of clinical experience working with individuals and groups across the lifespan. Marsha specializes in providing counseling to individuals with dual diagnoses of mental health and addictions. She uses a variety of treatment modalities which incorporate best practice from an eclectic and strengths-based approach that is deeply rooted in humanistic psychology and is guided by the needs of the client.",
@@ -111,7 +116,7 @@ const therapistFakeData =[
 ]},
   {
   name:'Diane Leavens',
-  skills:["Stress", "Anxiety", "LGBT", "Self Esteem", "Depression", "Coping With Life Changes"],
+  skills:"Stress, Anxiety, LGBT, Self Esteem, Depression, Coping With Life Changes",
   licenseType:'LPC',
   photoURL:'https://i.imgur.com/mrlLKg6.png',
   aboutMe:"Psychotherapy offers an opportunity to build strength and endurance to face the inevitable challenges and influences in order to move forward with autonomy, confidence, and personal liberation.I will nurture an environment and container of trust and support as you build the relationship and deepen your understanding and sense of self. I believe all people have the innate capacity for understanding the direction their own lives should take; I will join you as you explore and examine the potential blocks standing in the way of living a fuller and more meaningful, authentic life.I have a passion for working with people who may be struggling with their identity, who do not fit the beliefs and expectations held by their family of origin, mainstream culture, and/or the many systems within our society that are inherently designed to oppress and marginalize people who do not conform to these historical and societal restrictions. Many times, the experience of being seen and understood fully by another human being is the core of healing. I offer psychotherapy that fosters curiosity and wonder for each person’s individuality. Other times, it is helpful to sensitively work through past trauma and attachment patterns. Because my counseling approach is existential and humanistic, therapeutic care is tailored to the specific needs of each person. I am well-versed in a variety of psychological tools from diverse therapies, and I use what is best for each client to meet their goals for therapy.",
@@ -130,4 +135,27 @@ const therapistFakeData =[
 ]}
 ]
 
-export default therapistFakeData;
+
+
+
+
+async function seedTherapists() {
+  for (const therapist of therapistFakeData) {
+    const { reviews, ...therapistData } = therapist;
+    const createdTherapist = await prisma.staffTherapist.create({
+      data: {
+        ...therapistData,
+        TherapistReviews: {
+          create: reviews.map((review) => ({
+            ...review
+          }))
+        }
+      }
+    });
+    console.log(`Created therapist ${createdTherapist.name} with ID ${createdTherapist.id}`);
+  }
+}
+
+seedTherapists().catch((e) => console.error(e));
+
+module.exports = seedTherapists;

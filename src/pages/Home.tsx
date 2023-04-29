@@ -6,6 +6,7 @@ import CheckIn from '../components/CheckIn/CheckIn';
 import HabitHome from  '../components/Habits/HabitHome'
 import AffirmationHome from '../components/Affirmations/AffirmationHome'
 import { UserContext, UserContextType } from '../App';
+import SavedPaintings from '../components/SavedPaintings'
 import axios from 'axios';
 
 
@@ -127,6 +128,31 @@ const Home = () => {
       </div>
       {/* <HabitCreate></HabitCreate> */}
       </div>
+      <div
+    style={{
+      borderRadius:'40px',
+      margin:'60px auto',
+      color: '#5C6B9E',
+      backgroundColor:'#5C6B9E',
+      width: '70%',
+      height: '7px',
+      textAlign:'center',
+      marginBottom: '100px'
+    }}
+  />
+      <SavedPaintings/>
+      <div
+    style={{
+      borderRadius:'40px',
+      margin:'60px auto',
+      color: '#5C6B9E',
+      backgroundColor:'#5C6B9E',
+      width: '70%',
+      height: '7px',
+      textAlign:'center',
+      marginBottom: '100px'
+    }}
+  />
       </div>
     </div>
   );
