@@ -1,27 +1,36 @@
 
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import ImageList from './imagelist';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import './scroll.css'
+import { UserContext, UserContextType } from '../../App';
+
 const ScrollWall = () => {
+const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
 const [images, setImages] = useState<any[]>([]);
 const [loaded, setIsLoaded] = useState(false);
-
+console.log(userId)
   useEffect(() => {
     fetchImages();
-  }, []);
+  }, [userId]);
 
-  const fetchImages = (num = 10) => {
-    axios.get('recommend/scroll')
-      
-      .then((response) => {
-        console.log(response.data)
-        setImages([...images, ...response.data]);
-        setIsLoaded(true);
-      });
+const fetchImages = (num = 10) => {
+  if (!userId) {
+    return;
+  }
+
+  const data = {
+    googleId: userId.toString(),
   };
- 
+
+  axios.post('recommend/scroll', { data })
+    .then((response) => {
+      console.log(response.data)
+      setImages([...images, ...response.data]);
+      setIsLoaded(true);
+    });
+};
 
   return (
     <div className="image-board" >
