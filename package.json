@@ -54,7 +54,8 @@
     "react-router-dom": "^6.10.0",
     "react-webcam": "^7.0.1",
     "sweetalert2": "^11.7.3",
-    "thread-loader": "^3.0.4"
+    "thread-loader": "^3.0.4",
+    "three": "^0.152.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -70,6 +71,7 @@
     "@types/passport": "^1.0.12",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "@types/three": "^0.150.2",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "concurrently": "^8.0.1",
