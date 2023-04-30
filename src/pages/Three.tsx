@@ -38,7 +38,7 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(1250, 700);
 renderer.setClearColor(0x0000ff, 0); // Set the background color to blue
 renderer.domElement.style.borderRadius = "30px"; // Set the border radius to 10 pixels
 
