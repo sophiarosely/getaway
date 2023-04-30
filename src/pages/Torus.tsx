@@ -39,7 +39,7 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(1250, 700);
 renderer.setClearColor(0x0000ff, 0); // Set the background color to blue
 renderer.domElement.style.borderRadius = "30px"; // Set the border radius to 10 pixels
 
@@ -96,12 +96,6 @@ function toRadians(angle: number) {
   return angle * (Math.PI / 180);
 }
 //MOUSE MOVEMENT
-
-    // window.addEventListener('resize', () => {
-    //   camera.aspect = window.innerWidth / window.innerHeight;
-    //   camera.updateProjectionMatrix();
-    //   renderer.setSize(window.innerWidth, window.innerHeight);
-    // });
 
     // Attach the renderer to our ref's current DOM node
     const mountNode = mountRef.current;

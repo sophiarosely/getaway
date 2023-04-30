@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Reflections from './Reflections';
 import Torus from './Torus';
 import Torus1 from './Three';
@@ -10,6 +10,8 @@ const Meditation = () =>{
   const [exercise2Open, setExercise2Open] = useState(false);
   const [exercise3Open, setExercise3Open] = useState(false);
   const [reflectionOpen, setReflectionOpen] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+
 
   //handlers for opening and closing
   const handleExercise1Click = () => {
@@ -24,12 +26,15 @@ const Meditation = () =>{
 
   const handleExercise1Close = () => {
     setExercise1Open(false);
+    setCurrentText("");
   }
   const handleExercise2Close = () => {
     setExercise2Open(false);
+    setCurrentText("");
   }
   const handleExercise3Close = () => {
     setExercise3Open(false);
+    setCurrentText("");
   }
 
   const handleReflectionClick = () => {
@@ -39,8 +44,64 @@ const Meditation = () =>{
   // *****************
   // *   THREE.JS    *
   // *****************
+ // useEffect to update currentText based on time elapsed
+ useEffect(() => {
+  let interval: string | number | NodeJS.Timeout | null | undefined = null;
+  let counter = 0;
+  if (exercise1Open) {
+    setCurrentText("Breathe In");
+    interval = setInterval(() => {
+      counter++;
+      if (counter >= 5 && counter < 10) {
+        setCurrentText("Hold");
+      } else if (counter >= 10 && counter < 15) {
+        setCurrentText("Breathe Out");
+      } else if (counter >= 15) {
+        counter = 0;
+        setCurrentText("Breathe In");
+      }
+    }, 1000);
+  }
+  return () => clearInterval(interval);
+}, [exercise1Open]);
 
+useEffect(() => {
+  let interval: string | number | NodeJS.Timeout | null | undefined = null;
+  let counter = 0;
+  if (exercise2Open) {
+    setCurrentText("Breathe In");
+    interval = setInterval(() => {
+      counter++;
+      if (counter >= 4 && counter < 11) {
+        setCurrentText("Hold");
+      } else if (counter >= 11 && counter < 19) {
+        setCurrentText("Breathe Out");
+      } else if (counter >= 19) {
+        counter = 0;
+        setCurrentText("Breathe In");
+      }
+    }, 1000);
+  }
+  return () => clearInterval(interval);
+}, [exercise2Open]);
 
+useEffect(() => {
+  let interval: string | number | NodeJS.Timeout | null | undefined = null;
+  let counter = 0;
+  if (exercise3Open) {
+    setCurrentText("Breathe In");
+    interval = setInterval(() => {
+      counter++;
+      if (counter >= 4 && counter < 8) {
+        setCurrentText("Breathe Out");
+      } else if (counter >= 8) {
+        counter = 0;
+        setCurrentText("Breathe In");
+      }
+    }, 1000);
+  }
+  return () => clearInterval(interval);
+}, [exercise3Open]);
   // *****************
   // *   THREE.JS    *
   // *****************
@@ -55,6 +116,7 @@ const Meditation = () =>{
       {reflectionOpen && <Reflections />} */}
       {exercise1Open &&
       <div className="exercise-popup">
+        <div className="exercise-popup-text">{currentText}</div>
        <div> <Torus /> </div>
         <button className="exercise-button" onClick={handleExercise1Close}>Complete</button>
       </div>
@@ -62,7 +124,8 @@ const Meditation = () =>{
 
     {exercise2Open &&
       <div className="exercise-popup">
-        <h2>Exercise 2</h2>
+        {/* <h2>Exercise 2</h2> */}
+        <div className="exercise-popup-text">{currentText}</div>
         <p> <Torus1 /></p>
         <button className="exercise-button" onClick={handleExercise2Close}>Complete</button>
       </div>
@@ -70,7 +133,8 @@ const Meditation = () =>{
 
     {exercise3Open &&
       <div className="exercise-popup">
-        <h2>Exercise 3</h2>
+        {/* <h2>Exercise 3</h2> */}
+        <div className="exercise-popup-text" >{currentText}</div>
         <p> <Torus2 /> </p>
         <button className="exercise-button" onClick={handleExercise3Close}>Complete</button>
       </div>

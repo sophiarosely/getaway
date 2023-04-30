@@ -51,6 +51,14 @@ body{
   right: 10px;
   border-radius: 40px
 }
+
+
+.exercise-popup-text {
+  font-size: 50px; /* Change the font size to 24 pixels */
+  font-weight: bold; /* Add bold font weight */
+  font-style: italic; /* Add italic font style */
+}
+
 /*MEDITATION*/
 
 .three-container {
