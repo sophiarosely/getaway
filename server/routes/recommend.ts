@@ -23,24 +23,25 @@ recommendRoutes.get('/', async (req: any, res: any) => {
 recommendRoutes.post('/scroll', async (req: any, res: any) => {
   const searchTopics = [
     'Nature',
-    'Desert',
-    'Mountains',
-    'Forests',
-    'Beaches',
-    'Waterfalls',
+    // 'Desert',
+    // 'Mountains',
+    // 'Forests',
+    // 'River',
+    // 'Waterfalls',
     'Cat',
-    'Meditation',
+    // 'Snow',
     'Dog',
-    'Self Care',
-    'Aesthetics',
-    'Mediterranean',
+    'Insects',
+    'Rain',
+    'Ferns',
     'Flowers',
-    'Textures',
+    // 'Textures',
     
   ];
 
  
   const fetchImages = async (topic: string) => {
+    console.log(topic)
     try {
       const response = await axios.get("https://api.unsplash.com/photos/random?", {
         params: {
