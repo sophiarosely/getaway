@@ -332,7 +332,7 @@ const customIcons = {
 
   const [currentPlaylistIndex, setCurrentPlaylistIndex] = useState(0);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleNextTrack = () => {
     const currentPlaylist = playlists[currentPlaylistIndex];
