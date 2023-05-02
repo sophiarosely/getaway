@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ThreeJS1 from './Three.JS/3JS(1)';
 import ThreeJS2 from './Three.JS/3JS(2)';
-import ThreeJS3 from './Three.JS/3JS(3)';
+import ThreeJS3 from './3JS(3)';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
