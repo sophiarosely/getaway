@@ -13,6 +13,7 @@ import  Button  from "@mui/material/Button";
 import axios from "axios";
 // @ts-ignore
 import { HexColorPicker } from "react-colorful";
+import { url } from "inspector";
 
 const Painting = () =>{
 
@@ -176,8 +177,8 @@ style={{
       right:0,
       textAlign:"center",
       zIndex:9,
-      width:640,
-      height:480
+      width:840,
+      height:680
     }}
   />
     </div>
@@ -186,16 +187,19 @@ style={{
   ref={canvasTwoRef}
   id={"canvas2"}
   style={{
-    backgroundColor: "black",
-    marginLeft:"auto",
-    marginRight:"auto",
-    width: 640,
-    height: 480,
-    left:0,
-      right:0,
-    marginTop: "50px", // adjust as needed
-    position: "absolute",
-    top: "600px", // adjust as needed
+    backgroundImage: 'url("https://i.imgur.com/BjBH0w5.jpg")',
+    backgroundSize: 'contain', // change to 'cover' for a more zoomed-in image
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    height: '680px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '840px',
+    position: 'absolute',
+    top: '600px',
+    left: '0',
+    right: '0',
+    marginTop: '50px',
   }}
 />
 
