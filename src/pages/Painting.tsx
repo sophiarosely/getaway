@@ -97,13 +97,27 @@ useEffect(()=>{
   runHandPose();
 },[])
 
+function hexToRgb(hex:any) {
+  // Convert hex color to 6-digit format if necessary
+  const hexColor = hex.charAt(0) === '#' ? hex.substring(1, 7) : hex;
+
+  // Convert hex color to RGB color
+  const r = parseInt(hexColor.substring(0, 2), 16);
+  const g = parseInt(hexColor.substring(2, 4), 16);
+  const b = parseInt(hexColor.substring(4, 6), 16);
+
+  return { r, g, b };
+}
 
 const ArtistCanvas = ()=>{
   const canvasTwo = canvasTwoRef.current;
   const ctx = canvasTwo.getContext('2d');
   ctx.scale(-1, 1);
   ctx.translate(-canvasTwo.width, 0);
-  ctx.fillStyle = color;
+  const rgbColor = hexToRgb(color);
+
+// Set the fill style to a semi-transparent color
+ctx.fillStyle = `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.3)`;
   ctx.beginPath();
 
   if(indexFing && gesture.gestures[0] && gesture.gestures[0].name === 'victory'){
