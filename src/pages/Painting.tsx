@@ -112,8 +112,8 @@ function hexToRgb(hex:any) {
 const ArtistCanvas = ()=>{
   const canvasTwo = canvasTwoRef.current;
   const ctx = canvasTwo.getContext('2d');
-  ctx.scale(-1, 1);
-  ctx.translate(-canvasTwo.width, 0);
+  // ctx.scale(-1, 1);
+  // ctx.translate(-canvasTwo.width, 0);
   const rgbColor = hexToRgb(color);
 
 // Set the fill style to a semi-transparent color
@@ -161,67 +161,68 @@ useEffect(() => {
 
 return(
   <div>
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-  <h1>Painting Page</h1>
-  <Button onClick={SaveCanvas}>Save Painting</Button>
+
+
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 'calc(50% + 400px)',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    marginBottom:'200px',
+
+  }}>
+    <Webcam
+      ref={webcamRef}
+      style={{
+        transform: "scaleX(-1)",
+        width: 340,
+        height: 180,
+        zIndex: 9,
+      }}
+    />
+    <HexColorPicker color={color} onChange={setColor}/>
+    <Button onClick={SaveCanvas}>Save Painting</Button>
   <Button onClick={ClearCanvas}>Clear Canvas</Button>
-<Webcam ref={ webcamRef }
-style={{
-  transform: "scaleX(-1)",
-
-  marginLeft:"auto",
-  marginRight:"auto",
-  left:0,
-  right:0,
-  textAlign:"center",
-  zIndex:9,
-  width:640,
-  height:480
-}} />
-
-
+  </div>
   <canvas
     ref={canvasRef}
     id={"canvas1"}
     style={{
-      transform: "scaleX(-1)",
-      marginLeft:"auto",
-      marginRight:"auto",
-      left:0,
-      right:0,
-      textAlign:"center",
-      zIndex:9,
-      width:840,
-      height:680
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%) scaleX(-1)',
+      width: 840,
+      height: 680,
+      zIndex: 1
     }}
   />
-    </div>
-    <div>
-    <canvas
-  ref={canvasTwoRef}
-  id={"canvas2"}
-  style={{
-    backgroundImage: 'url("https://i.imgur.com/BjBH0w5.jpg")',
-    backgroundSize: 'contain', // change to 'cover' for a more zoomed-in image
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    height: '680px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: '840px',
-    position: 'absolute',
-    top: '600px',
-    left: '0',
-    right: '0',
-    marginTop: '50px',
-  }}
-/>
+  <canvas
+    ref={canvasTwoRef}
+    id={"canvas2"}
+    style={{
+      backgroundImage: 'url("https://i.imgur.com/BjBH0w5.jpg")',
+      backgroundSize: 'contain',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      height: '680px',
+      width: '840px',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%) scaleX(-1)',
+      zIndex: 0
+    }}
+  />
 
-</div>
 
-<div style={{ padding: "80px", display: 'flex', flexDirection: 'column', alignItems: 'center' , marginBottom:"200px"}}>
-<HexColorPicker color={color} onChange={setColor}/>
-</div>
+
+
+
+
+
 
 </div>
 
