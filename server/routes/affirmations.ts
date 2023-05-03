@@ -40,7 +40,7 @@ affirmationRoutes.get('/:correctAffirmation', (req, res) => {
 
 
     const runPrompt = async () => {
-        const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly: ${correctAffirmation}`
+        const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly (Do not include special characters): ${correctAffirmation}`
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
