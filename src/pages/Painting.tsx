@@ -225,6 +225,21 @@ return(
       zIndex: isColoring ? 1: -1
     }}
   />
+   <canvas
+    style={{
+      backgroundImage: 'url("https://i.imgur.com/bEuLk8H.png")',
+      backgroundSize: 'contain',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      height: '700px',
+      width: '1010px',
+      position: 'absolute',
+      top: '48%',
+      left: '50%',
+      transform: 'translate(-50%, -50%) scaleX(-1)',
+      zIndex: 3
+    }}
+  />
   <canvas
     ref={canvasTwoRef}
     id={"canvas2"}
