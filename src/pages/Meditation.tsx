@@ -120,7 +120,7 @@ useEffect(() => {
 <p style={{textAlign: "center", margin: "auto"}} >Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some nice visualizations and go through various breathing exercises.</p>
       <article className="exercise-container">
         {/* <h2> Meditation Exercises</h2> */}
-        <h2>Exercises</h2>
+        <h2>Meditation Exercises</h2>
       <div className='exercise-box' onClick={handleExercise1Click}>
         5-5-5
       </div>
@@ -148,67 +148,67 @@ useEffect(() => {
       <><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0', margin: '10px' }}>
             <CardContent>
               <Typography variant="h5" component="h2">
-                5-5-5 Breathing Technique
+              <b> 5-5-5 Breathing Technique </b>
               </Typography>
               <Typography variant="body1" component="p">
               <br></br>   For this meditation exercise, focus on taking one breath at a time and being in the present moment.
               </Typography>
               <Typography variant="body1" component="p">
-              <br></br> Step 1 - Inhale slowly through your nose for 5 seconds
+              <br></br> <b> Step 1 - </b> Inhale slowly through your nose for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-                Step 2 - Hold your breath for 5 seconds
+              <b> Step 2 - </b>Hold your breath for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-                Step 3 - Release the breath through your mouth for 5 seconds
+              <b> Step 3 - </b>Release the breath through your mouth for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-                Step 4 - Repeat as needed
+              <b>  Step 4 - </b> Repeat as needed
               </Typography>
             </CardContent>
           </Card><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0', margin: '10px' }}>
               <CardContent>
                 <Typography variant="h5" component="h2">
-                  4-7-8 Breathing Technique
+                <b> 4-7-8 Breathing Technique </b>
                 </Typography>
                 <Typography variant="body1" component="p">
                 <br></br> For this meditation exercise, it's important to maintain the 4-7-8 ratio through the steps.
                 </Typography>
                 <Typography variant="body1" component="p">
-                <br></br>  Step 1 - Breath in through the nose for 4 seconds
+                <br></br> <b> Step 1 - </b> Breath in through the nose for 4 seconds
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 2 - Hold your breath for a count of 7 seconds
+                  <b> Step 2 - </b> Hold your breath for a count of 7 seconds
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 3 - Exhale through your mouth for a total of 8 seconds
+                <b> Step 3 - </b> Exhale through your mouth for a total of 8 seconds
                 </Typography>
                 <Typography variant="body1" component="p">
-              <br></br> * If you're finding it difficult to hold your breath for that long, try the 5-5-5 meditation exercise instead!
+              <br></br> <i> * If you're finding it difficult to hold your breath for that long, try the 5-5-5 meditation exercise instead! </i>
                 </Typography>
               </CardContent>
             </Card><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0', margin: '10px' }}>
               <CardContent>
                 <Typography variant="h5" component="h2">
-                  Zen Breathing
+                <b> Zen Breathing </b>
                 </Typography>
                 <Typography variant="body1" component="p">
                 <br></br>  This is an un-timed technique that requires visualizing your breath.
                 </Typography>
                 <Typography variant="body1" component="p">
-                <br></br>  Step 1 - Find a comfortable position, sitting or laying down
+                <br></br>    <b> Step 1 - </b>Find a comfortable position, sitting or laying down
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 2 - Become aware of your breathing, paying attention to how you exhale and inhale
+                <b> Step 2 - </b>Become aware of your breathing, paying attention to how you exhale and inhale
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 3 - Slow down your breathing
+                <b>  Step 3 - </b>Slow down your breathing
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 4 - Visualize your breath entering and leaving your lungs. You can put your hand against your chest to become aware of the raising and lowering
+                <b>  Step 4 - </b>Visualize your breath entering and leaving your lungs. You can put your hand against your chest to become aware of the raising and lowering
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 5 - Repeat as needed
+                <b>  Step 5 - </b>Repeat as needed
                 </Typography>
               </CardContent>
             </Card></> )}
