@@ -17,7 +17,7 @@ affirmationRoutes.get('/mood/:moodString', (req, res) => {
     const { moodString } = req.params
 
     const runPrompt = async () => {
-        const affirmationPrompt = `Today, I am feeling ${moodString}. Can you send me 5 affirmations, based on my mood?`
+        const affirmationPrompt = `Today, I am feeling ${moodString}. Can you send me 5 affirmations I can repeat to myself, based on my mood? (Do not include special characters)`
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
@@ -40,7 +40,7 @@ affirmationRoutes.get('/:correctAffirmation', (req, res) => {
 
 
     const runPrompt = async () => {
-        const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly (Do not include special characters): ${correctAffirmation}`
+        const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly: ${correctAffirmation}`
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
