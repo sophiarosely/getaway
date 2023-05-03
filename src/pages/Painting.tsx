@@ -25,7 +25,7 @@ const Painting = () =>{
   const canvasTwoRef:any = useRef(null);
 
   //states
-  const [color, setColor ] = useState("#aabbcc")
+  const [ color, setColor ] = useState("#aabbcc")
   const [ indexFing, setIndexFing ]:any = useState(null);
   const [ gesture, setGesture ] = useState(
     {
@@ -35,6 +35,13 @@ const Painting = () =>{
         score:0
         }
   ]})
+  const [ isColoring, setIsColoring ]:any = useState(false);
+  const [colorIndex, setColorIndex ]:any = useState(0);
+
+  const colorButton = ()=>{
+    setIsColoring(!(isColoring));
+    setColorIndex(colorIndex + 1)
+  }
 
   const runHandPose = async () =>{
 
@@ -185,6 +192,7 @@ return(
     <HexColorPicker color={color} onChange={setColor}/>
     <Button onClick={SaveCanvas}>Save Painting</Button>
   <Button onClick={ClearCanvas}>Clear Canvas</Button>
+  <Button onClick={colorButton}>Stay In The Lines</Button>
   </div>
   <canvas
     ref={canvasRef}
@@ -196,7 +204,25 @@ return(
       transform: 'translate(-50%, -50%) scaleX(-1)',
       width: 840,
       height: 680,
-      zIndex: 1
+      zIndex: 2
+    }}
+  />
+  <canvas
+    ref={canvasTwoRef}
+    id={"canvas2"}
+    style={{
+      backgroundImage: 'url("https://i.imgur.com/LFCTIUp.png")',
+      opacity:'60%',
+      backgroundSize: 'contain',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      height: '680px',
+      width: '840px',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%) scaleX(-1)',
+      zIndex: isColoring ? 1: -1
     }}
   />
   <canvas
