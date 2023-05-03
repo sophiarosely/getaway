@@ -108,7 +108,6 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 affirmationRoutes.get('/retrieve/:userId/:entryId', async (req, res) => {
     const { userId, entryId } = req.params
 
-    console.log(userId, entryId)
     try {
 
         const affirmationEntries = await prisma.affirmations.findFirst({
