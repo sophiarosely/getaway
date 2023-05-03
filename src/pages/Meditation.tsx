@@ -143,43 +143,39 @@ useEffect(() => {
         right: "10px",
       }} onClick={handleClick}>Descriptions</div>
 </div>
-      <figure style={{ display: 'flex' }}>
-      {/* <button onClick={handleClick}>Descriptions</button> */}
+<figure style={{ display: 'flex', justifyContent: 'center' }}>
       {showCards && (
-      <><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+      <><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0', margin: '10px' }}>
             <CardContent>
               <Typography variant="h5" component="h2">
                 5-5-5 Breathing Technique
               </Typography>
               <Typography variant="body1" component="p">
-                As the name suggests, this technique involves 3 steps of breathing. Each step is done for 5 seconds, for a total time of 15 seconds.
+              <br></br>   For this meditation exercise, focus on taking one breath at a time and being in the present moment.
               </Typography>
               <Typography variant="body1" component="p">
-                Step 1 - For 5 seconds inhale slowly through your nose
+              <br></br> Step 1 - Inhale slowly through your nose for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-                Step 2 - For 5 seconds hold your breath
+                Step 2 - Hold your breath for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
                 Step 3 - Release the breath through your mouth for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-                Step 4 - Repeat steps 1 to 3 for the total time of your meditation
-              </Typography>
-              <Typography variant="body1" component="p">
-                For this breathing meditation along with the others, instead of worrying about meditating “properly,” it’s best to focus on taking it one breath at a time. This will help you stay focused on the main aspect of meditation: being in the present moment.
+                Step 4 - Repeat as needed
               </Typography>
             </CardContent>
-          </Card><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+          </Card><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0', margin: '10px' }}>
               <CardContent>
                 <Typography variant="h5" component="h2">
                   4-7-8 Breathing Technique
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Like the 5-5-5 technique, this breathing method follows a numerical timeline with each breath:
+                <br></br> For this meditation exercise, it's important to maintain the 4-7-8 ratio through the steps.
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 1 - Breath in through the nose for 4 seconds
+                <br></br>  Step 1 - Breath in through the nose for 4 seconds
                 </Typography>
                 <Typography variant="body1" component="p">
                   Step 2 - Hold your breath for a count of 7 seconds
@@ -188,31 +184,31 @@ useEffect(() => {
                   Step 3 - Exhale through your mouth for a total of 8 seconds
                 </Typography>
                 <Typography variant="body1" component="p">
-                  What’s most important is that you keep the ratio through the steps. For someone who might have a harder time holding their breath, you could do the same technique just with a reduced time frame while maintaining the ratio.
+              <br></br> * If you're finding it difficult to hold your breath for that long, try the 5-5-5 meditation exercise instead!
                 </Typography>
               </CardContent>
-            </Card><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+            </Card><Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0', margin: '10px' }}>
               <CardContent>
                 <Typography variant="h5" component="h2">
                   Zen Breathing
                 </Typography>
                 <Typography variant="body1" component="p">
-                  This technique is probably one of the simpler ones to follow. There’s no pausing and holding your breath for a certain time. It goes as follows:
+                <br></br>  This is an un-timed technique that requires visualizing your breath.
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 1 - Find a comfortable position, sitting or laying down.
+                <br></br>  Step 1 - Find a comfortable position, sitting or laying down
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 2 - Become aware of your breathing, pay attention to how you’re exhaling and inhaling.
+                  Step 2 - Become aware of your breathing, paying attention to how you exhale and inhale
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 3 - Start taking things slower. Inhale slowly for 4 seconds. Then, exhale slowly for 4 seconds.
+                  Step 3 - Slow down your breathing
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 4 - Visualize your breath entering and leaving your lungs. You can put your hand against your chest to become aware of the raising and lowering.
+                  Step 4 - Visualize your breath entering and leaving your lungs. You can put your hand against your chest to become aware of the raising and lowering
                 </Typography>
                 <Typography variant="body1" component="p">
-                  Step 5 - Repeat for as long as needed through your meditation.
+                  Step 5 - Repeat as needed
                 </Typography>
               </CardContent>
             </Card></> )}
@@ -227,7 +223,6 @@ useEffect(() => {
     }
     {exercise2Open &&
       <div className="exercise-popup">
-        {/* <h2>Exercise 2</h2> */}
         <div className="exercise-popup-text">{currentText}</div>
         <p> <ThreeJS2 /></p>
         <button className="exercise-button" onClick={handleExercise2Close}>Complete</button>
@@ -235,7 +230,6 @@ useEffect(() => {
     }
     {exercise3Open &&
       <div className="exercise-popup">
-        {/* <h2>Exercise 3</h2> */}
         <div className="exercise-popup-text" >{currentText}</div>
         <p> <ThreeJS3 /> </p>
         <button className="exercise-button" onClick={handleExercise3Close}>Complete</button>
