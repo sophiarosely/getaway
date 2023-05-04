@@ -13,7 +13,9 @@ import  Button  from "@mui/material/Button";
 import axios from "axios";
 // @ts-ignore
 import { HexColorPicker } from "react-colorful";
+import PaintingGuide from '../components/PaintingGuide'
 import { url } from "inspector";
+import { borderRadius } from "@mui/system";
 
 const Painting = () =>{
 
@@ -176,13 +178,18 @@ return(
     position: 'absolute',
     top: 'calc(50% + 400px)',
     left: '50%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, -40%)',
     marginBottom:'200px',
+    padding:"20px",
+    backgroundColor:color,
+    borderRadius:"40px"
+
 
   }}>
     <Webcam
       ref={webcamRef}
       style={{
+        borderRadius: "40px",
         transform: "scaleX(-1)",
         width: 340,
         height: 180,
@@ -193,6 +200,7 @@ return(
     <Button onClick={SaveCanvas}>Save Painting</Button>
   <Button onClick={ClearCanvas}>Clear Canvas</Button>
   <Button onClick={colorButton}>Stay In The Lines</Button>
+  <PaintingGuide/>
   </div>
   <canvas
     ref={canvasRef}
@@ -223,6 +231,7 @@ return(
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
       zIndex: isColoring ? 1: -1
+
     }}
   />
    <canvas
@@ -248,12 +257,15 @@ return(
       backgroundSize: 'contain',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      height: '680px',
+      height: '620px',
       width: '840px',
       position: 'absolute',
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
+      boxShadow: '37px -27px 27px rgba(0, 0, 0, 0.5)',
+  WebkitBoxShadow: '37px -27px 27px rgba(0, 0, 0, 0.5)',
+  MozBoxShadow: '37px -27px 27px rgba(0, 0, 0, 0.5)',
       zIndex: 0
     }}
   />
