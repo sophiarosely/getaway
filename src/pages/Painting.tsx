@@ -14,8 +14,9 @@ import axios from "axios";
 // @ts-ignore
 import { HexColorPicker } from "react-colorful";
 import PaintingGuide from '../components/PaintingGuide'
-import { url } from "inspector";
-import { borderRadius } from "@mui/system";
+import WavyTop from "../components/WavyTop"
+import zIndex from "@mui/material/styles/zIndex";
+import LavaLamp from "../components/LavaLamp"
 
 const Painting = () =>{
 
@@ -169,9 +170,13 @@ useEffect(() => {
 }, [indexFing]);
 
 return(
-  <div>
-
-
+  <div >
+    {/* <div style={{position:"relative", zIndex: -2}}>
+    <LavaLamp />
+    </div> */}
+  <div style={{position:"relative", zIndex: -1}}>
+<WavyTop color={color}/>
+</div>
   <div style={{
     display: 'flex',
     justifyContent: 'center',
@@ -271,7 +276,9 @@ return(
   />
 
 
+<div style={{padding:"1000px"}}>
 
+</div>
 
 
 

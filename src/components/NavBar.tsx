@@ -54,7 +54,7 @@ function NavBar() {
   );
 
   return (
-    <div>
+    <div style={{ position: "absolute", top: "0", left: "0" }}>
       <Button onClick={() => setOpen(true)}>
         <MenuIcon />
       </Button>
