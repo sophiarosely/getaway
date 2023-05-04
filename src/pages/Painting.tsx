@@ -181,7 +181,7 @@ return(
     display: 'flex',
     justifyContent: 'center',
     position: 'absolute',
-    top: 'calc(50% + 400px)',
+    top: 'calc(70% + 400px)',
     left: '50%',
     transform: 'translate(-50%, -40%)',
     marginBottom:'200px',
@@ -212,7 +212,7 @@ return(
     id={"canvas1"}
     style={{
       position: 'absolute',
-      top: '50%',
+      top: '70%',
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
       width: 840,
@@ -232,7 +232,7 @@ return(
       height: '680px',
       width: '840px',
       position: 'absolute',
-      top: '50%',
+      top: '70%',
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
       zIndex: isColoring ? 1: -1
@@ -248,7 +248,7 @@ return(
       height: '700px',
       width: '1010px',
       position: 'absolute',
-      top: '48%',
+      top: '68%',
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
       zIndex: 3
@@ -265,7 +265,7 @@ return(
       height: '620px',
       width: '840px',
       position: 'absolute',
-      top: '50%',
+      top: '70%',
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
       boxShadow: '37px -27px 27px rgba(0, 0, 0, 0.5)',
