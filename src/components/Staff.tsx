@@ -12,10 +12,7 @@ import  IconButton  from "@mui/material/IconButton";
 import Favorite from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 
-const Therapist = (props:
-  {therapist:
-    {name:string, vicinity:string, opening_hours:{open_now:boolean}, rating:number, place_id:string},
-    handleOpen:Function}) =>{
+const Staff = (props:any) =>{
 
 const { therapist, handleOpen } = props;
 
@@ -50,10 +47,10 @@ return (
 </IconButton>
       <CardContent>
         <Typography gutterBottom variant="body1" component="div">
-          {therapist.name}
+          name
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {therapist.vicinity}
+          blah
         </Typography>
         {therapist.opening_hours?  <Typography variant="body2" color="text.secondary">
           {therapist.opening_hours.open_now ? "Open" : "Closed"}
@@ -74,4 +71,4 @@ return (
 };
 
 
-export default Therapist;
+export default Staff;

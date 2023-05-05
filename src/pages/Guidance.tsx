@@ -4,7 +4,7 @@ import TherapistList from "../components/TherapistList"
 import TherapistMap from "../components/TherapistMap"
 import  Pagination  from "@mui/material/Pagination";
 import FavTherapist from "../components/FavTherapist"
-
+import StaffList from "../components/StaffList";
 
 
 const Guidance = () =>{
@@ -37,7 +37,7 @@ const Guidance = () =>{
 const getAllStaff = ()=>{
   axios.get('/staff/get')
   .then((response)=>{
-    setStaff(response.data);
+    setStaff(response.data.data);
   })
   .catch((err)=>{
     console.error("could not get all staff", err)
@@ -113,7 +113,7 @@ console.log('staff', staff)
     <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>YOUR FAVORITES</p>
     <FavTherapist />
     </div>
-
+<StaffList staff={staff}/>
     </div>
   )
   }
