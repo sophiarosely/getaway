@@ -109,6 +109,7 @@ useEffect(() => {
 
   return (
     <div className='meditation-container'>
+
       <h1>Meditation</h1>
       <div style={{ width: '100px', height: '100px' }}>
         {/* <PlayablePiano /> */}
@@ -126,6 +127,7 @@ useEffect(() => {
       {reflectionOpen && <Reflections />} */}
       {exercise1Open &&
       <div className="exercise-popup">
+
         <div className="exercise-popup-text">{currentText}</div>
        <div> <Torus /> </div>
         <button className="exercise-button" onClick={handleExercise1Close}>Complete</button>

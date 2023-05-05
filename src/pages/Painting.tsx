@@ -171,10 +171,10 @@ useEffect(() => {
 
 return(
   <div >
-    {/* <div style={{position:"relative", zIndex: -2}}>
+    <div style={{position:"relative", zIndex: -2}}>
     <LavaLamp />
-    </div> */}
-  <div style={{position:"relative", zIndex: -1}}>
+    </div>
+  <div style={{ zIndex: -1}}>
 <WavyTop color={color}/>
 </div>
   <div style={{
