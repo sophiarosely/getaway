@@ -115,22 +115,12 @@ useEffect(() => {
   // *****************
 
   return (
-<<<<<<< HEAD
-    <div className='meditation-container'>
-
-      <h1>Meditation</h1>
-      <div style={{ width: '100px', height: '100px' }}>
-        {/* <PlayablePiano /> */}
-      </div>
-      <div className='exercise-box' onClick={handleExercise1Click}>
-=======
     <main className='meditation-container'>
 <h1 style={{textAlign: "center", margin: "auto"}}>Meditation</h1>
 <p style={{textAlign: "center", margin: "auto"}} >Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some nice visualizations and go through various breathing exercises.</p>
       <article className="exercise-container">
         <h2>Meditation Exercises</h2>
       <Button className='exercise-box' variant="outlined" onClick={handleExercise1Click}>
->>>>>>> 80cf4b7c8fd8f01f8e2d5199ab0ce876e2775143
         5-5-5
       </Button>
       <br></br>
@@ -142,12 +132,10 @@ useEffect(() => {
         Zen Breathing
       </Button>
       </article>
-
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 </div>
       {exercise1Open &&
       <div className="exercise-popup">
-
         <div className="exercise-popup-text">{currentText}</div>
        <div> <ThreeJS1 /> </div>
        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
