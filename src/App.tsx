@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate, useLocation  } from 'react-router-dom';
 import Home from './pages/Home';
 import Habits from './pages/Habits';
 import Affirmations from './pages/Affirmations';
@@ -70,14 +70,13 @@ const App = () => {
     <UserContext.Provider value={{ userName, userId }}>
       <BrowserRouter>
         <div>
-          <NavBar />
+        {user && <NavBar />}
           <Routes>
             {user ? (
               <Route path='/' element={<Home />} />
             ) : (
               <Route path='/' element={<Login />} />
             )}
-
             <Route path='/habits' element={<Habits />} />
             <Route path='/affirmations' element={<Affirmations />} />
             <Route
