@@ -89,7 +89,7 @@ export default class SceneInit {
     this.renderer = new WebGLRenderer(parameters);
 
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(this.renderer.domElement);
+    // document.body.appendChild(this.renderer.domElement);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 

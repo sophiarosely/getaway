@@ -20,7 +20,9 @@ import Painting from './pages/Painting';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Switch } from '@mui/material';
-import PlayablePiano from './components/PianoComponents/PlayablePiano';
+// Theodore import stuff
+import Music from '../src/pages/Music';
+// import PlayablePiano from './components/PianoComponents/PlayablePiano';
 
 export interface UserContextType {
   userName: string | null;
@@ -94,7 +96,7 @@ const App = () => {
             <Route path='/guidance' element={<Guidance />} />
             <Route path='/meditation' element={<Meditation />} />
             <Route path='/painting' element={<Painting />} />
-            <Route path='/music' element={<PlayablePiano />} />
+            <Route path='/music' element={<Music />} />
             <Route path='/therapist-profile' element={<TherapistProfile />} />
             <Route path='/profile' element={<Profile />} />
           </Routes>
