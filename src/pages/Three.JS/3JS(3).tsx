@@ -11,7 +11,7 @@ const Torus1 = () => {
     const clock = new THREE.Clock();
 
     // Create a geometry
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const geometry = new THREE.TorusKnotGeometry(1, 0.4, 64, 8, 2, 3);
     // Create a material
     const material = new THREE.MeshNormalMaterial();
 
@@ -38,7 +38,8 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
+
+renderer.setSize(1250, 700);
 renderer.setClearColor(0x0000ff, 0); // Set the background color to blue
 renderer.domElement.style.borderRadius = "30px"; // Set the border radius to 10 pixels
 
@@ -111,20 +112,17 @@ function toRadians(angle: number) {
     const animate = function () {
       requestAnimationFrame(animate);
 
-      const cycleDuration = 19; // 4 + 7 + 8 = 19 seconds total for one full cycle
+      const cycleDuration = 8; // 4 seconds for inhale + 4 seconds for exhale
       const elapsedSeconds = clock.getElapsedTime() % cycleDuration;
 
       let scaleFactor = 1; // default scale factor
 
       if (elapsedSeconds < 4) {
-        // expanding phase (0-4 seconds)
+        // inhale phase (0-4 seconds)
         scaleFactor = (elapsedSeconds / 4) * 0.25 + 1;
-      } else if (elapsedSeconds < 11) {
-        // hold phase (4-11 seconds)
-        scaleFactor = 1.25;
-      } else if (elapsedSeconds < 19) {
-        // decreasing phase (11-19 seconds)
-        scaleFactor = ((19 - elapsedSeconds) / 8) * 0.25 + 1;
+      } else {
+        // exhale phase (4-8 seconds)
+        scaleFactor = ((8 - elapsedSeconds) / 4) * 0.25 + 1;
       }
       // Scale the torus mesh based on the scale factor
       torusRef.current.scale.set(scaleFactor, scaleFactor, scaleFactor);

@@ -17,7 +17,7 @@ affirmationRoutes.get('/mood/:moodString', (req, res) => {
     const { moodString } = req.params
 
     const runPrompt = async () => {
-        const affirmationPrompt = `Today, I am feeling ${moodString}. Can you send me 5 affirmations, based on my mood?`
+        const affirmationPrompt = `Today, I am feeling ${moodString}. Can you send me 5 affirmations I can repeat to myself, based on my mood? (Do not include special characters)`
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
@@ -38,7 +38,6 @@ affirmationRoutes.get('/:correctAffirmation', (req, res) => {
     const { correctAffirmation } = req.params
 
 
-    console.log(correctAffirmation, 'correct')
 
     const runPrompt = async () => {
         const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly: ${correctAffirmation}`
@@ -109,7 +108,6 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 affirmationRoutes.get('/retrieve/:userId/:entryId', async (req, res) => {
     const { userId, entryId } = req.params
 
-    console.log(userId, entryId)
     try {
 
         const affirmationEntries = await prisma.affirmations.findFirst({
