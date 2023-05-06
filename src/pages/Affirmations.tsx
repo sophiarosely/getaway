@@ -65,9 +65,8 @@ const Affirmations = () => {
 
   return (
     <div id='parent' style={{ paddingBottom: '500px' }}>
-      <Link to="/affirmation-entries"><Button variant='text'>View Affirmations</Button></Link>
+      <Link to="/affirmation-entries"><Button variant='text' style={{marginTop: '40px'}}>View Affirmations</Button></Link>
       <center>
-        <h1>Affirmations</h1>
         <h2>What affirmations are you looking for today? </h2>
         <h3>Today, I am feeling...</h3>
         <h6>You can express as much as you want or enter a single word. It's up to you ☺ </h6>

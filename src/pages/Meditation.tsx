@@ -132,12 +132,10 @@ useEffect(() => {
         Zen Breathing
       </Button>
       </article>
-
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 </div>
       {exercise1Open &&
       <div className="exercise-popup">
-
         <div className="exercise-popup-text">{currentText}</div>
        <div> <ThreeJS1 /> </div>
        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>

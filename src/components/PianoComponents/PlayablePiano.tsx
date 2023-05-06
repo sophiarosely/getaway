@@ -7,22 +7,33 @@ import Piano from './Piano';
 const PlayablePiano = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pianoRef = useRef<Piano | null>(null);
+  // add container
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
+    if (canvasRef.current && containerRef.current) {
       const sceneInit = new SceneInit();
-      sceneInit.initScene(canvasRef.current);
+      // sceneInit.initScene(canvasRef.current);
+      sceneInit.initScene(canvasRef.current, containerRef.current);
       sceneInit.animate();
 
-      const piano = new Piano();
+      const audioContext = new AudioContext();
+
+      const piano = new Piano(audioContext);
       pianoRef.current = piano;
 
       sceneInit.scene.add(piano.getPianoGroup());
+
+      // const context = new (window.AudioContext || window.webkitAudioContext)();
 
       const onKeyDown = (e: KeyboardEvent) => {
         if (e.repeat) {
           return;
         }
+        audioContext.resume().then(() => {
+          console.log('Playback resumed successfully');
+        });
+
         pianoRef.current?.pressKey(e.key);
       };
 
@@ -33,16 +44,27 @@ const PlayablePiano = () => {
       window.addEventListener('keydown', onKeyDown);
       window.addEventListener('keyup', onKeyUp);
 
+      document.addEventListener('click', function () {
+        audioContext.resume().then(() => {
+          console.log('Playback resumed successfully');
+        });
+      });
+
       return () => {
         window.removeEventListener('keydown', onKeyDown);
         window.removeEventListener('keyup', onKeyUp);
+        document.removeEventListener('click', function () {
+          audioContext.resume().then(() => {
+            console.log('Playback resumed successfully');
+          });
+        });
       };
     }
   }, []);
 
   return (
-    <div>
-      <canvas ref={canvasRef}></canvas>
+    <div ref={containerRef} style={{ width: '50%', height: '100%' }}>
+      <canvas ref={canvasRef} style={{ borderRadius: '1000px' }}></canvas>
     </div>
   );
 };
