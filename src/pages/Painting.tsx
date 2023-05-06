@@ -171,12 +171,11 @@ useEffect(() => {
 
 return(
   <div >
-    <div style={{position:"relative", zIndex: -2}}>
-    <LavaLamp />
-    </div>
+
   <div style={{ zIndex: -1}}>
 <WavyTop color={color}/>
 </div>
+
   <div style={{
     display: 'flex',
     justifyContent: 'center',
