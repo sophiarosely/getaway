@@ -21,8 +21,8 @@ const Guidance = () =>{
     //function get the user lat and long
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
-      setLat(30.007274);
-      setLong(-90.08788);
+      setLat(latitude);
+      setLong(longitude);
       setGeolocationLoaded(true);
     });
   }, [])

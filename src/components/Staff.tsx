@@ -26,9 +26,9 @@ return (
       <CardMedia
         component="img"
         height="200"
-        image="https://i.imgur.com/hMhXRCM.png"
+        image={therapist.photoURL}
         alt="therapist icon"
-        style={{ width: "60%", display: "flex", alignItems: "center", justifyContent: "center", padding:"20px"}}
+        style={{ width: "100%", alignItems: "center", justifyContent: "center", padding:"20px", borderRadius:"20%"}}
       />
     <IconButton
   aria-label="therapists"
@@ -47,22 +47,25 @@ return (
 </IconButton>
       <CardContent>
         <Typography gutterBottom variant="body1" component="div">
-          name
+          {therapist.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          blah
+          {therapist.licenseType}
         </Typography>
-        {therapist.opening_hours?  <Typography variant="body2" color="text.secondary">
-          {therapist.opening_hours.open_now ? "Open" : "Closed"}
-        </Typography> : "No Hours Available"}
+        <Typography gutterBottom variant="body1" component="div">
+          {therapist.skills}
+        </Typography>
+        <Typography gutterBottom variant="body1" component="div">
+          {therapist.yearsExp} Years of Experience
+        </Typography>
 
       </CardContent>
     </CardActionArea>
     <CardActions>
     <Typography variant="body2" color="text.secondary">
-        {therapist.rating}
+        5
       </Typography>
-      <Rating name="read-only" value={therapist.rating} readOnly />
+      <Rating name="read-only" value= {5} readOnly />
     </CardActions>
   </Card>
 );

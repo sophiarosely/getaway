@@ -34,13 +34,18 @@ const Home = () => {
         .catch((error) => console.error(error));
 
         axios
-        .get((`/affirmations/retrieve-favorites/${userId}`))
-        .then(({ data }) => {setFavoriteAffirmations(data); console.log(data, 'here')})
-        .catch((error) => console.error(error));
+        .get(`/affirmations/retrieve-favorites/${userId}`)
+        .then(({ data }) => {
+          if (data && data.length > 0) { // check if data is not empty
+            setFavoriteAffirmations(data);
+            console.log(data, 'here');
+          }
+        })
+        .catch((error) => console.error(error, 'nooo'));
     }
   }, [userId]);
 
-
+console.log(favoriteAffirmations, "fav")
   return (
     <div style={{ textAlign: 'center' }}>
   <CheckIn />
@@ -76,12 +81,14 @@ const Home = () => {
       padding:'20px'
     }}>
       {/* <h3>Affirmations</h3> */}
-       <div  style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-       {favoriteAffirmations.slice(favoriteAffirmations.length - 1).map((favorite: any) => (
-        <AffirmationHome key={favorite.user_id} entryId={favorite.id} title={favorite.title} affirmations={favorite.affirmationList.split('/n')}
-           />
-      ))}
-      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+
+  {
+    favoriteAffirmations.slice(favoriteAffirmations.length - 1).map((favorite: any) => (
+      <AffirmationHome key={favorite.user_id} entryId={favorite.id} title={favorite.title} affirmations={favorite.affirmationList.split('/n')} />
+    ))
+  }
+</div>
       </div>
       </div>
       <div
