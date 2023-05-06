@@ -1,12 +1,19 @@
 import React from "react";
 import Button from '@mui/material/Button';
+import { useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom'
+import BookNowButton from '../components/BookNowButton';
+import dayjs from 'dayjs';
 
 const TherapistProfile = () =>{
 
 const location = useLocation();
 const { therapist } = location.state
-console.log(therapist)
+
+const  [appointment, setAppointment ]:any = useState(null)
+console.log(appointment)
+
+
   return(
 <div style={{padding:"200px"}}>
 
@@ -14,7 +21,8 @@ console.log(therapist)
   <img src={therapist.photoURL} style={{borderRadius: "50%", width: "300px", height: "300px"}} />
   <h1 style={{textAlign: "center"}}>{therapist.name}, {therapist.licenseType}</h1>
   <h3>{therapist.skills}</h3>
-  <Button variant="contained" sx={{backgroundColor:'#6BB76A'}}>Book Now</Button>
+  <BookNowButton setAppointment = {setAppointment}/>
+  {appointment? <h3>You have an Appointment on {appointment}</h3>: <h3>Book Today</h3>}
 </div>
 
 <div
