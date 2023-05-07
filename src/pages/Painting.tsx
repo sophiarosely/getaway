@@ -170,7 +170,7 @@ useEffect(() => {
 }, [indexFing]);
 
 return(
-  <div >
+  <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
 
   <div style={{ zIndex: -1}}>
 <WavyTop color={color}/>

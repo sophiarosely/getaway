@@ -5,7 +5,7 @@ import TherapistMap from "../components/TherapistMap"
 import  Pagination  from "@mui/material/Pagination";
 import FavTherapist from "../components/FavTherapist"
 import StaffList from "../components/StaffList";
-
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 const Guidance = () =>{
 
@@ -78,9 +78,19 @@ const getNextTwenty = () =>{
 console.log( userLat, userLong)
 console.log('hi',therapists)
 console.log('staff', staff)
-  return (
 
-    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+// const theme = createTheme({
+//   palette: {
+//     background: {
+//       default: '#fafafa', // This is the default background color set in the theme
+//     },
+//   },
+// });
+
+
+  return (
+<div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
+    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em",}}>
     <h3>ITS OKAY TO ASK FOR HELP</h3>
     <p style={{width:'50%'}}>
     If you’re thinking about suicide, are worried about a friend or loved one, or would like emotional support, the Lifeline network is available 24/7 across the United States.
@@ -114,6 +124,7 @@ console.log('staff', staff)
     <FavTherapist />
     </div>
 <StaffList staff={staff}/>
+    </div>
     </div>
   )
   }

@@ -57,7 +57,18 @@ function NavBar() {
 );
 
   return (
-    <div style={{ position: "absolute", top: "0", left: "0" , zIndex:10}}>
+    <div style={{
+      position: "absolute",
+      top: "0",
+      left: "0",
+      zIndex:20,
+      backgroundImage: "url('https://i.imgur.com/hyj9pA8.png')",
+      backgroundSize: "cover",
+      width: "100vw",
+      height: "60%",
+      flex:1,
+
+    }}>
       <Button onClick={() => setOpen(true)}>
         <MenuIcon />
       </Button>
