@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayablePiano from '../components/PianoComponents/PlayablePiano';
+import TimeSpentOnPage from '../components/PianoComponents/TimeSpentOnPage';
 const Music = () => {
   return (
     <div
@@ -28,6 +29,7 @@ const Music = () => {
       </div>
       <PlayablePiano />
       <p>Click and drag the piano with your cursor!</p>
+      <TimeSpentOnPage />
     </div>
   );
 };
