@@ -9,6 +9,7 @@ import { UserContext, UserContextType } from '../App';
 import SavedPaintings from '../components/SavedPaintings'
 import axios from 'axios';
 import  Button from '@mui/material/Button';
+import HomePartOne from "../components/HomePartOne"
 
 
 
@@ -47,7 +48,23 @@ const Home = () => {
 
 console.log(favoriteAffirmations, "fav")
   return (
+    <div>
+
+<div >
+<HomePartOne/>
+</div>
+<div style={{
+     zIndex: 20,
+     backgroundImage: "url('https://i.imgur.com/XZrWOiI.png')",
+     backgroundSize: "cover",
+
+     width: "100%",
+     height: "300px",
+   }}>
+
+  </div>
     <div style={{ textAlign: 'center' }}>
+
   <CheckIn />
   <div
     style={{
@@ -162,6 +179,7 @@ console.log(favoriteAffirmations, "fav")
     }}
   />
       </div>
+    </div>
     </div>
   );
 };
