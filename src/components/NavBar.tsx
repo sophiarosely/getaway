@@ -65,17 +65,22 @@ function NavBar() {
       backgroundImage: "url('https://i.imgur.com/hyj9pA8.png')",
       backgroundSize: "cover",
       width: "100vw",
-      height: "60%",
-      flex:1,
-
+      height: "40%",
+      display: "flex",
+      alignItems: "flex-start",
+      padding: "10px",
     }}>
+      <img src="https://i.imgur.com/NInXwHl.png" style={{ height: "100px", marginRight: "auto",display: "flex",
+      alignItems: "flex-start", }}/>
+      <div style={{padding:"20px"}}>
       <Button onClick={() => setOpen(true)}>
-        <MenuIcon />
+        <MenuIcon sx={{color:"#FFABAA"}}/>
       </Button>
       <Drawer open={open} anchor={'left'} onClose={() => setOpen(false)}  PaperProps={{ style: { backgroundColor: 'rgb(120, 138, 202)' } }} >
         {getList()}
       </Drawer>
-      <Button onClick={logout}>Logout</Button>
+      <Button onClick={logout} sx={{color:"#FFABAA"}}>Logout</Button>
+      </div>
     </div>
   );
 }
