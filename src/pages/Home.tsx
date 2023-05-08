@@ -10,6 +10,7 @@ import SavedPaintings from '../components/SavedPaintings'
 import axios from 'axios';
 import  Button from '@mui/material/Button';
 import HomePartOne from "../components/HomePartOne"
+import HomePartTwo from "../components/HomePartTwo"
 
 
 
@@ -53,19 +54,37 @@ console.log(favoriteAffirmations, "fav")
 <div >
 <HomePartOne/>
 </div>
-<div style={{
-     zIndex: 20,
-     backgroundImage: "url('https://i.imgur.com/XZrWOiI.png')",
-     backgroundSize: "cover",
-
-     width: "100%",
-     height: "300px",
-   }}>
-
+<div style={{ position: "relative" }}>
+  <div style={{
+    zIndex: 20,
+    background: " url('https://i.imgur.com/XZrWOiI.png')",
+    backgroundSize: "cover",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "300px",
+  }}>
   </div>
-    <div style={{ textAlign: 'center' }}>
 
+    <HomePartTwo  />
+  </div>
+
+
+    <div style={{ textAlign: 'center',position: "relative" }}>
+    <div style={{
+    zIndex: 20,
+    background: " url('https://i.imgur.com/JVchQzl.png')",
+    backgroundSize: "cover",
+    position: "absolute",
+    top: "-1%",
+    left: 0,
+    width: "100%",
+    height: "300px",
+  }}>
+  </div>
   <CheckIn />
+
   <div
     style={{
       borderRadius:'40px',
@@ -83,6 +102,7 @@ console.log(favoriteAffirmations, "fav")
         textAlign: 'center',
         letterSpacing: '0.30em'
       }}
+      id="affirmations"
     >
       {/* replace all this with the actual functionality when the time comes */}
       <h2>RECENT AFFIRMATION</h2>
@@ -125,6 +145,7 @@ console.log(favoriteAffirmations, "fav")
         textAlign: 'center',
         letterSpacing: '0.5em'
       }}
+      id="habits"
     >
       {/* replace all this with the actual functionality when the time comes */}
       <h2 >HABITS</h2>
