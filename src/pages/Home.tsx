@@ -54,6 +54,7 @@ console.log(favoriteAffirmations, "fav")
 <div >
 <HomePartOne/>
 </div>
+{/* drip stuff */}
 <div style={{ position: "relative" }}>
   <div style={{
     zIndex: 20,
@@ -70,7 +71,7 @@ console.log(favoriteAffirmations, "fav")
     <HomePartTwo  />
   </div>
 
-
+{/* drip stuff */}
     <div style={{ textAlign: 'center',position: "relative" }}>
     <div style={{
     zIndex: 20,
@@ -84,48 +85,55 @@ console.log(favoriteAffirmations, "fav")
   }}>
   </div>
   <CheckIn />
+  {/* drip stuff */}
+<div style={{position:"relative"}}>
+  <div style={{
+    zIndex: 20,
+    background: " url('https://i.imgur.com/OWafM6W.png')",
+    backgroundSize: "cover",
+    position: "absolute",
+    top: "-1%",
+    left: 0,
+    width: "100%",
+    height: "300px",
+  }}>
+    </div>
+    </div>
 
-  <div
-    style={{
-      borderRadius:'40px',
-      margin:'60px auto',
-      color: '#5C6B9E',
-      backgroundColor:'#5C6B9E',
-      width: '70%',
-      height: '7px',
-      textAlign:'center',
-      marginBottom: '100px'
-    }}
-  />
       <div
       style={{
         textAlign: 'center',
-        letterSpacing: '0.30em'
+        letterSpacing: '0.30em',
+        background: "linear-gradient(45deg, #FFC7B0 0%, #FFC7B0 80%, #FF8974 100%)"
       }}
       id="affirmations"
     >
       {/* replace all this with the actual functionality when the time comes */}
-      <h2>RECENT AFFIRMATION</h2>
+      <h1 style={{fontSize:"100px", color:"white", padding:"150px", textShadow: "2px 2px 4px #000000"}}
+      >AFFIRMATIONS</h1>
+      <div style={{padding:"80px"}}>
       <div style={{
-      borderRadius:'40px',
       margin:'60px auto',
-      color: '#788ACA',
-      backgroundColor:'#CCD7FF',
+      color: 'white',
+      backgroundColor:'#FC6E47',
       width: '70%',
       height: '300px',
       textAlign:'center',
-      marginBottom:'100px',
-      padding:'20px'
+      marginBottom:'400px',
+      padding:'20px',
+      fontWeight:"bolder",
     }}>
-      {/* <h3>Affirmations</h3> */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-
-  {
+        {
     favoriteAffirmations.slice(favoriteAffirmations.length - 1).map((favorite: any) => (
       <AffirmationHome key={favorite.user_id} entryId={favorite.id} title={favorite.title} affirmations={favorite.affirmationList.split('/n')} />
     ))
   }
-</div>
+
+      </div>
+      {/* <h3>Affirmations</h3> */}
+
+
+
       </div>
       </div>
       <div
