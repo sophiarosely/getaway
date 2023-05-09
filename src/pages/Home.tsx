@@ -123,12 +123,13 @@ console.log(favoriteAffirmations, "fav")
       padding:'20px',
       fontWeight:"bolder",
     }}>
+      <div style={{padding:"10px"}}>
         {
     favoriteAffirmations.slice(favoriteAffirmations.length - 1).map((favorite: any) => (
       <AffirmationHome key={favorite.user_id} entryId={favorite.id} title={favorite.title} affirmations={favorite.affirmationList.split('/n')} />
     ))
   }
-
+</div>
       </div>
       {/* <h3>Affirmations</h3> */}
 
