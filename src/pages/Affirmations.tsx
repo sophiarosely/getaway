@@ -61,14 +61,28 @@ const Affirmations = () => {
   }
   };
 
+  const affirmationHeader = {
+    fontSize:"100px",
+    color: "white",
+    // padding: "125px",
+    textShadow: "2px 2px 4px #000000",
+    marginTop: '200px'
+  }
+
+  const affirmationHeader2 = {
+    fontSize:"20px",
+    color: "white",
+    textShadow: "2px 2px 4px #000000"
+  }
 
 
   return (
-    <div id='parent' style={{ paddingBottom: '500px' }}>
-      <Link to="/affirmation-entries"><Button variant='text' style={{marginTop: '40px'}}>View Affirmations</Button></Link>
+    <div id='parent' style={{ paddingBottom: '500px', background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
+      <Link to="/affirmation-entries"><Button variant='text' style={{marginTop: '100px'}}>View Affirmations</Button></Link>
       <center>
-        <h2>What affirmations are you looking for today? </h2>
-        <h3>Today, I am feeling...</h3>
+      <h1 style={affirmationHeader}>AFFIRMATIONS</h1>
+        <h2 style={affirmationHeader2}>What affirmations are you looking for today? </h2>
+        {/* <h3>Today, I am feeling...</h3> */}
         <h6>You can express as much as you want or enter a single word. It's up to you ☺ </h6>
         <FormGroup style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <TextField
