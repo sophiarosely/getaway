@@ -79,10 +79,10 @@ console.log(favoriteAffirmations, "fav")
     background: " url('https://i.imgur.com/JVchQzl.png')",
     backgroundSize: "cover",
     position: "absolute",
-    top: "-1%",
+    top: "0%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "300px"
   }}>
   </div>
   <CheckIn />
@@ -224,21 +224,25 @@ console.log(favoriteAffirmations, "fav")
 
   </div>
 <div style={{backgroundColor:"#009CAD", padding:"100px"}}>
+<h2 style={{marginTop:"200px",fontSize:"80px", color:"white", textShadow: "2px 2px 4px #000000"}}>YOUR MASTERPIECE</h2>
       <SavedPaintings/>
-      <div
+
+</div>
+    </div>
+    <div
+
     style={{
       borderRadius:'40px',
       margin:'60px auto',
       color: '#5C6B9E',
       backgroundColor:'#5C6B9E',
+
       width: '70%',
       height: '7px',
       textAlign:'center',
       marginBottom: '100px'
     }}
-  />
-</div>
-    </div>
+  >bottom shit </div>
     </div>
   );
 };
