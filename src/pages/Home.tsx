@@ -11,6 +11,7 @@ import axios from 'axios';
 import  Button from '@mui/material/Button';
 import HomePartOne from "../components/HomePartOne"
 import HomePartTwo from "../components/HomePartTwo"
+import { Link } from 'react-router-dom';
 
 
 
@@ -108,10 +109,30 @@ console.log(favoriteAffirmations, "fav")
       }}
       id="affirmations"
     >
+
       {/* replace all this with the actual functionality when the time comes */}
       <h1 style={{fontSize:"100px", color:"white", padding:"150px", textShadow: "2px 2px 4px #000000"}}
       >AFFIRMATIONS</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", margin:"100px"}}>
+  <img
+    src="https://i.imgur.com/W3eeJwE.png"
+    style={{ marginTop: "-90px" }}
+  />
+  <img src="https://i.imgur.com/W3eeJwE.png" />
+  <img
+    src="https://i.imgur.com/W3eeJwE.png"
+    style={{ marginTop: "-90px" }}
+  />
+</div>
+
+
+
+
+
       <div style={{padding:"80px"}}>
+        <Link to="/affirmations">
+      <button>More</button>
+      </Link>
       <div style={{
       margin:'60px auto',
       color: 'white',
@@ -130,6 +151,7 @@ console.log(favoriteAffirmations, "fav")
     ))
   }
 </div>
+
       </div>
       {/* <h3>Affirmations</h3> */}
 
@@ -137,33 +159,36 @@ console.log(favoriteAffirmations, "fav")
 
       </div>
       </div>
-      <div
-    style={{
-      borderRadius:'40px',
-      margin:'60px auto',
-      color: '#5C6B9E',
-      backgroundColor:'#5C6B9E',
-      width: '70%',
-      height: '7px',
-      textAlign:'center',
-      marginBottom: '100px'
-    }}
-  />
+      <div style={{position:"relative"}}>
+  <div style={{
+    zIndex: 20,
+    background: " url('https://i.imgur.com/3FYNuGE.png')",
+    backgroundSize: "cover",
+    position: "absolute",
+    top: "-1%",
+    left: 0,
+    width: "100%",
+    height: "300px",
+  }}>
+    </div>
+    </div>
       <div
       style={{
         textAlign: 'center',
-        letterSpacing: '0.5em'
+        letterSpacing: '0.5em',
+        backgroundColor:"#77E0D7",
+        padding:"100px"
       }}
       id="habits"
     >
       {/* replace all this with the actual functionality when the time comes */}
-      <h2 >HABITS</h2>
+      <h2 style={{marginTop:"200px",fontSize:"80px", color:"white", textShadow: "2px 2px 4px #000000"}}>FORM NEW HABITS</h2>
       <div style={{
 
       borderRadius:'40px',
       margin:'60px auto',
-      color: '#788ACA',
-      backgroundColor:'#CCD7FF',
+      color: '#6BB76A',
+      backgroundColor:'#6BB76A',
       width: '70%',
       minHeight: '250px',
       textAlign:'center',
@@ -183,18 +208,22 @@ console.log(favoriteAffirmations, "fav")
       </div>
       {/* <HabitCreate></HabitCreate> */}
       </div>
-      <div
-    style={{
-      borderRadius:'40px',
-      margin:'60px auto',
-      color: '#5C6B9E',
-      backgroundColor:'#5C6B9E',
-      width: '70%',
-      height: '7px',
-      textAlign:'center',
-      marginBottom: '100px'
-    }}
-  />
+      </div>
+      <div style={{position:"relative"}}>
+  <div style={{
+    zIndex: 20,
+    background: " url('https://i.imgur.com/QjJW1du.png')",
+    backgroundSize: "cover",
+    position: "absolute",
+    top: "-1%",
+    left: 0,
+    width: "100%",
+    height: "300px",
+  }}>
+    </div>
+
+  </div>
+<div style={{backgroundColor:"#009CAD", padding:"100px"}}>
       <SavedPaintings/>
       <div
     style={{
@@ -208,7 +237,7 @@ console.log(favoriteAffirmations, "fav")
       marginBottom: '100px'
     }}
   />
-      </div>
+</div>
     </div>
     </div>
   );
