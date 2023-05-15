@@ -204,7 +204,8 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                     </div>
                   </Typography>
                 </CardContent>
-                <CardActions  style={{display: 'fiex', justifyContent: 'flex-end' }}>
+                <div style={{ marginLeft: 'auto' }}>
+                <CardActions>
                   <div>
                   <div id={`practice-${entryId}`}>
                     {/* interactive affirmation button */}
@@ -237,6 +238,7 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                     </IconButton>
                   </div>
                 </CardActions>
+                </div>
               </React.Fragment>
             }
           </Card>
