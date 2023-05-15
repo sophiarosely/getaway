@@ -69,12 +69,15 @@ const types:Option[] = [
   }
 
   return (
- <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
-    <h3>Growth</h3>
+<div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
+    <div style={{marginTop: '80px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+    <h3 style={{marginTop:"300px"}}>Growth</h3>
     <p style={{width:'50%'}}>
-     "Small habits lead to big growth - track your progress and see how far you've come."
+         "Small habits lead to big growth - track your progress and see how far you've come."
+
     </p>
-      <div
+    
+    <div
     style={{
       borderRadius:'40px',
       margin:'60px auto',
@@ -86,10 +89,10 @@ const types:Option[] = [
       marginBottom: '60px'
     }}
   />
-   <Button 
+   {/* <Button 
    variant="outlined"
    onClick={handleNewHabit}>New Habit</Button> 
-      {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />} 
+      {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />}  */}
 
       <Card sx={{ 
   borderRadius: '10px', 
@@ -101,9 +104,9 @@ const types:Option[] = [
     '&::-webkit-scrollbar': {
         width: '3px',
       },
-      '&::-webkit-scrollbar-track': {
-        background: '#E0E0E0',
-      },
+      // '&::-webkit-scrollbar-track': {
+      //   background: '#E0E0E0',
+      // },
       '&::-webkit-scrollbar-thumb': {
         background: 'rgba(136, 136, 136, 0.5)',
         borderRadius: '1px',
@@ -119,7 +122,17 @@ const types:Option[] = [
            habit_createdAt={habit.habit_createdAt}
            onDelete={() => handleDelete(habit.id)} />
       ))}
+         <Button 
+      variant="outlined"
+    sx={{
+      position: 'absolute',
+      bottom: '10px',
+      right: '10px',
+    }}
+   onClick={handleNewHabit}>New Habit</Button> 
+      {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />} 
       </Card>
+    </div>
     </div>
   );
 };

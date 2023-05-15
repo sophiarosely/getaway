@@ -17,12 +17,15 @@ setnewSearch(namesObj)
 console.log(activities)
 
 return (
- <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
-    <h3>Recess</h3>
+ <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
+    <div style={{marginTop: '80px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+    <h3 style={{marginTop:"300px"}}>Recess</h3>
     <p style={{width:'50%'}}>
      "By exploring new activities and hobbies, you can take small steps towards better mental health and discover a whole world of possibilities you never knew existed."
+
     </p>
-      <div
+    
+    <div
     style={{
       borderRadius:'40px',
       margin:'60px auto',
@@ -46,6 +49,7 @@ return (
     >
       <ScrollWall />
     </div>
+  </div>
   </div>
 );
   }
