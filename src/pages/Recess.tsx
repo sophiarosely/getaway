@@ -2,19 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 // import Recommend from '../components/Recess/Recommendations'
 import { UserContext, UserContextType } from '../App';
 
-import activities from '../components/Recess/fakedb'
+
 import ScrollWall from  '../components/Recess/ScrollWall'
 
 const Recess = () =>{
-const [newSearch, setnewSearch] = useState<[]>([]);
- const [showRecommend, setShowRecommend] = useState(false);
 
-  function handleCreate(namesObj: []){
-setnewSearch(namesObj)
-// setShowRecommend(true);
-
-  }
-console.log(activities)
 
 return (
  <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
@@ -24,7 +16,24 @@ return (
      "By exploring new activities and hobbies, you can take small steps towards better mental health and discover a whole world of possibilities you never knew existed."
 
     </p>
-    
+        <style>
+    {`
+    ::-webkit-scrollbar {
+      width: 10px;
+      margin-right: 10px; /* Add margin to the right */
+      margin-left: 10px; /* Add margin to the right */
+      padding:30px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: #9BB6FD;
+      border-radies:30px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #7C92CB;
+      border-radius:30px;
+    }
+    `}
+  </style>
     <div
     style={{
       borderRadius:'40px',

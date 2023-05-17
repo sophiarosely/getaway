@@ -89,10 +89,8 @@ const types:Option[] = [
       marginBottom: '60px'
     }}
   />
-   {/* <Button 
-   variant="outlined"
-   onClick={handleNewHabit}>New Habit</Button> 
-      {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />}  */}
+  
+
 
       <Card sx={{ 
   borderRadius: '10px', 
@@ -101,17 +99,36 @@ const types:Option[] = [
   height: '60vh', 
   width: '160vh',
   overflow: 'scroll',
-    '&::-webkit-scrollbar': {
-        width: '3px',
-      },
-      // '&::-webkit-scrollbar-track': {
-      //   background: '#E0E0E0',
+    // '&::-webkit-scrollbar': {
+    //     width: '3px',
+    //   },
+    //   // '&::-webkit-scrollbar-track': {
+    //   //   background: '#E0E0E0',
+    //   // },
+    //   '&::-webkit-scrollbar-thumb': {
+    //     background: 'rgba(136, 136, 136, 0.5)',
+    //     // borderRadius: '1px',
       // },
-      '&::-webkit-scrollbar-thumb': {
-        background: 'rgba(136, 136, 136, 0.5)',
-        borderRadius: '1px',
-      },
+      
 }}>
+      <style>
+    {`
+    ::-webkit-scrollbar {
+      width: 10px;
+      margin-right: 10px; /* Add margin to the right */
+      margin-left: 10px; /* Add margin to the right */
+      padding:30px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: #9BB6FD;
+      border-radies:30px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #7C92CB;
+      border-radius:30px;
+    }
+    `}
+  </style>
       {habits.map((habit) => (
         <HabitCard
          key={habit.id}
@@ -122,16 +139,12 @@ const types:Option[] = [
            habit_createdAt={habit.habit_createdAt}
            onDelete={() => handleDelete(habit.id)} />
       ))}
-         <Button 
-      variant="outlined"
-    sx={{
-      position: 'absolute',
-      bottom: '10px',
-      right: '10px',
-    }}
-   onClick={handleNewHabit}>New Habit</Button> 
-      {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />} 
+      <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+  <Button variant="outlined" onClick={handleNewHabit}>New Habit</Button>
+  {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />}
+</div>
       </Card>
+    <div style={{ marginBottom: '20px' }}></div>
     </div>
     </div>
   );
