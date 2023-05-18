@@ -61,57 +61,74 @@ const Affirmations = () => {
   }
   };
 
+  const handleBackButton = () => {
+    setisSaveVisible(false);
+  }
+
   const affirmationHeader = {
-    fontSize:"100px",
+    fontSize:"70px",
     color: "white",
-    // padding: "125px",
-    textShadow: "2px 2px 4px #000000",
-    marginTop: '200px'
+    textShadow: "2px #000000",
+     marginTop: '200px'
   }
 
   const affirmationHeader2 = {
     fontSize:"20px",
     color: "white",
-    textShadow: "2px 2px 4px #000000"
+    textShadow: "2px #000000"
   }
 
 
   return (
-    <div id='parent' style={{ paddingBottom: '500px', background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
-      <Link to="/affirmation-entries"><Button variant='text' style={{marginTop: '100px'}}>View Affirmations</Button></Link>
+    <div id='parent' style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
       <center>
-      <h1 style={affirmationHeader}>AFFIRMATIONS</h1>
-        <h2 style={affirmationHeader2}>What affirmations are you looking for today? </h2>
+      {/* <Link to="/affirmation-entries"><Button variant='text' style={{marginTop: '400px'}}>View Affirmations</Button></Link> */}
+      <h1 style={affirmationHeader}>affirmations</h1>
+      <img src="https://i.pinimg.com/originals/e4/75/c9/e475c9ca1e4e22336418908baa02ae59.png" style={{height: '400px', width: '400px'}}></img>
+        <h2 style={affirmationHeader2}>what affirmations are you looking for today? </h2>
         {/* <h3>Today, I am feeling...</h3> */}
-        <h6>You can express as much as you want or enter a single word. It's up to you ☺ </h6>
-        <FormGroup style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        {/* <h6>You can express as much as you want or enter a single word. It's up to you ☺ </h6> */}
+        <div
+      style={{
+        textAlign: 'center',
+        background: "#FC6E47",
+        margin: 'auto',
+        padding: '50px',
+        maxWidth: '800px',
+        borderRadius: '20px'
+      }}
+      id="affirmations"
+    >
+        { !isSaveVisible ? <FormGroup style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <TextField
             id='outlined-multiline-static'
             placeholder='Type here...'
             multiline
             rows={7}
-            style={{ width: '100%', maxWidth: '700px', fontSize: '1.2rem' }}
+            style={{ width: '100%', maxWidth: '700px', fontSize: '1.2rem'}}
             size='medium'
             onChange={(e) => setUserMood(e.target.value)}
           />
           <Button variant='text'  style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem', marginTop: '1rem' }} size='medium' onClick={ () => handleEnterSubmit() }>
             Enter
           </Button>
-        </FormGroup>
-      </center>
-<FormGroup>
+        </FormGroup> : <FormGroup>
       <div id='affirmations' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-        {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}  variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}}  style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }} />)}
+        {(<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}  variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}}  style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }} />)}
           <ul>
             {affirmations.map((affirmation: string, index: number) => {
               return <li style={{listStyleType: 'none', padding: 0}}key={index}>{affirmation}</li>;
             })}
           </ul>
 
-   {isSaveVisible && (<Button variant='text' onClick={ () => handleSaveSubmit() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Save</Button>)}
+   {(<Button variant='text' onClick={ () => handleSaveSubmit() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Save</Button>)}
+   {(<Button variant='text' onClick={ () => handleBackButton() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Back</Button>)}
    </div>
-   </FormGroup>
+   </FormGroup>}
+   </div>
+   <h1 style={affirmationHeader}>favorites</h1>
+      </center>
     </div>
   );
 };
