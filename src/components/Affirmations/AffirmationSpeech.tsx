@@ -169,7 +169,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
        <div style={{ fontSize: 30 }}  className={showText ? 'fade-in' : 'fade-out'}>
   {rewardText !== '' ? (
-    <div dangerouslySetInnerHTML={{ __html: rewardText }} />
+    <div style={{ maxWidth: '500px' }} dangerouslySetInnerHTML={{ __html: rewardText }} />
   ) : (
     <div>{currentAffirmation ? currentAffirmation.replace(/,/g, " ") : ""}</div>
   )}
