@@ -10,8 +10,6 @@ import Swal from 'sweetalert2';
 import Carousel from 'react-material-ui-carousel';
 import Divider from '@mui/material/Divider';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -173,7 +171,7 @@ const Affirmations = () => {
             })}
           </ul>
    {(<Button variant='text' onClick={ () => handleSaveSubmit() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Save</Button>)}
-   {(<Button variant='text' onClick={ () => handleBackButton() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Back</Button>)}
+   {(<Button variant='text' onClick={ () => handleBackButton() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem' }}>Go Back</Button>)}
    </div>
    </FormGroup>}
 
@@ -187,16 +185,17 @@ const Affirmations = () => {
             })}
           </ul>  <div id="view-affirmation-button">
   <Link to="/affirmation-entries" style={{ textDecoration: 'none' }}>
-    <Button variant="text" style={{ width: '100%', maxWidth: '400px', fontSize: '1.0rem' }}>
-      View Affirmation Entry
-      <ArrowForwardIosIcon style={{ marginLeft: '5px', cursor: 'pointer' }} />
+    <Button variant="text" style={{ width: '100%', maxWidth: '400px', fontSize: '1.2em', cursor: 'pointer' }}>
+      View Entry
     </Button>
   </Link>
 </div>
 <div id="back-affirmation-button">
-    <Button variant="text" onClick={ () => handleBackButton() } style={{ width: '100%', maxWidth: '400px', fontSize: '1.0rem' }}>
-      <ArrowBackIosNewIcon style={{ marginRight: '5px', cursor: 'pointer' }} />
-      Back
+
+
+    <Button variant="text" onClick={ () => {handleBackButton(); setSaved(false); setisSaveVisible(false); setAffirmationTitle('') } } style={{ width: '100%', maxWidth: '400px', fontSize: '1.2rem', cursor: 'pointer' }}>
+
+      Go Back
     </Button>
 </div>
 </div> }
