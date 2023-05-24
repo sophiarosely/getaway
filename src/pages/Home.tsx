@@ -65,13 +65,13 @@ console.log(favoriteAffirmations, "fav")
     top: 0,
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "600px",
   }}>
   </div>
 
     <HomePartTwo  />
-  </div>
 
+</div>
 {/* drip stuff */}
     <div style={{ textAlign: 'center',position: "relative" }}>
     <div style={{
@@ -82,7 +82,7 @@ console.log(favoriteAffirmations, "fav")
     top: "0%",
     left: 0,
     width: "100%",
-    height: "300px"
+    height: "550px"
   }}>
   </div>
   <CheckIn />
@@ -96,7 +96,7 @@ console.log(favoriteAffirmations, "fav")
     top: "-1%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "500px",
   }}>
     </div>
     </div>
@@ -168,7 +168,7 @@ console.log(favoriteAffirmations, "fav")
     top: "-1%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "600px",
   }}>
     </div>
     </div>
@@ -218,7 +218,7 @@ console.log(favoriteAffirmations, "fav")
     top: "-1%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "500px",
   }}>
     </div>
 
