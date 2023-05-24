@@ -63,26 +63,26 @@ const HomePartTwo = () => {
         <p style={{fontSize:"20px", maxWidth:"600px"}}>There’s lots to do here at getaway to escape, and feel good. Whether you want to relax, and meditate. Express yourself creatively, listen to your favorite songs, or simply tell yourself, “You are enough” Because here at Getway, you are.</p>
 
         <div style={{marginTop:"200px", fontSize:"40px"}}>
-      <h1 style={{textAlign:"right"}} onClick={() => scrollToSection("affirmations")}>AFFIRMATIONS</h1>
+      <h1 style={{textAlign:"right", marginRight:"100px"}} onClick={() => scrollToSection("affirmations")}>AFFIRMATIONS</h1>
       <img src="https://i.imgur.com/VJP3Wvg.png" style={{position: "absolute", top: "35%", right: "60%"}}/>
     </div>
     <div style={{marginTop:"200px", fontSize:"40px"}}>
       <Link to="/meditation" style={{color: "white",textDecoration: "none"}}>
-      <h1>MEDITATIONS</h1>
+      <h1 style={{marginLeft:"100px"}}>MEDITATIONS</h1>
       </Link>
       <img src="https://i.imgur.com/gBMu1FR.png" style={{position: "absolute", top: "48%", right: "10%"}}/>
     </div>
     <div style={{marginTop:"200px", fontSize:"40px"}}>
-      <h1 style={{textAlign:"right"}}onClick={() => scrollToSection("habits")}>HABITS</h1>
+      <h1 style={{textAlign:"right", marginRight:"100px"}}onClick={() => scrollToSection("habits")}>HABITS</h1>
       <img src="https://i.imgur.com/Ec1Q1yD.png" style={{position: "absolute", top: "60%", right: "50%"}}/>
     </div>
     <div style={{marginTop:"200px", fontSize:"40px"}}>
-      <h1 onClick={() => scrollToSection("painting")}>PAINTING</h1>
-      <img src="https://i.imgur.com/qh6ZUFn.png" style={{position: "absolute", top: "75%", right: "10%"}}/>
+      <h1 onClick={() => scrollToSection("painting")} style={{marginLeft:"100px"}}>PAINTING</h1>
+      <img src="https://i.imgur.com/qh6ZUFn.png" style={{position: "absolute", top: "72%", right: "10%"}}/>
     </div>
     <div style={{marginTop:"200px", fontSize:"40px"}}>
       <Link to ="/music" style={{color: "white",textDecoration: "none"}}>
-      <h1 style={{textAlign:"right"}}>MUSIC</h1>
+      <h1 style={{textAlign:"right", marginRight:"100px"}}>MUSIC</h1>
       </Link>
       <img src="https://i.imgur.com/KZSbr90.png" style={{position: "absolute", top: "84%", right: "50%"}}/>
     </div>
