@@ -1,23 +1,64 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-const HomePartTwo = () =>{
+const HomePartTwo = () => {
+  const [letterSpacing, setLetterSpacing] = useState(0);
+  const sectionRef:any = useRef(null);
 
+  useEffect(() => {
+    let prevScrollY = window.scrollY;
+    let isPastSection = false;
 
-  const scrollToSection = (id:any)=>{
-    const section:any = document.getElementById(id)
-    section.scrollIntoView({behavior:"smooth"})
-  }
-return(
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollFactor = 0.3; // Adjust this value to control the speed of letter spacing change
+      const sectionOffset = sectionRef.current.offsetTop;
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const scrollThreshold = sectionOffset + sectionHeight;
 
-<div style={{
-       background: "linear-gradient(180deg, #fbc2eb 0%, #fbc2eb 20%, #9D84C9 100%)",
-       minHeight: "100vh",
-       position: "relative",
-       zIndex: 10,
-    }}>
-       <div style={{ color:"white", padding:"60px", textShadow: "2px 2px 4px #000000", letterSpacing:"10px"}}>
-        <h1 style={{fontSize:"120px",lineHeight: "0.3em", marginTop:"400px"}}>EXPLORE</h1>
+      if (currentScrollY > prevScrollY) {
+        if (currentScrollY > scrollThreshold) {
+          if (!isPastSection) {
+            setLetterSpacing((prevSpacing) => prevSpacing + scrollFactor);
+            isPastSection = true;
+          }
+        } else {
+          setLetterSpacing((prevSpacing) => prevSpacing + scrollFactor);
+          isPastSection = false;
+        }
+      } else {
+        setLetterSpacing((prevSpacing) => prevSpacing - scrollFactor);
+        isPastSection = false;
+      }
+
+      prevScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToSection = (id: any) => {
+    const section: any = document.getElementById(id);
+    section.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div
+      ref={sectionRef}
+      style={{
+        background: "linear-gradient(180deg, #fbc2eb 0%, #fbc2eb 20%, #9D84C9 100%)",
+        minHeight: "100vh",
+        position: "relative",
+        zIndex: 10,
+      }}
+    >
+      <div style={{ color: "white", padding: "60px", textShadow: "2px 2px 4px #000000" }}>
+        <h1 style={{ fontSize: "120px", lineHeight: "0.3em", marginTop: "400px", letterSpacing: letterSpacing < 0 ? "0px" : `${letterSpacing}px` }}>
+          EXPLORE
+        </h1>
 
         <p style={{fontSize:"20px", maxWidth:"600px"}}>There’s lots to do here at getaway to escape, and feel good. Whether you want to relax, and meditate. Express yourself creatively, listen to your favorite songs, or simply tell yourself, “You are enough” Because here at Getway, you are.</p>
 
