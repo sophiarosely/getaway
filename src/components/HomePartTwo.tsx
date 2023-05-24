@@ -11,7 +11,7 @@ const HomePartTwo = () =>{
 return(
 
 <div style={{
-       background: "linear-gradient(45deg, #a18cd1 0%, #fbc2eb 80%, #fbc2eb 100%)",
+       background: "linear-gradient(180deg, #fbc2eb 0%, #fbc2eb 20%, #9D84C9 100%)",
        minHeight: "100vh",
        position: "relative",
        zIndex: 10,

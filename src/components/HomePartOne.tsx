@@ -4,7 +4,7 @@ const HomePartOne = () =>{
 
   return(
     <div style={{
-      background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)",
+      background: "linear-gradient(180deg, #fad0c4 0%, #fad0c4 1%, #ff9a9e 100%)",
       padding: "50px",
       minHeight: "100vh",
     }}>

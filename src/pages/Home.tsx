@@ -59,7 +59,7 @@ console.log(favoriteAffirmations, "fav")
 <div style={{ position: "relative" }}>
   <div style={{
     zIndex: 20,
-    background: " url('https://i.imgur.com/XZrWOiI.png')",
+    background: " url('https://i.imgur.com/I7Qppve.png')",
     backgroundSize: "cover",
     position: "absolute",
     top: 0,
@@ -105,7 +105,7 @@ console.log(favoriteAffirmations, "fav")
       style={{
         textAlign: 'center',
         letterSpacing: '0.30em',
-        background: "linear-gradient(45deg, #FFC7B0 0%, #FFC7B0 80%, #FF8974 100%)"
+        background: "linear-gradient(180deg, #FF8974 30%, #FFC7B0 60%, #FFCAB3 100%)"
       }}
       id="affirmations"
     >
