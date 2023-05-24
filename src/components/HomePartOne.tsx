@@ -34,7 +34,7 @@ const HomePartOne = () =>{
       padding: "50px",
       minHeight: "100vh",
     }}>
-      <div style={{fontSize:"60px", color:"white", padding:"20px", textShadow: "2px 2px 4px #000000", letterSpacing: letterSpacing < 0 ? "0px" : `${letterSpacing}px`, marginTop:"200px"}}>
+      <div style={{fontSize:"60px", color:"white", marginTop:"300px", textShadow: "2px 2px 4px #000000", letterSpacing: letterSpacing < 0 ? "0px" : `${Math.min(letterSpacing, 50)}px`,}}>
         <h1 style={{lineHeight: "0.3em"}}>Your</h1>
         <h1 style={{lineHeight: "0.3em"}}>GetAway</h1>
         <h1 style={{lineHeight: "0.3em"}}>Starts</h1>
