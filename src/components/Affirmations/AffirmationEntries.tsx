@@ -32,7 +32,7 @@ const AffirmationEntries = () => {
 
     return (
       <div id='parent' style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)", overflow: 'auto'}}>
-      <div style={{ paddingBottom: '50px', marginTop: '300px'}}>
+      <div style={{ paddingBottom: '3%', marginTop: '25%'}}>
              {Array.isArray(retrievedAffirmations) && retrievedAffirmations.map((entry: any) => (
              <AffirmationEntry key={entry.user_id} user={entry.user_id} entryId={entry.id} title={entry.title} favorite={entry.favorite} affirmations={entry.affirmationList.split('/n')}  />))}
 
