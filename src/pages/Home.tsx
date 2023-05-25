@@ -1,6 +1,6 @@
 import MusicBar from '../components/MusicBar';
 import NavBar from '../components/NavBar';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect, useContext, useState } from 'react';
 import CheckIn from '../components/CheckIn/CheckIn';
 import HabitHome from  '../components/Habits/HabitHome'
@@ -50,8 +50,47 @@ const Home = () => {
     }
   }, [userId]);
 
+  const [letterSpacing, setLetterSpacing] = useState(0);
+  const sectionRef:any = useRef(null);
+
+  useEffect(() => {
+    let prevScrollY = window.scrollY;
+    let isPastSection = false;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollFactor = 0.5; // Adjust this value to control the speed of letter spacing change
+      const sectionOffset = sectionRef.current.offsetTop;
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const scrollThreshold = sectionOffset + sectionHeight;
+
+      if (currentScrollY > prevScrollY) {
+        if (currentScrollY > scrollThreshold) {
+          if (!isPastSection) {
+            setLetterSpacing((prevSpacing) => prevSpacing + scrollFactor);
+            isPastSection = true;
+          }
+        } else {
+          setLetterSpacing((prevSpacing) => prevSpacing + scrollFactor);
+          isPastSection = false;
+        }
+      } else {
+        setLetterSpacing((prevSpacing) => prevSpacing - scrollFactor);
+        isPastSection = false;
+      }
+
+      prevScrollY = currentScrollY ;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
   return (
-    <div>
+    <div ref={sectionRef}>
 
 <div >
 <HomePartOne/>
@@ -60,19 +99,19 @@ const Home = () => {
 <div style={{ position: "relative" }}>
   <div style={{
     zIndex: 20,
-    background: " url('https://i.imgur.com/XZrWOiI.png')",
+    background: " url('https://i.imgur.com/I7Qppve.png')",
     backgroundSize: "cover",
     position: "absolute",
     top: 0,
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "600px",
   }}>
   </div>
 
     <HomePartTwo  />
-  </div>
 
+</div>
 {/* drip stuff */}
     <div style={{ textAlign: 'center',position: "relative" }}>
     <div style={{
@@ -83,7 +122,7 @@ const Home = () => {
     top: "0%",
     left: 0,
     width: "100%",
-    height: "300px"
+    height: "550px"
   }}>
   </div>
   <CheckIn />
@@ -97,7 +136,7 @@ const Home = () => {
     top: "-1%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "500px",
   }}>
     </div>
     </div>
@@ -106,24 +145,27 @@ const Home = () => {
       style={{
         textAlign: 'center',
         letterSpacing: '0.30em',
-        background: "linear-gradient(45deg, #FFC7B0 0%, #FFC7B0 80%, #FF8974 100%)"
+        background: "linear-gradient(180deg, #FF8974 30%, #FFC7B0 60%, #FFCAB3 100%)",
+
       }}
       id="affirmations"
-    >
 
+    >
+<div style={{padding: `${Math.min(Math.max(letterSpacing + 100, 250), 300)}px`}}>
       {/* replace all this with the actual functionality when the time comes */}
-      <h1 style={{fontSize:"100px", color:"white", padding:"150px", textShadow: "2px 2px 4px #000000"}}
+      <h1 style={{fontSize:"100px", color:"white", textShadow: "2px 2px 4px #000000"}}
       >AFFIRMATIONS</h1>
-      <div style={{ display: "flex", justifyContent: "space-between", margin:"100px"}}>
-  <img
+      <div style={{ display: "flex", justifyContent: "space-between", marginLeft:"200px", marginRight:"200px"}}>
+  <img className='balloonWiggle'
     src="https://i.imgur.com/W3eeJwE.png"
     style={{ marginTop: "-90px" }}
   />
-  <img src="https://i.imgur.com/W3eeJwE.png" />
-  <img
+  <img className='balloonWiggle'src="https://i.imgur.com/W3eeJwE.png" />
+  <img className='balloonWiggle'
     src="https://i.imgur.com/W3eeJwE.png"
     style={{ marginTop: "-90px" }}
   />
+</div>
 </div>
 
 
@@ -171,7 +213,7 @@ const Home = () => {
     top: "-1%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "600px",
   }}>
     </div>
     </div>
@@ -185,7 +227,7 @@ const Home = () => {
       id="habits"
     >
       {/* replace all this with the actual functionality when the time comes */}
-      <h2 style={{marginTop:"200px",fontSize:"80px", color:"white", textShadow: "2px 2px 4px #000000"}}>FORM NEW HABITS</h2>
+      <h2 style={{marginTop:"200px",fontSize:"80px", color:"white", textShadow: "2px 2px 4px #000000",padding:"200px"}}>FORM NEW HABITS</h2>
       <div style={{
 
       borderRadius:'40px',
@@ -221,13 +263,13 @@ const Home = () => {
     top: "-1%",
     left: 0,
     width: "100%",
-    height: "300px",
+    height: "500px",
   }}>
     </div>
 
   </div>
 <div style={{backgroundColor:"#009CAD", padding:"100px"}}>
-<h2 style={{marginTop:"200px",fontSize:"80px", color:"white", textShadow: "2px 2px 4px #000000"}}>YOUR MASTERPIECE</h2>
+<h2 style={{marginTop:"250px",fontSize:"80px", color:"white", textShadow: "2px 2px 4px #000000"}}>YOUR MASTERPIECE</h2>
       <SavedPaintings/>
 
 </div>

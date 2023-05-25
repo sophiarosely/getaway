@@ -208,10 +208,13 @@ const Affirmations = () => {
    <div className="carousel" style={{ marginLeft: '300px', marginRight: '300px' }}>
 {<Carousel>
   {Array.isArray(favoriteAffirmations) &&
-    favoriteAffirmations.map((affirmation) => (
+    favoriteAffirmations.reverse().map((affirmation) => (
       renderItem(affirmation)
     ))}
     </Carousel>}
+    </div>
+    <div id="view-button" style={{padding: '0.8em'}}>
+    <Button variant="outlined" component={Link} to={'/affirmation-entries'}>View Affirmations</Button>
     </div>
     </div>
       </center>
