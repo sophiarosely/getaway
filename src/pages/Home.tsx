@@ -197,7 +197,7 @@ const Home = () => {
                       to={`/affirmations`}
                       style={{ cursor: 'pointer' }}
                     >
-                      <div style={{fontSize: '15px'}}>View Affirmations</div>
+                      <div style={{fontSize: '15px'}}> View More</div>
                       <NavigateNextIcon />
                     </IconButton>
 
