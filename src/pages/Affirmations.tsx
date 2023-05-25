@@ -214,7 +214,7 @@ const Affirmations = () => {
     </Carousel>}
     </div>
     <div id="view-button" style={{padding: '0.8em'}}>
-    <Button variant="outlined" component={Link} to={'/affirmation-entries'}>View Affirmations</Button>
+    <Button variant="outlined" component={Link} to={'/affirmation-entries'}>View All Affirmations</Button>
     </div>
     </div>
       </center>
