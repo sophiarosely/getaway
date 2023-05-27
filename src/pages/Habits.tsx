@@ -72,6 +72,7 @@ const types:Option[] = [
 <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
     <div style={{marginTop: '80px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
     <h3 style={{marginTop:"300px"}}>Growth</h3>
+<img src="https://i.ibb.co/0Vvjb9T/7718914-removebg-preview.png"  style={{height: '400px', width: '400px'}}></img>
     <p style={{width:'50%'}}>
          "Small habits lead to big growth - track your progress and see how far you've come."
 
