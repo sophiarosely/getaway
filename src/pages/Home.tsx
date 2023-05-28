@@ -12,6 +12,8 @@ import  Button from '@mui/material/Button';
 import HomePartOne from "../components/HomePartOne"
 import HomePartTwo from "../components/HomePartTwo"
 import { Link } from 'react-router-dom';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import IconButton from '@mui/material/IconButton';
 
 
 
@@ -171,34 +173,36 @@ const Home = () => {
 
 
       <div style={{padding:"80px"}}>
-        <Link to="/affirmations">
-      <button>More</button>
-      </Link>
       <div style={{
       margin:'60px auto',
       color: 'white',
       backgroundColor:'#FC6E47',
       width: '70%',
-      height: '300px',
+      height: 'auto',
       textAlign:'center',
-      marginBottom:'400px',
+      // marginBottom:'400px',
       padding:'20px',
       fontWeight:"bolder",
     }}>
       <div style={{padding:"10px"}}>
-        {
+        {favoriteAffirmations.length === 0 ?  "Your favorite affirmations will show up here" :
     favoriteAffirmations.slice(favoriteAffirmations.length - 1).map((favorite: any) => (
       <AffirmationHome key={favorite.user_id} entryId={favorite.id} title={favorite.title} affirmations={favorite.affirmationList.split('/n')} />
     ))
   }
 </div>
+</div>
+<IconButton
+                      component={Link}
+                      to={`/affirmations`}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div style={{fontSize: '15px'}}> View More</div>
+                      <NavigateNextIcon />
+                    </IconButton>
 
       </div>
-      {/* <h3>Affirmations</h3> */}
 
-
-
-      </div>
       </div>
       <div style={{position:"relative"}}>
   <div style={{
