@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ThreeJS1 from './Three.JS/3JS(1)';
 import ThreeJS2 from './Three.JS/3JS(2)';
 import ThreeJS3 from './Three.JS/3JS(3)';
@@ -12,7 +12,6 @@ const Meditation = () => {
   const [exercise1Open, setExercise1Open] = useState(false);
   const [exercise2Open, setExercise2Open] = useState(false);
   const [exercise3Open, setExercise3Open] = useState(false);
-  const [reflectionOpen, setReflectionOpen] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [showCards, setShowCards] = useState(false);
 
@@ -50,10 +49,6 @@ const Meditation = () => {
     setExercise3Open(false);
     setCurrentText("");
   }
-
-  const handleReflectionClick = () => {
-    setReflectionOpen(!reflectionOpen);
-  };
 
   // *****************
   // *   THREE.JS    *
@@ -121,7 +116,7 @@ useEffect(() => {
   // *****************
 
   return (
-    <main className='meditation-container'>
+    <div className='meditation-container'style={{ marginTop: '450px' }}>
 <h1 style={{textAlign: "center", margin: "auto"}}>Meditation</h1>
 <p style={{textAlign: "center", margin: "auto"}} >Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some nice visualizations and go through various breathing exercises.</p>
       <article className="exercise-container">
@@ -141,10 +136,10 @@ useEffect(() => {
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 </div>
       {exercise1Open &&
-      <div className="exercise-popup">
+      <div className="exercise-popup" style={{marginTop: '500px', background: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)' }}>
         <div className="exercise-popup-text">{currentText}</div>
        <div> <ThreeJS1 /> </div>
-       <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+       <Card className='cards' sx={{ maxWidth: 345, backgroundImage: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
             <CardContent>
               <Typography variant="h5" component="h2">
               <b> 5-5-5 Breathing Technique </b>
@@ -170,10 +165,10 @@ useEffect(() => {
       </div>
     }
     {exercise2Open &&
-      <div className="exercise-popup">
+      <div className="exercise-popup" style={{marginTop: '500px', background: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)' }}>
         <div className="exercise-popup-text">{currentText}</div>
         <p> <ThreeJS2 /></p>
-        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+        <Card className='cards' sx={{ maxWidth: 345, backgroundImage: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
               <CardContent>
                 <Typography variant="h5" component="h2">
                 <b> 4-7-8 Breathing Technique </b>
@@ -199,10 +194,10 @@ useEffect(() => {
       </div>
     }
     {exercise3Open &&
-      <div className="exercise-popup">
+      <div className="exercise-popup" style={{marginTop: '500px', background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
         <div className="exercise-popup-text" >{currentText}</div>
         <p> <ThreeJS3 /> </p>
-        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white' }}>
               <CardContent>
                 <Typography variant="h5" component="h2">
                 <b> Zen Breathing </b>
@@ -230,7 +225,7 @@ useEffect(() => {
         <Button className="exercise-button" variant="outlined" onClick={handleExercise3Close}>Complete</Button>
       </div>
     }
-  </main>
+  </div>
 );
   }
 

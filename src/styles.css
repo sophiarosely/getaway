@@ -17,19 +17,21 @@ body{
 /*MUSIC-BAR-CSS*/
 
 /*MEDITATION*/
-
-
 .exercise-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  max-width: 700px; /* Adjust the max-width value as per your desired width */
+  margin: 0 auto; /* Add this line to center the container horizontally */
 }
 
 .exercise-box {
+  flex: 1;
   padding: 10px;
-  margin: 10px 0;
   border-radius: 40px;
+  width: 150px;
 }
 
 .exercise-popup {
