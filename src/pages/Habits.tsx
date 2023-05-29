@@ -3,9 +3,13 @@ import HabitCard from '../components/Habits/Habitcard';
 import HabitCreate from  '../components/Habits/HabitCreate'
 import { UserContext, UserContextType } from '../App';
 import axios from 'axios';
-import { Button } from '@mui/material';
-import Popover from '@mui/material/Popover';
-import Card from '@mui/material/Card';
+import { Button, Card, Dialog, DialogTitle, DialogContent, CardContent, Grid, Typography} from '@mui/material';
+// import KebabDiningIcon from '@mui/icons-material/KebabDining';
+// import SkateboardingIcon from '@mui/icons-material/Skateboarding';
+// import PsychologyIcon from '@mui/icons-material/Psychology';
+// import SpaIcon from '@mui/icons-material/Spa';
+// import Popover from '@mui/material/Popover';
+// import Card from '@mui/material/Card';
 
 interface Habits {
   id: number;
@@ -30,7 +34,7 @@ const types:Option[] = [
   }, {
     type: "Focus"
   }, {
-    type: "Choices"
+    type: "Wellness"
   }
 ]
 
@@ -91,25 +95,53 @@ const types:Option[] = [
     }}
   />
   
-
-
-      <Card sx={{ 
+<Card sx={{ 
   borderRadius: '10px', 
   backgroundColor: '#CCD7FF', 
-  padding: '20px', 
+  // padding: '20px', 
   height: '60vh', 
+
+ 
+      
+}}>
+      <CardContent>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={1}>
+            {/* First column */}
+            <Typography variant="h6">Options</Typography>
+            {/* Content for column 1 */}
+               <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+  <Button variant="outlined" onClick={handleNewHabit}>New Habit</Button>
+  {/* {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />} */}
+<Dialog
+  open={showHabitCreate}
+  onClose={() => setShowHabitCreate(false)}
+  PaperProps={{
+    sx: {
+      backgroundColor: 'rgb(204, 215, 255)',
+      borderRadius: '10px' 
+    },
+  }}
+>
+  <DialogTitle>Create New Habit</DialogTitle>
+  <DialogContent>
+    <HabitCreate handleCreate={handleCreate} />
+  </DialogContent>
+
+</Dialog>
+</div>
+          </Grid>
+          <Grid item xs={12} sm={10}
+          sx={{ borderLeft: '1px solid gray', paddingLeft: 16 }}>
+       
+            <Typography variant="h6">Habits</Typography>
+           <Card sx={{ 
+  // borderRadius: '10px', 
+  backgroundColor: '#CCD7FF', 
+boxShadow: 'none' ,
+  height: '55vh', 
   width: '160vh',
-  overflow: 'scroll',
-    // '&::-webkit-scrollbar': {
-    //     width: '3px',
-    //   },
-    //   // '&::-webkit-scrollbar-track': {
-    //   //   background: '#E0E0E0',
-    //   // },
-    //   '&::-webkit-scrollbar-thumb': {
-    //     background: 'rgba(136, 136, 136, 0.5)',
-    //     // borderRadius: '1px',
-      // },
+  overflow: 'auto',
       
 }}>
       <style>
@@ -121,30 +153,46 @@ const types:Option[] = [
       padding:30px;
     }
     ::-webkit-scrollbar-track {
-      background-color: #9BB6FD;
+    
       border-radies:30px;
     }
+    ::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
     ::-webkit-scrollbar-thumb {
       background-color: #7C92CB;
       border-radius:30px;
     }
     `}
   </style>
-      {habits.map((habit) => (
-        <HabitCard
-         key={habit.id}
-         userId={userId}
-          id={habit.id} 
-          habit_name={habit.habit_name}
-           habit_type={habit.habit_type}
-           habit_createdAt={habit.habit_createdAt}
-           onDelete={() => handleDelete(habit.id)} />
-      ))}
-      <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-  <Button variant="outlined" onClick={handleNewHabit}>New Habit</Button>
-  {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />}
-</div>
+
+ 
+    {habits.length === 0 ? (
+  <div style={{ textAlign: 'center', marginTop: '20px' }}>
+    No habits found. Add a new habit using the "New Habit" button.
+  </div>
+) : (
+  habits.map((habit) => (
+    <HabitCard
+      key={habit.id}
+      userId={userId}
+      id={habit.id}
+      habit_name={habit.habit_name}
+      habit_type={habit.habit_type}
+      habit_createdAt={habit.habit_createdAt}
+      onDelete={() => handleDelete(habit.id)}
+    />
+  ))
+)}
+     
       </Card>
+     
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+
+ 
     <div style={{ marginBottom: '20px' }}></div>
     </div>
     </div>
