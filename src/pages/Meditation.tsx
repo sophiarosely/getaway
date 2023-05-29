@@ -115,12 +115,12 @@ useEffect(() => {
   // *****************
 
   return (
-    <div className="meditation-container" style={{ background: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)', height: '150vh' }}>
+    <div className="meditation-container" style={{ background: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)', height: '160vh' }}>
          <div className="content-wrapper">
-         <h1 style={{ textAlign: "center", margin: "auto"}}>Meditation</h1>
-      <p style={{ textAlign: "center", margin: "auto" }}>Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some visualizations and go through various breathing exercises.</p>
+         <h1 style={{ textAlign: "center", margin: "auto", fontSize: "70px", color: "white", }}>Meditation</h1>
+      <p style={{ fontSize: "18px", textAlign: "center", margin: "auto" , color: "white"}}> <i> Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some visualizations and go through various breathing exercises. </i> </p>
       <div className="exercise-container">
-        <h2>Select A Meditation Exercise:</h2>
+        <h2 style={{ fontSize: "30px", fontWeight: "bold", color: "white"}}>Select A Meditation Exercise :</h2>
         <Button className='exercise-box' variant="outlined" onClick={exercise1Open ? handleExercise1Close : handleExercise1Click}>
           5-5-5
         </Button>

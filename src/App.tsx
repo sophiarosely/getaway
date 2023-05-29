@@ -97,7 +97,7 @@ const App = () => {
             <Route path='/painting' element={<Painting />} />
             <Route path='/music' element={<Music />} />
             <Route path='/therapist-profile' element={<TherapistProfile />} />
-            <Route path='/profile' element={<Profile />} />
+            {/* <Route path='/profile' element={<Profile />} /> */}
           </Routes>
           <MusicBar />
         </div>
