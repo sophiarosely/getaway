@@ -275,7 +275,6 @@ const Home = () => {
 </div>
     </div>
     <div
-
     style={{
       borderRadius:'40px',
       margin:'60px auto',
@@ -287,7 +286,8 @@ const Home = () => {
       textAlign:'center',
       marginBottom: '100px'
     }}
-  >bottom shit </div>
+  >
+  </div>
     </div>
   );
 };

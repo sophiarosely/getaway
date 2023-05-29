@@ -10,6 +10,7 @@ const Music = () => {
         alignItems: 'center',
         justifyContent: 'center',
         margin: '0 auto',
+        marginTop: '450px',
         textAlign: 'center',
       }}
     >
@@ -29,7 +30,6 @@ const Music = () => {
       </div>
       <PlayablePiano />
       <p>Click and drag the piano with your cursor!</p>
-      <TimeSpentOnPage />
     </div>
   );
 };
