@@ -14,7 +14,7 @@ import HomePartTwo from "../components/HomePartTwo"
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import IconButton from '@mui/material/IconButton';
-
+import Footer from '../components/Footer'
 
 
    interface home {
@@ -90,7 +90,7 @@ const Home = () => {
 
 
   return (
-    <div ref={sectionRef}>
+    <div ref={sectionRef} style={{backgroundColor:"#009CAD"}}>
 
 <div >
 <HomePartOne/>
@@ -273,22 +273,12 @@ const Home = () => {
       <SavedPaintings/>
 
 </div>
-    </div>
-    <div
-    style={{
-      borderRadius:'40px',
-      margin:'60px auto',
-      color: '#5C6B9E',
-      backgroundColor:'#5C6B9E',
 
-      width: '70%',
-      height: '7px',
-      textAlign:'center',
-      marginBottom: '100px'
-    }}
-  >
-  </div>
     </div>
+
+ <Footer></Footer>
+    </div>
+
   );
 };
 
