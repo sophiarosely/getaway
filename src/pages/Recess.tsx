@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 // import Recommend from '../components/Recess/Recommendations'
 import { UserContext, UserContextType } from '../App';
 
+import Footer from '../components/Footer'
 
 import ScrollWall from  '../components/Recess/ScrollWall'
 
@@ -60,6 +61,7 @@ return (
       <ScrollWall />
     </div>
   </div>
+  <Footer></Footer>
   </div>
 );
   }

@@ -7,6 +7,7 @@ import FavTherapist from "../components/FavTherapist"
 import StaffList from "../components/StaffList";
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { url } from "inspector";
+import Footer from '../components/Footer'
 
 const Guidance = () =>{
 
@@ -122,7 +123,9 @@ console.log('staff', staff)
     <FavTherapist />
     </div>
 <StaffList staff={staff}/>
+<Footer></Footer>
     </div>
+
     </div>
   )
   }

@@ -5,13 +5,15 @@ export const Footer: FC = (): ReactElement => {
   return (
     <Box
  sx={{
-    position: "fixed",
+    // position: "fixed",
     bottom: 0,
     width: "100%",
     
     paddingTop: "3rem",
     paddingBottom: "2rem",
     marginTop: "2rem",
+   
+
   }}
     >
       <Container maxWidth="lg">

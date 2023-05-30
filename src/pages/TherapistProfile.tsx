@@ -4,6 +4,8 @@ import { useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom'
 import BookNowButton from '../components/BookNowButton';
 import dayjs from 'dayjs';
+import Footer from '../components/Footer'
+
 
 const TherapistProfile = () =>{
 
@@ -101,7 +103,7 @@ return (
 
   </div>
 
-
+<Footer></Footer>
 
 </div>
 
