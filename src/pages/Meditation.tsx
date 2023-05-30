@@ -115,7 +115,7 @@ useEffect(() => {
   // *****************
 
   return (
-    <div className="meditation-container" style={{ background: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)', height: '160vh' }}>
+    <div className="meditation-container" style={{ background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)", height: '160vh' }}>
          <div className="content-wrapper">
          <h1 style={{ textAlign: "center", margin: "auto", fontSize: "70px", color: "white", }}>Meditation</h1>
       <p style={{ fontSize: "18px", textAlign: "center", margin: "auto" , color: "white"}}> <i> Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some visualizations and go through various breathing exercises. </i> </p>
@@ -135,7 +135,7 @@ useEffect(() => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}> </div>
       {exercise1Open &&
-        <div className="exercise-popup" style={{ marginTop: '500px',  background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
+        <div className="exercise-popup" style={{ marginTop: '500px',  background: "linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)" }}>
           <div className="exercise-popup-text">{currentText}</div>
           <div> <ThreeJS1 /> </div>
           <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white'  }}>
@@ -164,7 +164,7 @@ useEffect(() => {
         </div>
       }
       {exercise2Open &&
-        <div className="exercise-popup" style={{ marginTop: '500px',  background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
+        <div className="exercise-popup" style={{ marginTop: '500px',  background: 'linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)' }}>
           <div className="exercise-popup-text">{currentText}</div>
           <p> <ThreeJS2 /></p>
           <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white' }}>
@@ -193,7 +193,7 @@ useEffect(() => {
         </div>
       }
       {exercise3Open &&
-        <div className="exercise-popup" style={{ marginTop: '500px', background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
+        <div className="exercise-popup" style={{ marginTop: '500px', background: 'linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)' }}>
           <div className="exercise-popup-text">{currentText}</div>
           <p> <ThreeJS3 /> </p>
           <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white' }}>
