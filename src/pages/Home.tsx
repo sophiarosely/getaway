@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import IconButton from '@mui/material/IconButton';
 import Footer from '../components/Footer'
+import ScrollTop from '../components/ScrollToTop'
 
 
    interface home {
