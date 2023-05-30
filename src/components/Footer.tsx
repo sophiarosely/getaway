@@ -21,15 +21,15 @@ export const Footer: FC = (): ReactElement => {
           <Grid item xs={12} mb={2}>
             <Link href="#">
               <img
-                src="https://i.ibb.co/xfDng3b/Screenshot-2023-05-01-214359.png"
+                src="https://i.imgur.com/NInXwHl.png"
                 alt="GetaWay logo"
-                height="35px"
+                height="40px"
               />
             </Link>
           </Grid>
           <Grid item xs={12} mb={2}>
             <Typography color="textSecondary" variant="body2" align="center">
-              &copy; {new Date().getFullYear()} GetaWay.com 
+              &copy; {new Date().getFullYear()} getawayapp.co 
             </Typography>
           </Grid>
           <Grid item xs={12}>

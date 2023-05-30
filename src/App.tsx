@@ -21,6 +21,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Switch } from '@mui/material';
 import Footer from './components/Footer'
+import ScrollToTopFab from './components/ScrollToTop';
 // Theodore import stuff
 import Music from '../src/pages/Music';
 // import PlayablePiano from './components/PianoComponents/PlayablePiano';
@@ -65,7 +66,7 @@ const App = () => {
     getUser();
   }, []);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <UserContext.Provider value={{ userName, userId }}>
@@ -103,7 +104,7 @@ const App = () => {
           </Routes>
           
           <MusicBar />
-          
+          <ScrollToTopFab />
         </div>
       </BrowserRouter>
     </UserContext.Provider>

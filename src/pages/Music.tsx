@@ -3,7 +3,6 @@ import PlayablePiano from '../components/PianoComponents/PlayablePiano';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import Footer from '../components/Footer'
 
 const Music = () => {
   return (
@@ -39,7 +38,6 @@ const Music = () => {
       </div>
       <PlayablePiano />
       <p style={{ fontSize: "40px", color: "white", }}>Click and drag the piano with your cursor!</p>
-      <Footer></Footer>
     </div>
   );
 };

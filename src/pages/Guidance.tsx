@@ -77,9 +77,9 @@ const getNextTwenty = () =>{
     console.error('failed to get next twenty search results', err)
   })
 }
-console.log( userLat, userLong)
-console.log('hi',therapists)
-console.log('staff', staff)
+// console.log( userLat, userLong)
+// console.log('hi',therapists)
+// console.log('staff', staff)
 
 // const theme = createTheme({
 //   palette: {

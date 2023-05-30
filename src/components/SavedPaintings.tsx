@@ -34,7 +34,7 @@ painting.url = `data:image/png;base64,${base64String}`;
     })
     .then(()=>{
       getPaintings();
-      console.log("painting Deleted")
+      // console.log("painting Deleted")
     })
   }
 
