@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Footer from '../components/Footer'
 
 const Meditation = () => {
   // creating state for each exercise to open/close
@@ -115,6 +116,7 @@ useEffect(() => {
   // *****************
 
   return (
+    
     <div className="meditation-container" style={{ background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)", height: '160vh' }}>
          <div className="content-wrapper">
          <h1 style={{ textAlign: "center", margin: "auto", fontSize: "70px", color: "white", }}>Meditation</h1>
@@ -225,6 +227,7 @@ useEffect(() => {
         </div>
       }
       </div>
+    
     </div>
   );
 }

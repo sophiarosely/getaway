@@ -14,7 +14,7 @@ import HomePartTwo from "../components/HomePartTwo"
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import IconButton from '@mui/material/IconButton';
-
+import Footer from '../components/Footer'
 
 
    interface home {
@@ -273,6 +273,7 @@ const Home = () => {
       <SavedPaintings/>
 
 </div>
+
     </div>
     <div
     style={{
@@ -288,7 +289,9 @@ const Home = () => {
     }}
   >
   </div>
+ <Footer></Footer>
     </div>
+    
   );
 };
 

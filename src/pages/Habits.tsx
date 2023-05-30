@@ -4,13 +4,7 @@ import HabitCreate from  '../components/Habits/HabitCreate'
 import { UserContext, UserContextType } from '../App';
 import axios from 'axios';
 import { Button, Card, Dialog, DialogTitle, DialogContent, CardContent, Grid, Typography} from '@mui/material';
-// import KebabDiningIcon from '@mui/icons-material/KebabDining';
-// import SkateboardingIcon from '@mui/icons-material/Skateboarding';
-// import PsychologyIcon from '@mui/icons-material/Psychology';
-// import SpaIcon from '@mui/icons-material/Spa';
-// import Popover from '@mui/material/Popover';
-// import Card from '@mui/material/Card';
-
+import Footer from '../components/Footer'
 interface Habits {
   id: number;
   habit_type: string;
@@ -195,6 +189,7 @@ boxShadow: 'none' ,
  
     <div style={{ marginBottom: '20px' }}></div>
     </div>
+    <Footer></Footer>
     </div>
   );
 };

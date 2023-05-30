@@ -6,6 +6,7 @@ import  Pagination  from "@mui/material/Pagination";
 import FavTherapist from "../components/FavTherapist"
 import StaffList from "../components/StaffList";
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import Footer from '../components/Footer'
 
 const Guidance = () =>{
 
@@ -124,7 +125,9 @@ console.log('staff', staff)
     <FavTherapist />
     </div>
 <StaffList staff={staff}/>
+<Footer></Footer>
     </div>
+    
     </div>
   )
   }
