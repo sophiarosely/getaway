@@ -13,7 +13,7 @@ const location = useLocation();
 const { therapist } = location.state
 
 const  [appointment, setAppointment ]:any = useState(null)
-console.log(appointment)
+// console.log(appointment)
 
 
   return(

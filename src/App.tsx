@@ -66,7 +66,7 @@ const App = () => {
     getUser();
   }, []);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <UserContext.Provider value={{ userName, userId }}>
