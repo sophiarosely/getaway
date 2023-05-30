@@ -26,7 +26,7 @@ const CheckIn = () => {
   const [moodData, setMoodData] = useState<[]>([]);
 
   const FeelingSelector = (e: any) => {
-    console.log(e.target.textContent);
+    // console.log(e.target.textContent);
     // SetUserFeelings(e.target.textContent);
     const moodDescription = e.target.textContent;
     let moodColor = '';
@@ -70,7 +70,7 @@ const CheckIn = () => {
         }
       })
       .then((data) => {
-        console.log('Feeling submitted:', data);
+        // console.log('Feeling submitted:', data);
         setShowAlert(true);
         setTimeout(() => {
           setShowAlert(false);

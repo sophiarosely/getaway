@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import IconButton from '@mui/material/IconButton';
 import Footer from '../components/Footer'
+import ScrollTop from '../components/ScrollToTop'
 
 
    interface home {
@@ -43,7 +44,7 @@ const Home = () => {
         .then(({ data }) => {
           if (data && data.length > 0) { // check if data is not empty
             setFavoriteAffirmations(data);
-            console.log(data, 'here');
+            // console.log(data, 'here');
           }
         })
         .catch((error) => console.error(error, 'nooo'));
@@ -242,7 +243,7 @@ const Home = () => {
     }}>
       <h3>HABIT CHARTS</h3>
        <div  style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-      {habits.slice(0, 4).map((habit) => (
+      {habits.slice(0, 3).map((habit) => (
         <HabitHome key={habit.id}
           habit_name={habit.habit_name}
            habit_type={habit.habit_type}
